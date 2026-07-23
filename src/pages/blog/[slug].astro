@@ -1,0 +1,298 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const recentPosts = allPosts.filter((p) => p.id !== post.id).slice(0, 3);
+
+const pubDate = post.data.pubDate;
+const year = pubDate.getFullYear();
+const monthDay = `${pubDate.getMonth() + 1}/${pubDate.getDate()}`;
+const fullDate = pubDate.toLocaleDateString("ja-JP", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={`${post.data.title}｜［ブランド名］骨組み`} showBreadcrumb>
+  <Fragment slot="breadcrumb">
+    <div class="breadcrumb">
+      <div class="wrap">
+        <a href="/">ホーム</a> › <a href="/blog">BLOG</a> › {post.data.category}
+      </div>
+    </div>
+  </Fragment>
+
+  <div class="wrap">
+    <div class="post-head">
+      <div class="post-head-row">
+        <div class="post-date-badge">
+          {year}<br />
+          <strong>{monthDay}</strong>
+        </div>
+        <div>
+          <h1>{post.data.title}</h1>
+          <div class="post-meta">
+            <span class="tag-solid">{post.data.category}</span>
+            <time>{fullDate}</time>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap post-layout">
+    <div class="post-share" aria-label="シェア">
+      <a href="#">f</a>
+      <a href="#">X</a>
+      <a href="#">B!</a>
+      <a href="#">LINE</a>
+    </div>
+
+    <article class="post-main">
+      <div class="post-hero">
+        <span class="post-hero-caption">{post.data.title}</span>
+      </div>
+      <div class="post-body">
+        <Content />
+      </div>
+    </article>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-search">
+        <input type="search" placeholder="検索" />
+        <button type="button">検索</button>
+      </div>
+      <div class="sidebar-recent">
+        <p class="sidebar-heading">新着記事</p>
+        <ul>
+          {
+            recentPosts.length === 0 ? (
+              <li>
+                <a href="/blog">一覧を見る</a>
+              </li>
+            ) : (
+              recentPosts.map((p) => (
+                <li>
+                  <a href={`/blog/${p.id}`}>{p.data.title}</a>
+                </li>
+              ))
+            )
+          }
+        </ul>
+      </div>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  /* --- post head --- */
+  .post-head {
+    padding: 40px 0 32px;
+  }
+  .post-head-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .post-date-badge {
+    flex: 0 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .post-date-badge strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .post-head h1 {
+    font-size: 26px;
+    line-height: 1.55;
+  }
+  .post-meta {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag-solid,
+  .tag-outline {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 3px;
+  }
+  .tag-solid {
+    background: var(--band-bg);
+    color: var(--band-ink);
+  }
+  .tag-outline {
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .post-meta time {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* --- post layout --- */
+  .post-layout {
+    display: grid;
+    grid-template-columns: 56px 1fr 280px;
+    gap: 40px;
+    padding-bottom: 80px;
+    align-items: start;
+  }
+  .post-share {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .post-share a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+  .post-share a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .post-hero {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 3px;
+    overflow: hidden;
+    background: linear-gradient(150deg, var(--line), transparent 75%), var(--surface);
+    margin-bottom: 36px;
+  }
+  .post-hero-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px;
+    background: linear-gradient(0deg, rgba(15, 17, 15, 0.72), transparent);
+    color: #f5f3e9;
+    font-family: var(--font-display);
+    font-size: 22px;
+  }
+
+  .post-body {
+    font-size: 15.5px;
+  }
+  .post-body :global(p) {
+    margin: 0 0 22px;
+  }
+  .post-body :global(h2) {
+    font-size: 20px;
+    margin: 40px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .sidebar-search {
+    display: flex;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .sidebar-search input {
+    flex: 1;
+    border: none;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .sidebar-search input:focus {
+    outline: none;
+  }
+  .sidebar-search button {
+    border: none;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0 16px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .sidebar-heading {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sidebar-recent ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sidebar-recent li {
+    border-bottom: 1px dashed var(--line);
+  }
+  .sidebar-recent a {
+    display: block;
+    padding: 12px 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+  .sidebar-recent a:hover {
+    color: var(--accent);
+  }
+
+  /* --- mobile --- */
+  @media (max-width: 900px) {
+    .post-layout {
+      grid-template-columns: 1fr;
+    }
+    .post-share {
+      position: static;
+      flex-direction: row;
+    }
+  }
+  @media (max-width: 640px) {
+    .post-head-row {
+      flex-direction: column;
+    }
+  }
+</style>

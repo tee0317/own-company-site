@@ -1,0 +1,382 @@
+---
+interface Props {
+  title: string;
+  showBreadcrumb?: boolean;
+  showDivider?: boolean;
+}
+
+const { title, showBreadcrumb = false, showDivider = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <style is:global>
+      /*
+        参考サイト（nestray.tokyo）は、白セクション／黒セクションの交互構成を
+        ブランドの固定デザインとして採用しており、閲覧者のライト/ダークモード
+        設定で見た目が変わるべきものではない。そのため意図的にシングルテーマ
+        （配色固定）とする。
+      */
+      :root {
+        --paper: #fbfbf8;
+        --surface: #f3f3ee;
+        --ink: #21241e;
+        --ink-soft: rgba(33, 36, 30, 0.66);
+        --line: rgba(33, 36, 30, 0.14);
+        --accent: #b07a22;
+        --accent-ink: #faf6ee;
+        --font-display: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+        --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+          "Noto Sans JP", sans-serif;
+
+        --band-bg: #1f221b;
+        --band-ink: #f5f3e9;
+        --band-ink-soft: rgba(245, 243, 233, 0.72);
+        --band-line: rgba(245, 243, 233, 0.14);
+        --band-accent: #d6a24a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-body);
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      svg {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        text-wrap: balance;
+        margin: 0;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* --- buttons --- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 26px;
+        border-radius: 3px;
+        font-size: 14px;
+        letter-spacing: 0.03em;
+        text-decoration: none;
+        border: 1px solid transparent;
+      }
+      .btn-accent {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+      .btn-outline {
+        border-color: var(--line);
+        color: var(--ink);
+      }
+
+      /* --- header --- */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+      }
+      .site-header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+      .brand {
+        font-family: var(--font-display);
+        font-size: 22px;
+        letter-spacing: 0.04em;
+      }
+      .brand span {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--ink-soft);
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      nav.primary-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+        margin: 0;
+        padding: 0;
+      }
+      nav.primary-nav a {
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid transparent;
+      }
+      nav.primary-nav a:hover,
+      nav.primary-nav a:focus-visible {
+        border-bottom-color: var(--accent);
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        width: 42px;
+        height: 38px;
+        padding: 0;
+        cursor: pointer;
+      }
+      .menu-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--ink);
+        margin: 4px auto;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .menu-toggle span {
+          transition: none;
+        }
+      }
+
+      /* --- breadcrumb --- */
+      .breadcrumb {
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        padding: 12px 0;
+      }
+      .breadcrumb a {
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+
+      /* --- 白い帯（区切り） --- */
+      .divider-band {
+        height: 28px;
+        background: var(--paper);
+      }
+
+      /* --- footer（黒） --- */
+      .site-footer {
+        background: var(--band-bg);
+        color: var(--band-ink-soft);
+        padding: 56px 0 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 32px;
+        padding-bottom: 40px;
+      }
+      .footer-logo {
+        font-family: var(--font-display);
+        font-size: 20px;
+        color: var(--band-ink);
+        margin: 0 0 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--band-line);
+      }
+      .footer-address {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+      .footer-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .footer-nav li {
+        border-bottom: 1px dashed var(--band-line);
+      }
+      .footer-nav a {
+        display: block;
+        padding: 11px 0;
+        font-size: 13.5px;
+        color: var(--band-ink);
+        text-decoration: none;
+      }
+      .footer-nav a:hover {
+        color: var(--band-accent);
+      }
+      .footer-copyright {
+        text-align: center;
+        font-size: 12px;
+        margin: 0;
+      }
+
+      /* --- mall links（商品カード共通） --- */
+      .mall-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .mall-links a {
+        font-size: 12.5px;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        text-decoration: none;
+      }
+      .mall-links a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* --- mobile（header / footer / nav 共通分） --- */
+      @media (max-width: 860px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-brand {
+          grid-column: 1 / -1;
+          margin-bottom: 12px;
+        }
+      }
+      @media (max-width: 640px) {
+        .menu-toggle {
+          display: block;
+        }
+        nav.primary-nav {
+          position: fixed;
+          inset: 62px 0 auto 0;
+          background: var(--paper);
+          border-bottom: 1px solid var(--line);
+          transform: translateY(-8px);
+          opacity: 0;
+          pointer-events: none;
+          transition: transform 0.18s ease, opacity 0.18s ease;
+        }
+        nav.primary-nav.is-open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+        nav.primary-nav ul {
+          flex-direction: column;
+          gap: 0;
+          padding: 8px 24px 20px;
+        }
+        nav.primary-nav a {
+          display: block;
+          padding: 12px 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .footer-brand {
+          margin-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <div class="brand">
+          ［ブランド名］
+          <span>Since ［創業年］</span>
+        </div>
+        <nav class="primary-nav" id="primary-nav">
+          <ul>
+            <li><a href="/">トップページ</a></li>
+            <li><a href="/products">商品一覧</a></li>
+            <li><a href="/blog">BLOG</a></li>
+            <li><a href="/#contact">お問い合わせ</a></li>
+            <li><a href="/#access">会社概要</a></li>
+            <li><a href="#">プライバシーポリシー</a></li>
+          </ul>
+        </nav>
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="メニューを開く"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    {showBreadcrumb && <slot name="breadcrumb" />}
+
+    <main>
+      <slot />
+    </main>
+
+    {showDivider && <div class="divider-band" aria-hidden="true"></div>}
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <p class="footer-logo">［ブランド名］</p>
+          <p class="footer-address">
+            〒［郵便番号］［住所が入ります］<br />
+            TEL：［電話番号が入ります］
+          </p>
+        </div>
+        <ul class="footer-nav">
+          <li><a href="/products">‣ 商品一覧</a></li>
+          <li><a href="/blog">‣ BLOG</a></li>
+          <li><a href="/#access">‣ 会社概要</a></li>
+        </ul>
+        <ul class="footer-nav">
+          <li><a href="/#contact">‣ お問い合わせ</a></li>
+          <li><a href="#">‣ プライバシーポリシー</a></li>
+        </ul>
+      </div>
+      <p class="footer-copyright">© ［ブランド名］.</p>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("primary-nav");
+      toggle?.addEventListener("click", () => {
+        const isOpen = nav?.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    </script>
+  </body>
+</html>

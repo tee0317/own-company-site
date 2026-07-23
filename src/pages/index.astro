@@ -1,0 +1,595 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="［ブランド名］｜トップページ骨組み" showDivider>
+  <section class="hero">
+    <svg
+      class="hero-illustration"
+      viewBox="0 0 1600 900"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3c4a52"></stop>
+          <stop offset="55%" stop-color="#262f34"></stop>
+          <stop offset="100%" stop-color="#15181a"></stop>
+        </linearGradient>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f3c469" stop-opacity="0.9"></stop>
+          <stop offset="100%" stop-color="#f3c469" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="1600" height="900" fill="url(#sky)"></rect>
+
+      <!-- 奥の屋根の連なり（シルエット） -->
+      <polygon
+        points="0,560 120,500 260,540 260,900 0,900"
+        fill="#14181a"
+        opacity="0.9"></polygon>
+      <polygon
+        points="260,540 420,470 560,520 560,900 260,900"
+        fill="#181d1f"
+        opacity="0.9"></polygon>
+      <polygon
+        points="560,520 700,440 900,510 900,900 560,900"
+        fill="#101315"
+        opacity="0.92"></polygon>
+      <polygon
+        points="900,510 1060,460 1220,520 1220,900 900,900"
+        fill="#181d1f"
+        opacity="0.9"></polygon>
+      <polygon
+        points="1220,520 1380,470 1600,540 1600,900 1220,900"
+        fill="#14181a"
+        opacity="0.9"></polygon>
+
+      <!-- 電柱と電線 -->
+      <line x1="230" y1="900" x2="230" y2="360" stroke="#0d0f10" stroke-width="6"
+      ></line>
+      <line
+        x1="150"
+        y1="410"
+        x2="1500"
+        y2="330"
+        stroke="#0d0f10"
+        stroke-width="2"
+        opacity="0.7"></line>
+      <line
+        x1="150"
+        y1="440"
+        x2="1500"
+        y2="365"
+        stroke="#0d0f10"
+        stroke-width="2"
+        opacity="0.6"></line>
+      <line
+        x1="1350"
+        y1="900"
+        x2="1350"
+        y2="380"
+        stroke="#0d0f10"
+        stroke-width="5"
+        opacity="0.85"></line>
+
+      <!-- 窓明かり（提灯・室内灯のイメージ） -->
+      <circle cx="640" cy="560" r="70" fill="url(#glow)"></circle>
+      <rect x="612" y="540" width="56" height="40" rx="2" fill="#f6cf85" opacity="0.85"
+      ></rect>
+      <circle cx="1080" cy="600" r="55" fill="url(#glow)"></circle>
+      <rect x="1058" y="585" width="44" height="32" rx="2" fill="#f6cf85" opacity="0.75"
+      ></rect>
+      <circle cx="330" cy="640" r="40" fill="url(#glow)"></circle>
+      <rect x="314" y="628" width="32" height="24" rx="2" fill="#f6cf85" opacity="0.65"
+      ></rect>
+
+      <!-- 手前の路地の陰影 -->
+      <rect x="0" y="760" width="1600" height="140" fill="#0c0e0f" opacity="0.55"
+      ></rect>
+    </svg>
+
+    <div class="wrap hero-inner">
+      <div class="hero-box">
+        <h1>［メインキャッチコピーが入ります］</h1>
+        <p class="sub">［サブキャッチコピーが入ります］</p>
+        <p class="desc">
+          ［ブランドの紹介文が入ります。何を大切にしているブランドか、
+          どんな暮らし・仕事に向けたものかを2〜3行で伝えます。］
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="/products">商品一覧を見る</a>
+          <a class="btn btn-outline" href="#about">ブランドについて読む</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">About us</p>
+        <h2>［ブランド名］について</h2>
+      </div>
+      <p class="about-body">
+        ［ここにブランドの成り立ちや、ものづくり・商品選定に対する考え方を
+        2〜4文程度で記載します。実際の文章は要件定義（フェーズ2.5）で
+        土志田さんと確定します。］
+      </p>
+    </div>
+  </section>
+
+  <section class="section is-dark" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Products for sale</p>
+        <h2>販売商品</h2>
+      </div>
+      <div class="category-tags">
+        <span class="category-tag">［カテゴリ1］</span>
+        <span class="category-tag">［カテゴリ2］</span>
+        <span class="category-tag">［カテゴリ3］</span>
+      </div>
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-thumb">商品画像</div>
+          <div class="body">
+            <h3>［商品名が入ります］</h3>
+            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <div class="mall-links">
+              <a href="#">Amazon</a>
+              <a href="#">楽天市場</a>
+              <a href="#">Yahoo!ショッピング</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-thumb">商品画像</div>
+          <div class="body">
+            <h3>［商品名が入ります］</h3>
+            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <div class="mall-links">
+              <a href="#">Amazon</a>
+              <a href="#">楽天市場</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-thumb">商品画像</div>
+          <div class="body">
+            <h3>［商品名が入ります］</h3>
+            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <div class="mall-links">
+              <a href="#">Amazon</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-thumb">商品画像</div>
+          <div class="body">
+            <h3>［商品名が入ります］</h3>
+            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <div class="mall-links">
+              <a href="#">Amazon</a>
+              <a href="#">楽天市場</a>
+              <a href="#">Yahoo!ショッピング</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="section-foot">
+        <a class="btn btn-outline" href="/products">販売商品一覧はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="blog">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">blog</p>
+        <h2>ブログ</h2>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-thumb"></div>
+          <p class="cat">［カテゴリ］</p>
+          <h3>
+            <a href="/blog/example-post"
+              >［記事タイトルが入ります。実際のタイトルはフェーズ2で仮投稿して確認します］</a
+            >
+          </h3>
+          <time>［YYYY年MM月DD日］</time>
+        </article>
+        <article class="blog-card">
+          <div class="blog-thumb"></div>
+          <p class="cat">［カテゴリ］</p>
+          <h3><a href="/blog/example-post">［記事タイトルが入ります］</a></h3>
+          <time>［YYYY年MM月DD日］</time>
+        </article>
+        <article class="blog-card">
+          <div class="blog-thumb"></div>
+          <p class="cat">［カテゴリ］</p>
+          <h3><a href="/blog/example-post">［記事タイトルが入ります］</a></h3>
+          <time>［YYYY年MM月DD日］</time>
+        </article>
+      </div>
+      <div class="section-foot">
+        <a class="btn btn-outline" href="/blog">一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-dark contact-section" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
+        <h2>お問い合わせ</h2>
+      </div>
+      <p class="about-body">
+        お問い合わせは「お電話、お問い合わせフォーム」にて承っております。
+      </p>
+      <div class="contact-actions">
+        <a class="btn btn-accent" href="#">お問い合わせフォーム</a>
+        <a class="btn btn-outline" href="#">お電話でのお問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sns-section">
+    <div class="wrap">
+      <p class="sns-heading">SNS</p>
+      <ul class="sns-grid">
+        <li><a href="#">LINE <span>→</span></a></li>
+        <li><a href="#">YouTube <span>→</span></a></li>
+        <li><a href="#">X <span>→</span></a></li>
+        <li><a href="#">Instagram <span>→</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section is-dark" id="access">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Access</p>
+        <h2>店舗案内</h2>
+      </div>
+      <ul class="access-list">
+        <li>屋号：［屋号が入ります］</li>
+        <li>創業：［YYYY年］</li>
+        <li>店舗名：［店舗名が入ります］</li>
+        <li>所在地：〒［郵便番号］［住所が入ります］</li>
+        <li>電話番号：［電話番号が入ります］</li>
+        <li>営業時間：［営業時間が入ります］</li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* --- hero --- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    color: #f4f2e8;
+  }
+  .hero-illustration {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 64px 24px;
+  }
+  .hero-box {
+    background: rgba(15, 17, 15, 0.62);
+    backdrop-filter: blur(2px);
+    border-radius: 6px;
+    padding: 48px clamp(24px, 5vw, 64px);
+    max-width: 720px;
+    text-align: center;
+  }
+  .hero-box h1 {
+    font-size: clamp(30px, 4.4vw, 48px);
+    line-height: 1.4;
+    color: #f8f6ec;
+  }
+  .hero-box .sub {
+    margin-top: 16px;
+    font-size: 17px;
+    color: rgba(248, 246, 236, 0.75);
+  }
+  .hero-box .desc {
+    margin-top: 26px;
+    font-size: 15px;
+    color: rgba(248, 246, 236, 0.82);
+  }
+  .hero .btn-outline {
+    border-color: rgba(248, 246, 236, 0.35);
+    color: #f8f6ec;
+  }
+  .hero-actions {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  /* --- generic section --- */
+  .section {
+    padding: 84px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head {
+    margin-bottom: 40px;
+  }
+  .section-head h2 {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+  .about-body {
+    max-width: 42em;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  /* --- 帯セクション（黒背景）：Products / Contact / Access --- */
+  .section.is-dark {
+    background: var(--band-bg);
+    color: var(--band-ink);
+    border-bottom-color: var(--band-line);
+  }
+  .section.is-dark .eyebrow {
+    color: var(--band-accent);
+  }
+  .section.is-dark h2 {
+    color: var(--band-ink);
+  }
+  .section.is-dark .about-body,
+  .section.is-dark .desc {
+    color: var(--band-ink-soft);
+  }
+  .section.is-dark .category-tag {
+    border-color: var(--band-line);
+    color: var(--band-ink-soft);
+  }
+  .section.is-dark .product-card {
+    background: rgba(245, 243, 233, 0.04);
+    border-color: var(--band-line);
+  }
+  .section.is-dark .product-thumb {
+    background: linear-gradient(140deg, var(--band-line), transparent 70%),
+      rgba(245, 243, 233, 0.03);
+    color: var(--band-ink-soft);
+  }
+  .section.is-dark .product-card h3 {
+    color: var(--band-ink);
+  }
+  .section.is-dark .product-card p {
+    color: var(--band-ink-soft);
+  }
+  .section.is-dark .mall-links a {
+    border-color: var(--band-line);
+    color: var(--band-ink);
+  }
+  .section.is-dark .mall-links a:hover {
+    border-color: var(--band-accent);
+    color: var(--band-accent);
+  }
+  .section.is-dark .btn-outline {
+    border-color: rgba(245, 243, 233, 0.35);
+    color: var(--band-ink);
+  }
+
+  /* --- products --- */
+  .category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .category-tag {
+    font-size: 13px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-thumb {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(140deg, var(--line), transparent 70%), var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .product-card .body {
+    padding: 20px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .product-card h3 {
+    font-size: 17px;
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+  .product-card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .section-foot {
+    margin-top: 36px;
+  }
+
+  /* --- blog --- */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blog-thumb {
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(150deg, var(--line), transparent 75%), var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .blog-card .cat {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+  }
+  .blog-card h3 {
+    font-size: 15.5px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .blog-card time {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* --- contact（黒帯・中央寄せ） --- */
+  .contact-section .section-head,
+  .contact-section .about-body,
+  .contact-section .contact-actions {
+    text-align: center;
+    justify-content: center;
+  }
+  .contact-section .about-body {
+    margin: 0 auto 24px;
+  }
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* --- SNS（白帯・独立セクション） --- */
+  .sns-section {
+    text-align: center;
+  }
+  .sns-heading {
+    font-family: var(--font-display);
+    font-size: 26px;
+    letter-spacing: 0.06em;
+    margin-bottom: 32px;
+  }
+  .sns-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .sns-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-width: 200px;
+    padding: 14px 22px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .sns-grid a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* --- access（黒帯・箇条書き） --- */
+  .access-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 42em;
+  }
+  .access-list li {
+    padding: 14px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14.5px;
+    border-bottom: 1px dashed var(--band-line);
+  }
+  .access-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 22px;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--band-accent);
+  }
+
+  /* --- mobile --- */
+  @media (max-width: 860px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 520px;
+    }
+    .hero-inner {
+      padding: 40px 20px;
+    }
+    .hero-box {
+      padding: 32px 24px;
+    }
+    .section {
+      padding: 56px 0;
+    }
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .sns-grid a {
+      min-width: 0;
+      flex: 1 1 45%;
+    }
+  }
+</style>

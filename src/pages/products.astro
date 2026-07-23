@@ -1,0 +1,211 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="商品一覧｜［ブランド名］骨組み" showBreadcrumb>
+  <Fragment slot="breadcrumb">
+    <div class="breadcrumb">
+      <div class="wrap"><a href="/">ホーム</a> › 商品一覧</div>
+    </div>
+  </Fragment>
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1>商品一覧</h1>
+      <p class="page-intro">
+        EC販売専門のため、ご購入はAmazon・楽天市場・Yahoo!ショッピングでお願いいたします。
+      </p>
+      <div class="mall-buttons-lg">
+        <a class="mall-btn-lg amazon" href="#">Amazon</a>
+        <a class="mall-btn-lg rakuten" href="#">楽天市場</a>
+        <a class="mall-btn-lg yahoo" href="#">Yahoo!ショッピング</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="category-band">
+    <div class="wrap"><h2>［カテゴリ1が入ります］</h2></div>
+  </section>
+  <section class="product-rows">
+    <div class="wrap">
+      <div class="product-row">
+        <div class="product-row-thumb">商品画像</div>
+        <div class="product-row-body">
+          <h3>［商品名が入ります］</h3>
+          <p>
+            ［商品の特徴・訴求ポイントが入ります。実際の商品情報は
+            フェーズ2.5の要件定義で土志田さんと確定します。］
+          </p>
+          <div class="mall-links">
+            <a href="#">Amazon</a>
+            <a href="#">楽天市場</a>
+            <a href="#">Yahoo!ショッピング</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-row-thumb">商品画像</div>
+        <div class="product-row-body">
+          <h3>［商品名が入ります］</h3>
+          <p>［商品の特徴・訴求ポイントが入ります］</p>
+          <div class="mall-links">
+            <a href="#">Amazon</a>
+            <a href="#">楽天市場</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category-band">
+    <div class="wrap"><h2>［カテゴリ2が入ります］</h2></div>
+  </section>
+  <section class="product-rows">
+    <div class="wrap">
+      <div class="product-row">
+        <div class="product-row-thumb">商品画像</div>
+        <div class="product-row-body">
+          <h3>［商品名が入ります］</h3>
+          <p>［商品の特徴・訴求ポイントが入ります］</p>
+          <div class="mall-links">
+            <a href="#">Amazon</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-row-thumb">商品画像</div>
+        <div class="product-row-body">
+          <h3>［商品名が入ります］</h3>
+          <p>［商品の特徴・訴求ポイントが入ります］</p>
+          <div class="mall-links">
+            <a href="#">Amazon</a>
+            <a href="#">楽天市場</a>
+            <a href="#">Yahoo!ショッピング</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* --- page head --- */
+  .page-head {
+    padding: 56px 0 40px;
+  }
+  .page-head h1 {
+    font-size: 30px;
+    display: inline-block;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 28px;
+  }
+  .page-intro {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+
+  /* --- mall buttons（大） --- */
+  .mall-buttons-lg {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .mall-btn-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .mall-btn-lg.amazon {
+    background: #16171a;
+    color: #fff;
+    border-radius: 6px;
+  }
+  .mall-btn-lg.rakuten {
+    background: #d3223a;
+    color: #fff;
+  }
+  .mall-btn-lg.yahoo {
+    background: #f2941f;
+    color: #fff;
+  }
+  .mall-btn-lg:hover {
+    opacity: 0.88;
+  }
+
+  /* --- category band --- */
+  .category-band {
+    background: var(--band-bg);
+    color: var(--band-ink);
+    padding: 30px 0;
+  }
+  .category-band h2 {
+    font-size: 22px;
+  }
+
+  /* --- product row（商品一覧の各アイテム） --- */
+  .product-rows {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .product-row {
+    display: flex;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .product-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .product-row:first-child {
+    padding-top: 0;
+  }
+  .product-row-thumb {
+    flex: 0 0 240px;
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    background: linear-gradient(140deg, var(--line), transparent 70%), var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .product-row-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .product-row-body h3 {
+    font-size: 18px;
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+  .product-row-body p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  /* --- mobile --- */
+  @media (max-width: 640px) {
+    .product-row {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .product-row-thumb {
+      flex-basis: auto;
+    }
+  }
+</style>
