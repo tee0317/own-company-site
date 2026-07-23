@@ -5,12 +5,13 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="BLOG｜［ブランド名］骨組み" showBreadcrumb>
   <Fragment slot="breadcrumb">
     <div class="breadcrumb">
-      <div class="wrap"><a href="/">ホーム</a> › BLOG</div>
+      <div class="wrap"><a href={base}>ホーム</a> › BLOG</div>
     </div>
   </Fragment>
 
@@ -23,7 +24,7 @@ const posts = (await getCollection("blog")).sort(
       <div class="blog-list-grid">
         {
           posts.map((post) => (
-            <a class="blog-list-card" href={`/blog/${post.id}`}>
+            <a class="blog-list-card" href={`${base}blog/${post.id}`}>
               <div class="blog-list-thumb">
                 <span class="thumb-cat">{post.data.category}</span>
                 <span class="thumb-caption">{post.data.title}</span>

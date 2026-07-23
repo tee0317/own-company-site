@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="［ブランド名］｜トップページ骨組み" showDivider>
@@ -98,7 +99,7 @@ import Layout from "../layouts/Layout.astro";
           どんな暮らし・仕事に向けたものかを2〜3行で伝えます。］
         </p>
         <div class="hero-actions">
-          <a class="btn btn-accent" href="/products">商品一覧を見る</a>
+          <a class="btn btn-accent" href={`${base}products`}>商品一覧を見る</a>
           <a class="btn btn-outline" href="#about">ブランドについて読む</a>
         </div>
       </div>
@@ -181,7 +182,7 @@ import Layout from "../layouts/Layout.astro";
         </article>
       </div>
       <div class="section-foot">
-        <a class="btn btn-outline" href="/products">販売商品一覧はこちら</a>
+        <a class="btn btn-outline" href={`${base}products`}>販売商品一覧はこちら</a>
       </div>
     </div>
   </section>
@@ -197,7 +198,7 @@ import Layout from "../layouts/Layout.astro";
           <div class="blog-thumb"></div>
           <p class="cat">［カテゴリ］</p>
           <h3>
-            <a href="/blog/example-post"
+            <a href={`${base}blog/example-post`}
               >［記事タイトルが入ります。実際のタイトルはフェーズ2で仮投稿して確認します］</a
             >
           </h3>
@@ -206,18 +207,18 @@ import Layout from "../layouts/Layout.astro";
         <article class="blog-card">
           <div class="blog-thumb"></div>
           <p class="cat">［カテゴリ］</p>
-          <h3><a href="/blog/example-post">［記事タイトルが入ります］</a></h3>
+          <h3><a href={`${base}blog/example-post`}>［記事タイトルが入ります］</a></h3>
           <time>［YYYY年MM月DD日］</time>
         </article>
         <article class="blog-card">
           <div class="blog-thumb"></div>
           <p class="cat">［カテゴリ］</p>
-          <h3><a href="/blog/example-post">［記事タイトルが入ります］</a></h3>
+          <h3><a href={`${base}blog/example-post`}>［記事タイトルが入ります］</a></h3>
           <time>［YYYY年MM月DD日］</time>
         </article>
       </div>
       <div class="section-foot">
-        <a class="btn btn-outline" href="/blog">一覧を見る</a>
+        <a class="btn btn-outline" href={`${base}blog`}>一覧を見る</a>
       </div>
     </div>
   </section>

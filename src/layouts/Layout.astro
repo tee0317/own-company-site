@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title, showBreadcrumb = false, showDivider = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -321,11 +322,11 @@ const { title, showBreadcrumb = false, showDivider = false } = Astro.props;
         </div>
         <nav class="primary-nav" id="primary-nav">
           <ul>
-            <li><a href="/">トップページ</a></li>
-            <li><a href="/products">商品一覧</a></li>
-            <li><a href="/blog">BLOG</a></li>
-            <li><a href="/#contact">お問い合わせ</a></li>
-            <li><a href="/#access">会社概要</a></li>
+            <li><a href={base}>トップページ</a></li>
+            <li><a href={`${base}products`}>商品一覧</a></li>
+            <li><a href={`${base}blog`}>BLOG</a></li>
+            <li><a href={`${base}#contact`}>お問い合わせ</a></li>
+            <li><a href={`${base}#access`}>会社概要</a></li>
             <li><a href="#">プライバシーポリシー</a></li>
           </ul>
         </nav>
@@ -358,12 +359,12 @@ const { title, showBreadcrumb = false, showDivider = false } = Astro.props;
           </p>
         </div>
         <ul class="footer-nav">
-          <li><a href="/products">‣ 商品一覧</a></li>
-          <li><a href="/blog">‣ BLOG</a></li>
-          <li><a href="/#access">‣ 会社概要</a></li>
+          <li><a href={`${base}products`}>‣ 商品一覧</a></li>
+          <li><a href={`${base}blog`}>‣ BLOG</a></li>
+          <li><a href={`${base}#access`}>‣ 会社概要</a></li>
         </ul>
         <ul class="footer-nav">
-          <li><a href="/#contact">‣ お問い合わせ</a></li>
+          <li><a href={`${base}#contact`}>‣ お問い合わせ</a></li>
           <li><a href="#">‣ プライバシーポリシー</a></li>
         </ul>
       </div>
