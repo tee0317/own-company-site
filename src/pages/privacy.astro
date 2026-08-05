@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="プライバシーポリシー｜プロジェクトソクラテス（PJSocrates）" showBreadcrumb>
+  <Fragment slot="breadcrumb">
+    <div class="breadcrumb">
+      <div class="wrap"><a href={base}>ホーム</a> › プライバシーポリシー</div>
+    </div>
+  </Fragment>
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1>プライバシーポリシー</h1>
+    </div>
+  </section>
+
+  <section class="policy-body">
+    <div class="wrap">
+      <p>
+        TSDシステム（屋号、以下「当方」といいます）は、プロジェクトソクラテス（PJSocrates）のウェブサイト（以下「本サイト」といいます）における、利用者の情報の取り扱いについて、以下のとおりプライバシーポリシーを定めます。
+      </p>
+
+      <h2>1. お問い合わせについて</h2>
+      <p>
+        本サイトでは、お問い合わせの受付をLINE公式アカウントを通じて行っております。LINEでのやり取りにおいて取得される情報の取り扱いについては、LINE社の定めるプライバシーポリシーが適用されます。本サイト自体が、お問い合わせに関する個人情報を直接取得・保管することはありません。
+      </p>
+
+      <h2>2. アクセス解析について</h2>
+      <p>
+        本サイトでは、サイト改善のためにアクセス解析ツールを導入する場合があります。導入する際は、取得する情報の内容・利用目的について本ページを更新してお知らせします。
+      </p>
+
+      <h2>3. お問い合わせ窓口</h2>
+      <p>
+        本ポリシーに関するお問い合わせは、LINE公式アカウントよりご連絡ください。
+      </p>
+
+      <p class="policy-date">制定日：2026年8月5日</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    padding: 56px 0 40px;
+  }
+  .page-head h1 {
+    font-size: 30px;
+    display: inline-block;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .policy-body {
+    padding: 0 0 80px;
+  }
+  .policy-body .wrap {
+    max-width: 760px;
+  }
+  .policy-body p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .policy-body h2 {
+    font-size: 17px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 40px 0 14px;
+  }
+  .policy-body h2:first-of-type {
+    margin-top: 8px;
+  }
+  .policy-date {
+    margin-top: 48px;
+    font-size: 13px;
+  }
+</style>

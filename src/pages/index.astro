@@ -1,9 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
 const base = import.meta.env.BASE_URL;
+const latestPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
-<Layout title="［ブランド名］｜トップページ骨組み" showDivider>
+<Layout title="プロジェクトソクラテス（PJSocrates）｜より少なく、しかしより良く" showDivider>
   <section class="hero">
     <svg
       class="hero-illustration"
@@ -92,11 +97,12 @@ const base = import.meta.env.BASE_URL;
 
     <div class="wrap hero-inner">
       <div class="hero-box">
-        <h1>［メインキャッチコピーが入ります］</h1>
-        <p class="sub">［サブキャッチコピーが入ります］</p>
+        <h1>より少なく、しかしより良く。</h1>
+        <p class="sub">プロジェクトソクラテス｜PJSocrates</p>
         <p class="desc">
-          ［ブランドの紹介文が入ります。何を大切にしているブランドか、
-          どんな暮らし・仕事に向けたものかを2〜3行で伝えます。］
+          DIY・工具からバイク用品、キッチンツール、スポーツ用品まで。<br />
+          「本当に使えるものだけを、必要な人へ」を合言葉に、
+          ひとつひとつ吟味した商品をAmazonでお届けしています。
         </p>
         <div class="hero-actions">
           <a class="btn btn-accent" href={`${base}products`}>商品一覧を見る</a>
@@ -110,12 +116,11 @@ const base = import.meta.env.BASE_URL;
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">About us</p>
-        <h2>［ブランド名］について</h2>
+        <h2>プロジェクトソクラテスについて</h2>
       </div>
       <p class="about-body">
-        ［ここにブランドの成り立ちや、ものづくり・商品選定に対する考え方を
-        2〜4文程度で記載します。実際の文章は要件定義（フェーズ2.5）で
-        土志田さんと確定します。］
+        「より少なく、しかしより良く」をモットーに、暮らしの中の小さな不満を解消する道具を厳選してお届けするブランドです。<br />
+        派手さよりも、日々使うからこそわかる使いやすさ・丈夫さにこだわり、DIY・バイク・キッチン・アウトドアなど、暮らしのさまざまな場面に寄り添う商品をAmazonを通じて展開しています。
       </p>
     </div>
   </section>
@@ -127,56 +132,60 @@ const base = import.meta.env.BASE_URL;
         <h2>販売商品</h2>
       </div>
       <div class="category-tags">
-        <span class="category-tag">［カテゴリ1］</span>
-        <span class="category-tag">［カテゴリ2］</span>
-        <span class="category-tag">［カテゴリ3］</span>
+        <span class="category-tag">DIY・工具</span>
+        <span class="category-tag">車＆バイク</span>
+        <span class="category-tag">ホーム＆キッチン</span>
+        <span class="category-tag">スポーツ＆アウトドア</span>
       </div>
       <div class="products-grid">
         <article class="product-card">
-          <div class="product-thumb">商品画像</div>
+          <div class="product-thumb">
+            <img src={`${base}images/products/step-drill.jpg`} alt="ステップドリル2本セット" loading="lazy" />
+          </div>
           <div class="body">
-            <h3>［商品名が入ります］</h3>
-            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <h3>ステップドリル2本セット</h3>
+            <p>奇数径＋偶数径の2本組で、1本では届かないサイズにも対応。500回の耐久試験済み。</p>
             <div class="mall-links">
-              <a href="#">Amazon</a>
-              <a href="#">楽天市場</a>
-              <a href="#">Yahoo!ショッピング</a>
+              <a href="https://www.amazon.co.jp/dp/B0D12HBXX8" target="_blank" rel="noopener">Amazon</a>
             </div>
           </div>
         </article>
 
         <article class="product-card">
-          <div class="product-thumb">商品画像</div>
+          <div class="product-thumb">
+            <img src={`${base}images/products/anti-fog-sheet.jpg`} alt="曇り止めシート（ヘルメット用）" loading="lazy" />
+          </div>
           <div class="body">
-            <h3>［商品名が入ります］</h3>
-            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <h3>曇り止めシート（ヘルメット用）</h3>
+            <p>シールド内側に貼るピンロックシート互換。超ワイド設計で視界を広くカバー。</p>
             <div class="mall-links">
-              <a href="#">Amazon</a>
-              <a href="#">楽天市場</a>
+              <a href="https://www.amazon.co.jp/dp/B0FFS12KDV" target="_blank" rel="noopener">Amazon</a>
             </div>
           </div>
         </article>
 
         <article class="product-card">
-          <div class="product-thumb">商品画像</div>
+          <div class="product-thumb">
+            <img src={`${base}images/products/kuri-mukiki.jpg`} alt="栗剥き器【HAGI】" loading="lazy" />
+          </div>
           <div class="body">
-            <h3>［商品名が入ります］</h3>
-            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <h3>栗剥き器【HAGI】</h3>
+            <p>硬い鬼皮もラクにむけるハサミ型キッチンツール。秋の栗仕事に。</p>
             <div class="mall-links">
-              <a href="#">Amazon</a>
+              <a href="https://www.amazon.co.jp/dp/B0FMJ2QX87" target="_blank" rel="noopener">Amazon</a>
             </div>
           </div>
         </article>
 
         <article class="product-card">
-          <div class="product-thumb">商品画像</div>
+          <div class="product-thumb">
+            <img src={`${base}images/products/hula-hoop.jpg`} alt="フラフープ（ダイエット用）" loading="lazy" />
+          </div>
           <div class="body">
-            <h3>［商品名が入ります］</h3>
-            <p>［商品の特徴・訴求ポイントが1〜2行で入ります］</p>
+            <h3>フラフープ（ダイエット用）</h3>
+            <p>約600gの軽量・静音設計。「続かなかったあなたが、初めて続けられる」一本。</p>
             <div class="mall-links">
-              <a href="#">Amazon</a>
-              <a href="#">楽天市場</a>
-              <a href="#">Yahoo!ショッピング</a>
+              <a href="https://www.amazon.co.jp/dp/B0FH1H5RW1" target="_blank" rel="noopener">Amazon</a>
             </div>
           </div>
         </article>
@@ -194,28 +203,24 @@ const base = import.meta.env.BASE_URL;
         <h2>ブログ</h2>
       </div>
       <div class="blog-grid">
-        <article class="blog-card">
-          <div class="blog-thumb"></div>
-          <p class="cat">［カテゴリ］</p>
-          <h3>
-            <a href={`${base}blog/example-post`}
-              >［記事タイトルが入ります。実際のタイトルはフェーズ2で仮投稿して確認します］</a
-            >
-          </h3>
-          <time>［YYYY年MM月DD日］</time>
-        </article>
-        <article class="blog-card">
-          <div class="blog-thumb"></div>
-          <p class="cat">［カテゴリ］</p>
-          <h3><a href={`${base}blog/example-post`}>［記事タイトルが入ります］</a></h3>
-          <time>［YYYY年MM月DD日］</time>
-        </article>
-        <article class="blog-card">
-          <div class="blog-thumb"></div>
-          <p class="cat">［カテゴリ］</p>
-          <h3><a href={`${base}blog/example-post`}>［記事タイトルが入ります］</a></h3>
-          <time>［YYYY年MM月DD日］</time>
-        </article>
+        {
+          latestPosts.map((post) => (
+            <article class="blog-card">
+              <div class="blog-thumb" />
+              <p class="cat">{post.data.category}</p>
+              <h3>
+                <a href={`${base}blog/${post.id}`}>{post.data.title}</a>
+              </h3>
+              <time>
+                {post.data.pubDate.toLocaleDateString("ja-JP", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </article>
+          ))
+        }
       </div>
       <div class="section-foot">
         <a class="btn btn-outline" href={`${base}blog`}>一覧を見る</a>
@@ -230,11 +235,10 @@ const base = import.meta.env.BASE_URL;
         <h2>お問い合わせ</h2>
       </div>
       <p class="about-body">
-        お問い合わせは「お電話、お問い合わせフォーム」にて承っております。
+        商品に関するご質問・お問い合わせは、LINEにて気軽にご相談ください。
       </p>
       <div class="contact-actions">
-        <a class="btn btn-accent" href="#">お問い合わせフォーム</a>
-        <a class="btn btn-outline" href="#">お電話でのお問い合わせ</a>
+        <a class="btn btn-accent" href="https://line.me/R/ti/p/@212unaej" target="_blank" rel="noopener">LINEで相談する</a>
       </div>
     </div>
   </section>
@@ -243,28 +247,27 @@ const base = import.meta.env.BASE_URL;
     <div class="wrap">
       <p class="sns-heading">SNS</p>
       <ul class="sns-grid">
-        <li><a href="#">LINE <span>→</span></a></li>
-        <li><a href="#">YouTube <span>→</span></a></li>
-        <li><a href="#">X <span>→</span></a></li>
-        <li><a href="#">Instagram <span>→</span></a></li>
+        <li>
+          <a href="https://www.instagram.com/pjsocrates/?hl=ja" target="_blank" rel="noopener"
+            >Instagram <span>→</span></a
+          >
+        </li>
       </ul>
     </div>
   </section>
 
-  <section class="section is-dark" id="access">
+  <section class="section is-dark" id="company">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Access</p>
-        <h2>店舗案内</h2>
+        <p class="eyebrow">Company</p>
+        <h2>運営会社</h2>
       </div>
-      <ul class="access-list">
-        <li>屋号：［屋号が入ります］</li>
-        <li>創業：［YYYY年］</li>
-        <li>店舗名：［店舗名が入ります］</li>
-        <li>所在地：〒［郵便番号］［住所が入ります］</li>
-        <li>電話番号：［電話番号が入ります］</li>
-        <li>営業時間：［営業時間が入ります］</li>
-      </ul>
+      <p class="about-body">
+        屋号：TSDシステム／ブランド名：プロジェクトソクラテス（PJSocrates）
+      </p>
+      <div class="section-foot">
+        <a class="btn btn-outline" href={`${base}company`}>会社概要を見る</a>
+      </div>
     </div>
   </section>
 </Layout>
@@ -430,6 +433,12 @@ const base = import.meta.env.BASE_URL;
     font-size: 12px;
     color: var(--ink-soft);
     letter-spacing: 0.05em;
+    overflow: hidden;
+  }
+  .product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .product-card .body {
     padding: 20px 20px 22px;
@@ -536,31 +545,6 @@ const base = import.meta.env.BASE_URL;
   .sns-grid a:hover {
     border-color: var(--accent);
     color: var(--accent);
-  }
-
-  /* --- access（黒帯・箇条書き） --- */
-  .access-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-width: 42em;
-  }
-  .access-list li {
-    padding: 14px 0;
-    padding-left: 20px;
-    position: relative;
-    font-size: 14.5px;
-    border-bottom: 1px dashed var(--band-line);
-  }
-  .access-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 22px;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--band-accent);
   }
 
   /* --- mobile --- */

@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="会社概要｜プロジェクトソクラテス（PJSocrates）" showBreadcrumb>
+  <Fragment slot="breadcrumb">
+    <div class="breadcrumb">
+      <div class="wrap"><a href={base}>ホーム</a> › 会社概要</div>
+    </div>
+  </Fragment>
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1>会社概要</h1>
+    </div>
+  </section>
+
+  <section class="company-info">
+    <div class="wrap">
+      <dl class="info-list">
+        <div class="info-row">
+          <dt>屋号</dt>
+          <dd>TSDシステム</dd>
+        </div>
+        <div class="info-row">
+          <dt>代表者</dt>
+          <dd>土志田 拓郎（としだ たくろう / Toshida Takuro）</dd>
+        </div>
+        <div class="info-row">
+          <dt>ブランド名</dt>
+          <dd>プロジェクトソクラテス（PJ Socrates）</dd>
+        </div>
+        <div class="info-row">
+          <dt>ブランドモットー</dt>
+          <dd>より少なく、しかしより良く</dd>
+        </div>
+        <div class="info-row">
+          <dt>事業内容</dt>
+          <dd>DIY・工具、車＆バイク用品、キッチンツール、スポーツ用品の企画・販売（Amazon FBAによる通信販売）</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    padding: 56px 0 40px;
+  }
+  .page-head h1 {
+    font-size: 30px;
+    display: inline-block;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .company-info {
+    padding: 0 0 72px;
+  }
+  .info-list {
+    margin: 0;
+    max-width: 42em;
+  }
+  .info-row {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .info-row:first-child {
+    padding-top: 0;
+  }
+  .info-row dt {
+    flex: 0 0 140px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .info-row dd {
+    margin: 0;
+    flex: 1;
+    font-size: 14.5px;
+  }
+  @media (max-width: 640px) {
+    .info-row {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .info-row dt {
+      flex-basis: auto;
+    }
+  }
+</style>

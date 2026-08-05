@@ -7,6 +7,7 @@ interface Props {
 
 const { title, showBreadcrumb = false, showDivider = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const lineUrl = "https://line.me/R/ti/p/@212unaej";
 ---
 
 <!doctype html>
@@ -14,6 +15,8 @@ const base = import.meta.env.BASE_URL;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href={`${base}favicon-64.png`} />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
     <title>{title}</title>
     <style is:global>
       /*
@@ -245,6 +248,27 @@ const base = import.meta.env.BASE_URL;
         margin: 0;
       }
 
+      /* --- LINEフローティングボタン（スマホのみ表示） --- */
+      .line-float {
+        display: none;
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        background: #06c755;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(6, 199, 85, 0.4);
+      }
+
       /* --- mall links（商品カード共通） --- */
       .mall-links {
         display: flex;
@@ -310,24 +334,24 @@ const base = import.meta.env.BASE_URL;
         .footer-brand {
           margin-bottom: 0;
         }
+        .line-float {
+          display: flex;
+        }
       }
     </style>
   </head>
   <body>
     <header class="site-header">
       <div class="wrap">
-        <div class="brand">
-          ［ブランド名］
-          <span>Since ［創業年］</span>
-        </div>
+        <div class="brand">PJSocrates</div>
         <nav class="primary-nav" id="primary-nav">
           <ul>
             <li><a href={base}>トップページ</a></li>
             <li><a href={`${base}products`}>商品一覧</a></li>
             <li><a href={`${base}blog`}>BLOG</a></li>
-            <li><a href={`${base}#contact`}>お問い合わせ</a></li>
-            <li><a href={`${base}#access`}>会社概要</a></li>
-            <li><a href="#">プライバシーポリシー</a></li>
+            <li><a href={lineUrl} target="_blank" rel="noopener">LINEで相談</a></li>
+            <li><a href={`${base}company`}>会社概要</a></li>
+            <li><a href={`${base}privacy`}>プライバシーポリシー</a></li>
           </ul>
         </nav>
         <button
@@ -352,24 +376,28 @@ const base = import.meta.env.BASE_URL;
     <footer class="site-footer">
       <div class="wrap footer-grid">
         <div class="footer-brand">
-          <p class="footer-logo">［ブランド名］</p>
+          <p class="footer-logo">PJSocrates</p>
           <p class="footer-address">
-            〒［郵便番号］［住所が入ります］<br />
-            TEL：［電話番号が入ります］
+            屋号：TSDシステム<br />
+            より少なく、しかしより良く
           </p>
         </div>
         <ul class="footer-nav">
           <li><a href={`${base}products`}>‣ 商品一覧</a></li>
           <li><a href={`${base}blog`}>‣ BLOG</a></li>
-          <li><a href={`${base}#access`}>‣ 会社概要</a></li>
+          <li><a href={`${base}company`}>‣ 会社概要</a></li>
         </ul>
         <ul class="footer-nav">
-          <li><a href={`${base}#contact`}>‣ お問い合わせ</a></li>
-          <li><a href="#">‣ プライバシーポリシー</a></li>
+          <li><a href={lineUrl} target="_blank" rel="noopener">‣ LINEで相談</a></li>
+          <li><a href={`${base}privacy`}>‣ プライバシーポリシー</a></li>
         </ul>
       </div>
-      <p class="footer-copyright">© ［ブランド名］.</p>
+      <p class="footer-copyright">© プロジェクトソクラテス（TSDシステム）.</p>
     </footer>
+
+    <a class="line-float" href={lineUrl} target="_blank" rel="noopener" aria-label="LINEで相談する">
+      LINE<br />相談
+    </a>
 
     <script>
       const toggle = document.getElementById("menu-toggle");
