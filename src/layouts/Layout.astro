@@ -18,6 +18,12 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
     <link rel="icon" type="image/png" href={`${base}favicon-64.png`} />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap"
+      rel="stylesheet"
+    />
     <style is:global>
       /*
         参考サイト（nestray.tokyo）は、白セクション／黒セクションの交互構成を
@@ -31,11 +37,12 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         --ink: #21241e;
         --ink-soft: rgba(33, 36, 30, 0.66);
         --line: rgba(33, 36, 30, 0.14);
-        --accent: #b07a22;
+        --accent: #1b2a4a;
         --accent-ink: #faf6ee;
         --font-display: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
         --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
           "Noto Sans JP", sans-serif;
+        --font-logo: "Pinyon Script", cursive;
 
         --band-bg: #1f221b;
         --band-ink: #f5f3e9;
@@ -79,7 +86,7 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         padding: 0 24px;
       }
       .eyebrow {
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--accent);
@@ -93,7 +100,7 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         gap: 8px;
         padding: 13px 26px;
         border-radius: 3px;
-        font-size: 14px;
+        font-size: 15px;
         letter-spacing: 0.03em;
         text-decoration: none;
         border: 1px solid transparent;
@@ -123,18 +130,10 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         padding-bottom: 18px;
       }
       .brand {
-        font-family: var(--font-display);
-        font-size: 22px;
-        letter-spacing: 0.04em;
-      }
-      .brand span {
-        display: block;
-        font-family: var(--font-body);
-        font-size: 10px;
-        letter-spacing: 0.2em;
-        color: var(--ink-soft);
-        text-transform: uppercase;
-        margin-top: 2px;
+        font-family: var(--font-logo);
+        font-size: 34px;
+        letter-spacing: 0.01em;
+        color: var(--accent);
       }
       nav.primary-nav ul {
         list-style: none;
@@ -145,7 +144,7 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
       }
       nav.primary-nav a {
         text-decoration: none;
-        font-size: 14px;
+        font-size: 15px;
         letter-spacing: 0.02em;
         padding-bottom: 4px;
         border-bottom: 1px solid transparent;
@@ -182,7 +181,7 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
       .breadcrumb {
         background: var(--surface);
         border-bottom: 1px solid var(--line);
-        font-size: 12.5px;
+        font-size: 14px;
         color: var(--ink-soft);
         padding: 12px 0;
       }
@@ -199,11 +198,12 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         background: var(--paper);
       }
 
-      /* --- footer（黒） --- */
+      /* --- footer（白） --- */
       .site-footer {
-        background: var(--band-bg);
-        color: var(--band-ink-soft);
+        background: var(--surface);
+        color: var(--ink-soft);
         padding: 56px 0 28px;
+        border-top: 1px solid var(--line);
       }
       .footer-grid {
         display: grid;
@@ -212,16 +212,16 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         padding-bottom: 40px;
       }
       .footer-logo {
-        font-family: var(--font-display);
-        font-size: 20px;
-        color: var(--band-ink);
+        font-family: var(--font-logo);
+        font-size: 30px;
+        color: var(--accent);
         margin: 0 0 14px;
         padding-bottom: 10px;
-        border-bottom: 1px solid var(--band-line);
+        border-bottom: 1px solid var(--line);
       }
       .footer-address {
         margin: 0;
-        font-size: 13px;
+        font-size: 14.5px;
         line-height: 1.9;
       }
       .footer-nav {
@@ -230,21 +230,21 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         padding: 0;
       }
       .footer-nav li {
-        border-bottom: 1px dashed var(--band-line);
+        border-bottom: 1px dashed var(--line);
       }
       .footer-nav a {
         display: block;
         padding: 11px 0;
-        font-size: 13.5px;
-        color: var(--band-ink);
+        font-size: 15px;
+        color: var(--ink);
         text-decoration: none;
       }
       .footer-nav a:hover {
-        color: var(--band-accent);
+        color: var(--accent);
       }
       .footer-copyright {
         text-align: center;
-        font-size: 12px;
+        font-size: 13px;
         margin: 0;
       }
 
@@ -277,7 +277,7 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
         margin-top: 4px;
       }
       .mall-links a {
-        font-size: 12.5px;
+        font-size: 14px;
         padding: 7px 12px;
         border: 1px solid var(--line);
         border-radius: 3px;

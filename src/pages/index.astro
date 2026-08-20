@@ -125,7 +125,7 @@ const latestPosts = (await getCollection("blog"))
     </div>
   </section>
 
-  <section class="section is-dark" id="products">
+  <section class="section" id="products">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Products for sale</p>
@@ -228,7 +228,7 @@ const latestPosts = (await getCollection("blog"))
     </div>
   </section>
 
-  <section class="section is-dark contact-section" id="contact">
+  <section class="section contact-section" id="contact">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Contact</p>
@@ -256,7 +256,7 @@ const latestPosts = (await getCollection("blog"))
     </div>
   </section>
 
-  <section class="section is-dark" id="company">
+  <section class="section" id="company">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Company</p>
@@ -316,7 +316,7 @@ const latestPosts = (await getCollection("blog"))
   }
   .hero-box .desc {
     margin-top: 26px;
-    font-size: 15px;
+    font-size: 16px;
     color: rgba(248, 246, 236, 0.82);
   }
   .hero .btn-outline {
@@ -405,7 +405,7 @@ const latestPosts = (await getCollection("blog"))
     margin-bottom: 36px;
   }
   .category-tag {
-    font-size: 13px;
+    font-size: 14.5px;
     padding: 7px 14px;
     border: 1px solid var(--line);
     border-radius: 999px;
@@ -417,8 +417,7 @@ const latestPosts = (await getCollection("blog"))
     gap: 24px;
   }
   .product-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
+    background: var(--accent);
     border-radius: 4px;
     overflow: hidden;
     display: flex;
@@ -426,7 +425,7 @@ const latestPosts = (await getCollection("blog"))
   }
   .product-thumb {
     aspect-ratio: 4 / 3;
-    background: linear-gradient(140deg, var(--line), transparent 70%), var(--paper);
+    background: var(--paper);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -448,15 +447,25 @@ const latestPosts = (await getCollection("blog"))
     flex: 1;
   }
   .product-card h3 {
-    font-size: 17px;
+    font-size: 18px;
     font-family: var(--font-body);
     font-weight: 600;
+    color: #fff;
   }
   .product-card p {
     margin: 0;
-    font-size: 13.5px;
-    color: var(--ink-soft);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
     flex: 1;
+  }
+  .product-card .mall-links a {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+  }
+  .product-card .mall-links a:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
   }
   .section-foot {
     margin-top: 36px;
@@ -480,18 +489,18 @@ const latestPosts = (await getCollection("blog"))
     border-radius: 4px;
   }
   .blog-card .cat {
-    font-size: 12px;
+    font-size: 13.5px;
     color: var(--accent);
     letter-spacing: 0.03em;
   }
   .blog-card h3 {
-    font-size: 15.5px;
+    font-size: 16.5px;
     font-family: var(--font-body);
     font-weight: 600;
     line-height: 1.6;
   }
   .blog-card time {
-    font-size: 12px;
+    font-size: 13.5px;
     color: var(--ink-soft);
   }
 
@@ -540,7 +549,7 @@ const latestPosts = (await getCollection("blog"))
     border: 1px solid var(--line);
     border-radius: 3px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
   }
   .sns-grid a:hover {
     border-color: var(--accent);
