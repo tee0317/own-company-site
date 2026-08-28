@@ -122,7 +122,7 @@ const latestPosts = (await getCollection("blog"))
   <section class="section" id="blog">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">blog</p>
+        <p class="eyebrow">Blog</p>
         <h2>ブログ</h2>
       </div>
       <div class="blog-grid">
@@ -285,14 +285,19 @@ const latestPosts = (await getCollection("blog"))
     color: var(--ink-soft);
   }
 
-  /* --- セクション見出し：英語（eyebrow）はロゴと同じセリフ体で大きめ、
-     日本語見出しは元の明朝体のまま、サイズは控えめにしてメリハリを付ける --- */
+  /* --- セクション見出し：英語（eyebrow）を主役の大見出しに、
+     日本語（h2）は本文よりやや大きい程度のサブタイトルに --- */
   .section-head .eyebrow {
     font-family: var(--font-logo);
-    font-size: 18px;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--logo-ink);
   }
   .section-head h2 {
-    font-size: 26px;
+    margin-top: 6px;
+    font-size: 18px;
   }
 
   /* --- 帯セクション（黒背景）：Products / Contact / Access --- */
