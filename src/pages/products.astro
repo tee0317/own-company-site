@@ -1,9 +1,68 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const base = import.meta.env.BASE_URL;
+
+const products = [
+  {
+    name: "ステップドリル2本セット（チタンコーティング／3-13mm＋4-20mm）",
+    description:
+      "奇数径＋偶数径の2本組で、1本では届かないサイズにも対応。500回の耐久試験を実施済みで、専用ケース付き。DIY初心者〜セミプロまで安心して使える一本です。",
+    image: `${Astro.site}images/products/step-drill.jpg`,
+    url: "https://www.amazon.co.jp/dp/B0D12HBXX8",
+  },
+  {
+    name: "[星月夜] ステンレスドリルビット10本組（1.5-5mm）",
+    description:
+      "ステンレスにも使える細径ドリルビットの10本セット。クロスシンニング加工で食い付きが良く、精密作業・模型・金属加工に向いています。",
+    image: `${Astro.site}images/products/hoshizukiyo-drill-bits.jpg`,
+    url: "https://www.amazon.co.jp/dp/B0G1SC241T",
+  },
+  {
+    name: "[超ワイド] 曇り止めシート（ヘルメット用ピンロックシート互換）",
+    description:
+      "バイクヘルメットのシールド内側に貼る曇り止めシート。超ワイド設計で視界を広くカバーし、通勤・ツーリングの冬〜梅雨シーズンに活躍します。",
+    image: `${Astro.site}images/products/anti-fog-sheet.jpg`,
+    url: "https://www.amazon.co.jp/dp/B0FFS12KDV",
+  },
+  {
+    name: "ムレ対策専用サドルカバー（防水＋メッシュ2枚組）",
+    description:
+      "自転車のサドルの蒸れ対策に特化したサドルカバー。防水タイプとメッシュタイプの2枚組で、天気に合わせて使い分けられます。超肉厚クッションでお尻の痛み対策にも。電動アシスト自転車の大型サドルにも対応。",
+    image: `${Astro.site}images/products/saddle-cover.jpg`,
+    url: "https://www.amazon.co.jp/dp/B0FJDKXNYH",
+  },
+  {
+    name: "栗剥き器【HAGI】",
+    description:
+      "栗の鬼皮・渋皮をむくためのハサミ型キッチンツール。硬い鬼皮もラクにむける形状で、刃を覆うキャップ付きで保管も安全です。秋（9〜10月）に需要が高まる季節商品です。",
+    image: `${Astro.site}images/products/kuri-mukiki.jpg`,
+    url: "https://www.amazon.co.jp/dp/B0FMJ2QX87",
+  },
+  {
+    name: "フラフープ ダイエット用 子供大人兼用（グレイッシュピンク）",
+    description:
+      "約600gの軽量・静音設計。8分割ジョイント式で、パーツ数を変えて直径を調節できます。「続かなかったあなたが、初めて続けられるフラフープ」がコンセプトです。",
+    image: `${Astro.site}images/products/hula-hoop.jpg`,
+    url: "https://www.amazon.co.jp/dp/B0FH1H5RW1",
+  },
+];
+
+const productsJsonLd = products.map((p) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: p.name,
+  description: p.description,
+  image: p.image,
+  url: p.url,
+}));
 ---
 
 <Layout title="商品一覧｜プロジェクトソクラテス（PJSocrates）" showBreadcrumb>
+  {
+    productsJsonLd.map((jsonLd) => (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    ))
+  }
   <Fragment slot="breadcrumb">
     <div class="breadcrumb">
       <div class="wrap"><a href={base}>ホーム</a> › 商品一覧</div>

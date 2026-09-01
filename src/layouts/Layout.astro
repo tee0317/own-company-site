@@ -8,6 +8,16 @@ interface Props {
 const { title, showBreadcrumb = false, showDivider = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const lineUrl = "https://line.me/R/ti/p/@212unaej";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "プロジェクトソクラテス",
+  alternateName: "PJSocrates",
+  url: "https://tsdsystem.tokyo",
+  logo: `${Astro.site}apple-touch-icon.png`,
+  sameAs: ["https://www.instagram.com/pjsocrates/?hl=ja"],
+};
 ---
 
 <!doctype html>
@@ -18,6 +28,7 @@ const lineUrl = "https://line.me/R/ti/p/@212unaej";
     <link rel="icon" type="image/png" href={`${base}favicon-64.png`} />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
