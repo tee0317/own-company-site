@@ -16,30 +16,59 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <section class="company-info">
-    <div class="wrap">
-      <dl class="info-list">
-        <div class="info-row">
-          <dt>屋号</dt>
-          <dd>TSDシステム</dd>
+  <section class="company-profile">
+    <div class="wrap profile-grid">
+      <div class="profile-message">
+        <div class="section-head">
+          <p class="eyebrow">Message</p>
+          <h2>代表メッセージ</h2>
         </div>
-        <div class="info-row">
-          <dt>代表者</dt>
-          <dd>土志田 拓郎（としだ たくろう / Toshida Takuro）</dd>
+        <p class="message-body">ただいま準備中です。</p>
+        <div class="profile-person">
+          <img
+            src={`${base}images/company/profile.jpg`}
+            alt="代表 土志田拓郎"
+            class="profile-photo"
+          />
+          <div>
+            <p class="profile-name">土志田 拓郎</p>
+            <p class="profile-title">代表</p>
+          </div>
         </div>
-        <div class="info-row">
-          <dt>ブランド名</dt>
-          <dd>プロジェクトソクラテス（PJ Socrates）</dd>
-        </div>
-        <div class="info-row">
-          <dt>ブランドモットー</dt>
-          <dd>より少なく、しかしより良く</dd>
-        </div>
-        <div class="info-row">
-          <dt>事業内容</dt>
-          <dd>DIY・工具、車＆バイク用品、キッチンツール、スポーツ用品の企画・販売（Amazon FBAによる通信販売）</dd>
-        </div>
-      </dl>
+      </div>
+
+      <div class="profile-facts">
+        <dl class="info-list">
+          <div class="info-row">
+            <dt>屋号</dt>
+            <dd>TSDシステム</dd>
+          </div>
+          <div class="info-row">
+            <dt>設立</dt>
+            <dd>2021年11月</dd>
+          </div>
+          <div class="info-row">
+            <dt>ブランド名</dt>
+            <dd>プロジェクトソクラテス（PJ Socrates）</dd>
+          </div>
+          <div class="info-row">
+            <dt>ブランドモットー</dt>
+            <dd>より少なく、しかしより良く</dd>
+          </div>
+          <div class="info-row">
+            <dt>事業内容</dt>
+            <dd>
+              <p class="business-intro">以下の商品カテゴリーの企画・販売（Amazon FBAによる通信販売）</p>
+              <ul class="business-list">
+                <li>DIY・工具</li>
+                <li>車＆バイク用品</li>
+                <li>キッチンツール</li>
+                <li>スポーツ用品</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </section>
 </Layout>
@@ -54,9 +83,66 @@ const base = import.meta.env.BASE_URL;
     padding-bottom: 14px;
     border-bottom: 2px solid var(--ink);
   }
-  .company-info {
+
+  .company-profile {
     padding: 0 0 72px;
   }
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* --- 左：代表メッセージ --- */
+  .profile-message .section-head {
+    margin-bottom: 24px;
+  }
+  .profile-message .eyebrow {
+    font-family: var(--font-logo);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--logo-ink);
+  }
+  .profile-message h2 {
+    margin-top: 6px;
+    font-size: 21px;
+  }
+  .message-body {
+    font-size: 21px;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+    max-width: 38em;
+  }
+  .profile-person {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .profile-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--band-accent);
+    padding: 2px;
+    background: var(--paper);
+  }
+  .profile-name {
+    margin: 0;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .profile-title {
+    margin: 4px 0 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+
+  /* --- 右：会社概要リスト --- */
   .info-list {
     margin: 0;
     max-width: 42em;
@@ -71,7 +157,7 @@ const base = import.meta.env.BASE_URL;
     padding-top: 0;
   }
   .info-row dt {
-    flex: 0 0 140px;
+    flex: 0 0 150px;
     font-weight: 600;
     color: var(--ink-soft);
     font-size: 18px;
@@ -80,6 +166,23 @@ const base = import.meta.env.BASE_URL;
     margin: 0;
     flex: 1;
     font-size: 21px;
+  }
+  .business-intro {
+    margin: 0 0 10px;
+  }
+  .business-list {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+  .business-list li {
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 860px) {
+    .profile-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
   @media (max-width: 640px) {
     .info-row {
