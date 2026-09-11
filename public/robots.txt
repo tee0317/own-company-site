@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tsdsystem.tokyo/sitemap-index.xml

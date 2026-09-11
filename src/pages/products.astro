@@ -57,7 +57,11 @@ const productsJsonLd = products.map((p) => ({
 }));
 ---
 
-<Layout title="商品一覧｜プロジェクトソクラテス（PJSocrates）" showBreadcrumb>
+<Layout
+  title="商品一覧｜プロジェクトソクラテス（PJSocrates）"
+  description="プロジェクトソクラテス（PJSocrates）が厳選する日用品・生活雑貨の商品一覧です。"
+  showBreadcrumb
+>
   {
     productsJsonLd.map((jsonLd) => (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

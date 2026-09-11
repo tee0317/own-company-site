@@ -8,7 +8,11 @@ const posts = (await getCollection("blog")).sort(
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="BLOG｜プロジェクトソクラテス（PJSocrates）" showBreadcrumb>
+<Layout
+  title="BLOG｜プロジェクトソクラテス（PJSocrates）"
+  description="プロジェクトソクラテス（PJSocrates）のブログ一覧です。商品にまつわる話題や日々の気づきをお届けします。"
+  showBreadcrumb
+>
   <Fragment slot="breadcrumb">
     <div class="breadcrumb">
       <div class="wrap"><a href={base}>ホーム</a> › BLOG</div>

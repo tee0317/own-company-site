@@ -3,7 +3,11 @@ import Layout from "../layouts/Layout.astro";
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="会社概要｜プロジェクトソクラテス（PJSocrates）" showBreadcrumb>
+<Layout
+  title="会社概要｜プロジェクトソクラテス（PJSocrates）"
+  description="プロジェクトソクラテス（PJSocrates）の運営者情報・代表メッセージ・事業内容をご紹介します。"
+  showBreadcrumb
+>
   <Fragment slot="breadcrumb">
     <div class="breadcrumb">
       <div class="wrap"><a href={base}>ホーム</a> › 会社概要</div>

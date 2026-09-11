@@ -29,7 +29,11 @@ const fullDate = pubDate.toLocaleDateString("ja-JP", {
 });
 ---
 
-<Layout title={`${post.data.title}｜プロジェクトソクラテス（PJSocrates）`} showBreadcrumb>
+<Layout
+  title={`${post.data.title}｜プロジェクトソクラテス（PJSocrates）`}
+  description={post.data.description}
+  showBreadcrumb
+>
   <Fragment slot="breadcrumb">
     <div class="breadcrumb">
       <div class="wrap">
