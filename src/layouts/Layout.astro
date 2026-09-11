@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
   showBreadcrumb?: boolean;
   showDivider?: boolean;
 }
@@ -12,12 +13,13 @@ const defaultDescription =
 const {
   title,
   description = defaultDescription,
+  image,
   showBreadcrumb = false,
   showDivider = false,
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const lineUrl = "https://line.me/R/ti/p/@212unaej";
-const ogImage = `${Astro.site}images/hero/acropolis.jpg`;
+const ogImage = image ? new URL(image, Astro.site).toString() : `${Astro.site}images/hero/acropolis.jpg`;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 const organizationJsonLd = {

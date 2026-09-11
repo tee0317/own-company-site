@@ -32,6 +32,7 @@ const fullDate = pubDate.toLocaleDateString("ja-JP", {
 <Layout
   title={`${post.data.title}｜プロジェクトソクラテス（PJSocrates）`}
   description={post.data.description}
+  image={post.data.heroImage}
   showBreadcrumb
 >
   <Fragment slot="breadcrumb">
@@ -70,6 +71,9 @@ const fullDate = pubDate.toLocaleDateString("ja-JP", {
 
     <article class="post-main">
       <div class="post-hero">
+        {post.data.heroImage && (
+          <img class="post-hero-image" src={post.data.heroImage} alt="" />
+        )}
         <span class="post-hero-caption">{post.data.title}</span>
       </div>
       <div class="post-body">
@@ -202,6 +206,13 @@ const fullDate = pubDate.toLocaleDateString("ja-JP", {
     background: linear-gradient(150deg, var(--line), transparent 75%), var(--surface);
     margin-bottom: 36px;
   }
+  .post-hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .post-hero-caption {
     position: absolute;
     left: 0;
@@ -225,6 +236,13 @@ const fullDate = pubDate.toLocaleDateString("ja-JP", {
     margin: 40px 0 18px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
+  }
+  .post-body :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 8px 0 28px;
+    display: block;
   }
 
   .post-sidebar {

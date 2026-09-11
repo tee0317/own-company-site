@@ -3,6 +3,7 @@ title: "テスト投稿：フェーズ2動作確認用の記事です"
 description: "Astro化・GitHub連携・公開フローが正常に動作するかを確認するためのテスト記事です。"
 pubDate: 2026-07-23
 category: "テスト"
+heroImage: "/images/blog/test-socrates.jpg"
 ---
 
 ［導入文が入ります。読者の悩みや検索意図に応える一文から始めます。
@@ -17,3 +18,5 @@ SEOキーワードを意識した内容をここに記載します。］
 ## ［見出し2が入ります］
 
 ［本文が入ります。］
+
+![ソクラテス像](/images/blog/test-socrates.jpg)

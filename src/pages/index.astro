@@ -129,7 +129,13 @@ const latestPosts = (await getCollection("blog"))
         {
           latestPosts.map((post) => (
             <article class="blog-card">
-              <div class="blog-thumb" />
+              {post.data.heroImage ? (
+                <div class="blog-thumb has-image">
+                  <img src={post.data.heroImage} alt="" loading="lazy" />
+                </div>
+              ) : (
+                <div class="blog-thumb" />
+              )}
               <p class="cat">{post.data.category}</p>
               <h3>
                 <a href={`${base}blog/${post.id}`}>{post.data.title}</a>
@@ -439,6 +445,17 @@ const latestPosts = (await getCollection("blog"))
     background: linear-gradient(150deg, var(--line), transparent 75%), var(--surface);
     border: 1px solid var(--line);
     border-radius: 4px;
+    overflow: hidden;
+  }
+  .blog-thumb.has-image {
+    background: none;
+    border: none;
+  }
+  .blog-thumb.has-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .blog-card .cat {
     font-size: 15.5px;
