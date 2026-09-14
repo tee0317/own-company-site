@@ -27,7 +27,27 @@ const base = import.meta.env.BASE_URL;
           <p class="eyebrow">Message</p>
           <h2>代表メッセージ</h2>
         </div>
-        <p class="message-body">ただいま準備中です。</p>
+        <div class="message-body">
+          <p>
+            はじめまして。<br />
+            TSDシステム代表の土志田です。
+          </p>
+          <p>
+            私たちは「より少なく、しかしより良く」を合言葉に、DIY・スポーツを中心とした道具をつくっています。<br />
+            道具選びでいちばん惜しいのは、調べている時間だと思っています。
+          </p>
+          <p>
+            似たような商品が何十件も並び、どれが自分に必要な性能なのか分からない。<br />
+            価格だけで選ぶと、説明が分かりにくかったり、思ったより早くだめになったりする。<br />
+            そしてまた買い直す。<br />
+            この時間を減らすことが、私たちの仕事です。
+          </p>
+          <p>
+            私は、大勢に好まれることを目指しません。<br />
+            10人のお客様のうち1人に「これは良かった、次もこれにしよう」と思っていただけること。<br />
+            その1人に長く使ってもらえる道具を、ひとつずつ増やしていきます。
+          </p>
+        </div>
         <div class="profile-person">
           <img
             src={`${base}images/company/profile.jpg`}
@@ -103,6 +123,7 @@ const base = import.meta.env.BASE_URL;
     margin-bottom: 24px;
   }
   .profile-message .eyebrow {
+    margin: 0;
     font-family: var(--font-logo);
     font-weight: 600;
     font-size: clamp(28px, 4vw, 40px);
@@ -111,14 +132,21 @@ const base = import.meta.env.BASE_URL;
     color: var(--logo-ink);
   }
   .profile-message h2 {
-    margin-top: 6px;
+    margin: 6px 0 0;
     font-size: 21px;
   }
   .message-body {
     font-size: 21px;
+    line-height: 1.6;
     color: var(--ink-soft);
     margin: 0 0 32px;
     max-width: 38em;
+  }
+  .message-body p {
+    margin: 0 0 14px;
+  }
+  .message-body p:last-child {
+    margin-bottom: 0;
   }
   .profile-person {
     display: flex;
@@ -147,6 +175,9 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* --- 右：会社概要リスト --- */
+  .profile-facts {
+    padding-top: 140px;
+  }
   .info-list {
     margin: 0;
     max-width: 42em;
@@ -186,6 +217,9 @@ const base = import.meta.env.BASE_URL;
     .profile-grid {
       grid-template-columns: 1fr;
       gap: 40px;
+    }
+    .profile-facts {
+      padding-top: 0;
     }
   }
   @media (max-width: 640px) {
