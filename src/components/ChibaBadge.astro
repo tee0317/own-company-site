@@ -1,0 +1,144 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="chiba-cert">
+  <button type="button" class="chiba-cert-trigger" aria-label="証書画像を拡大表示">
+    <img
+      src={`${base}images/company/chiba900-badge.jpg`}
+      alt="千葉開府900年記念 メンバー登録証"
+      class="chiba-cert-image"
+    />
+  </button>
+  <p class="chiba-cert-text">
+    プロジェクトソクラテスは、千葉市の中小企業として<strong>「千葉開府900年記念」</strong>を応援しています。
+  </p>
+</div>
+
+<div class="chiba-cert-overlay" data-chiba-overlay hidden>
+  <button type="button" class="chiba-cert-overlay-close" data-chiba-close aria-label="閉じる">
+    ×
+  </button>
+  <img
+    src={`${base}images/company/chiba900-badge.jpg`}
+    alt="千葉開府900年記念 メンバー登録証（拡大）"
+    class="chiba-cert-overlay-image"
+  />
+</div>
+
+<style>
+  .chiba-cert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+  }
+  .chiba-cert-trigger {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: zoom-in;
+    line-height: 0;
+  }
+  .chiba-cert-image {
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(33, 36, 30, 0.12);
+    transition: box-shadow 0.2s ease;
+  }
+  .chiba-cert-trigger:hover .chiba-cert-image {
+    box-shadow: 0 4px 14px rgba(33, 36, 30, 0.2);
+  }
+  .chiba-cert-text {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 32em;
+  }
+  .chiba-cert-text strong {
+    color: var(--accent);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .chiba-cert-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 22, 18, 0.82);
+    padding: 32px;
+    cursor: zoom-out;
+  }
+  .chiba-cert-overlay:not([hidden]) {
+    display: flex;
+  }
+  .chiba-cert-overlay-image {
+    max-width: min(570px, 100%);
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    cursor: default;
+  }
+  .chiba-cert-overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .chiba-cert-overlay-close:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  @media (max-width: 640px) {
+    .chiba-cert-image {
+      width: 200px;
+    }
+  }
+</style>
+
+<script>
+  function initChibaCert() {
+    const overlay = document.querySelector<HTMLElement>("[data-chiba-overlay]");
+    const closeBtn = document.querySelector<HTMLElement>("[data-chiba-close]");
+    const triggers = document.querySelectorAll<HTMLElement>(".chiba-cert-trigger");
+    if (!overlay) return;
+
+    const open = () => {
+      overlay.hidden = false;
+      document.body.style.overflow = "hidden";
+    };
+    const close = () => {
+      overlay.hidden = true;
+      document.body.style.overflow = "";
+    };
+
+    triggers.forEach((btn) => btn.addEventListener("click", open));
+    closeBtn?.addEventListener("click", close);
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  }
+
+  initChibaCert();
+</script>
