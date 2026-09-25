@@ -96,6 +96,19 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
+
+  <section class="chiba-support">
+    <div class="wrap chiba-support-inner">
+      <img
+        src={`${base}images/company/chiba900-badge.jpg`}
+        alt="千葉開府900年記念 メンバー登録証"
+        class="chiba-support-image"
+      />
+      <p class="chiba-support-text">
+        プロジェクトソクラテスは、千葉市の中小企業として<strong>「千葉開府900年記念」</strong>を応援しています。
+      </p>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -214,6 +227,36 @@ const base = import.meta.env.BASE_URL;
     margin-bottom: 4px;
   }
 
+  /* --- 千葉開府900年記念バッジ --- */
+  .chiba-support {
+    padding: 0 0 72px;
+  }
+  .chiba-support-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding-top: 48px;
+    border-top: 1px dashed var(--line);
+  }
+  .chiba-support-image {
+    width: 120px;
+    height: auto;
+    flex: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(33, 36, 30, 0.12);
+  }
+  .chiba-support-text {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 32em;
+  }
+  .chiba-support-text strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
   @media (max-width: 860px) {
     .profile-grid {
       grid-template-columns: 1fr;
@@ -230,6 +273,11 @@ const base = import.meta.env.BASE_URL;
     }
     .info-row dt {
       flex-basis: auto;
+    }
+    .chiba-support-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
     }
   }
 </style>
