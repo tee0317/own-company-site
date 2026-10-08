@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-    <rect width="64" height="64" rx="12" fill="#1f221b" />
-    <text
-        x="32"
-        y="45"
-        font-family="'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif"
-        font-size="34"
-        font-weight="600"
-        fill="#d6a24a"
-        text-anchor="middle"
-    >P</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#243d35"/><path d="M14 29h32v14a12 12 0 0 1-12 12h-8a12 12 0 0 1-12-12zm32 4h4a7 7 0 0 1 0 14h-6M24 21c-5-5 5-6 0-12m12 12c-5-5 5-6 0-12" fill="none" stroke="#f7f5ef" stroke-width="3"/></svg>

@@ -1,0 +1,9 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props{name:string;alt:string;eager?:boolean;class?:string;}
+const {name,alt,eager=false,class:className=''}=Astro.props;
+const assets=import.meta.glob<{default:ImageMetadata}>('../assets/tea/*.{jpg,jpeg,png,webp}',{eager:true});
+const source=assets[`../assets/tea/${name}`]?.default;
+---
+{source&&<Picture src={source} formats={['avif','webp']} widths={[320,640,960,1440]} sizes="(max-width: 720px) 100vw, 55vw" alt={alt} class={className} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'}/>}

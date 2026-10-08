@@ -1,0 +1,9 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import TeaPhoto from './TeaPhoto.astro';
+import {themes} from '../lib/site';
+import {dateLabel} from '../../scripts/lib/publication.mjs';
+const {post}=Astro.props as {post:CollectionEntry<'blog'>};
+const theme=themes.find(t=>t.id===post.data.theme)!;
+---
+<article class="post-card">{post.data.heroImage&&<TeaPhoto name={post.data.heroImage} alt={post.data.heroAlt!}/>}<div><p class="eyebrow">{theme.title}</p><h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p><time datetime={post.data.publishedAt}>{dateLabel(post.data.publishedAt)}</time></div></article>

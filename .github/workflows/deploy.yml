@@ -1,28 +1,35 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: false
-
 jobs:
   build:
+    if: vars.TEA_SITE_REVIEWED == 'true'
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_GAS_FORM_URL: ${{ vars.PUBLIC_GAS_FORM_URL }}
+      PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN: ${{ vars.PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v5
-
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm run release:check
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest

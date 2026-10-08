@@ -7,12 +7,26 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/check-content.mjs && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "npm run test && npm run check && npm run build && node scripts/check-release.mjs",
+    "publish:queue": "node scripts/publish-queue.mjs",
+    "release:check": "node scripts/check-release.mjs --ready",
+    "test:articles": "node tests/article-build.integration.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.1.3"
+    "astro": "^7.1.3",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
+    "lighthouse": "^13.5.0",
+    "typescript": "^6.0.3"
   }
 }
