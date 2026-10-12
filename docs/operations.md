@@ -1,5 +1,5 @@
 ---
-updated: 2026-10-08
+updated: 2026-10-13
 status: implementation
 owner: Codex
 ---
@@ -8,6 +8,7 @@ owner: Codex
 ## 確認中の版
 ローカル branch `codex/tea-site`。GitHub Pagesは本人の完成画面確認まで停止。
 `npm run verify` は送信制御・公開条件の検査、型検査、公開記事検査、ビルドを実行。
+JSON-LDの構文・型・記事の著者参照・日時・パンくずも検査する。`npm run test:queue`は隔離したGitでの予約公開を検査し、本番へ送信しない。
 
 ## GAS
 `gas/Code.gs`、`gas/Form.html`、`gas/appsscript.json`を本人アカウントの専用プロジェクトに保存。
@@ -32,6 +33,7 @@ Search ConsoleはURLプレフィックス `https://tsdsystem.tokyo/`。Googleが
 `site-approval.json` のreviewedAt、remote、publicationEnabledはサイト本人確認と再公開後にだけ設定する。
 remoteは `https://github.com/tee0317/own-company-site.git`。
 `npm run publish:queue` は確認のみ。`npm run publish:queue -- --apply` が承認・時刻・汚れのないmainを検査してビルド後にcommit/push。
+適用時は承認されたorigin/push先を照合し、最新mainをfetchしてから同期を確かめる。
 同じ記事は再投稿しない。内容相違、失敗、未同期main、ロック残存時は停止してCodexが確認。
 画像は記事反映前に権利・内容を確認し最適化する。テーマ・一覧・サイトマップはビルド時に生成。
 毎時のCodex定期実行は再公開後に有効化。端末停止中は次の実行時に期限を過ぎた記事を処理。

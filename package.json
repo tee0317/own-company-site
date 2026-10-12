@@ -12,10 +12,11 @@
     "astro": "astro",
     "check": "astro check",
     "test": "node --test tests/*.test.mjs",
-    "verify": "npm run test && npm run check && npm run build && node scripts/check-release.mjs",
+    "verify": "npm run test && npm run check && npm run build && node scripts/check-release.mjs && node scripts/check-structured-data.mjs",
     "publish:queue": "node scripts/publish-queue.mjs",
     "release:check": "node scripts/check-release.mjs --ready",
-    "test:articles": "node tests/article-build.integration.mjs"
+    "test:articles": "node tests/article-build.integration.mjs",
+    "test:queue": "node tests/queue.integration.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

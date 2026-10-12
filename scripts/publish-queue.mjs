@@ -12,10 +12,15 @@ const hash=text=>createHash('sha256').update(text).digest('hex');
 const git=(...args)=>execFileSync('git',args,{cwd:repo,encoding:'utf8'}).trim();
 const approval=JSON.parse(readFileSync(resolve(queue,'site-approval.json'),'utf8'));
 if(applying&&(!approval.reviewedAt||approval.remote!=='https://github.com/tee0317/own-company-site.git'||approval.publicationEnabled!==true))throw Error('Site review and publication activation are required');
-if(applying&&(git('branch','--show-current')!=='main'||git('status','--porcelain')||git('rev-parse','HEAD')!==git('rev-parse','origin/main')))throw Error('Clean, synchronized main is required');
+if(applying&&git('config','--get-regexp','^remote\\.origin\\.(url|pushurl)$').split('\n').some(line=>line.slice(line.indexOf(' ')+1)!==approval.remote))throw Error('Origin does not match the approved repository');
 const lock=resolve(queue,'.publish-lock');let locked=false;
 try{
- if(applying){writeFileSync(lock,String(process.pid),{flag:'wx'});locked=true;}
+ if(applying){
+  writeFileSync(lock,String(process.pid),{flag:'wx'});locked=true;
+  if(git('branch','--show-current')!=='main'||git('status','--porcelain'))throw Error('Clean main is required');
+  git('fetch','origin','main');
+  if(git('rev-parse','HEAD')!==git('rev-parse','origin/main'))throw Error('Clean, synchronized main is required');
+ }
  const ready=[];
  for(const file of readdirSync(queue).filter(f=>f.endsWith('.md'))){const slug=file.slice(0,-3),text=readFileSync(resolve(queue,file),'utf8'),receipt=resolve(queue,slug+'.approval.json');if(!existsSync(receipt))continue;const approved=JSON.parse(readFileSync(receipt,'utf8'));if(approved.sha256!==hash(text)||approved.approved!==true||!approved.reviewedAt)continue;
  const {data,body}=parseArticle(text);const issues=articleIssues(data,slug,body);if(issues.length)throw Error(slug+': '+issues.join('; '));if(!isPublished(data))continue;
