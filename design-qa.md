@@ -3,60 +3,50 @@ updated: 2026-10-13
 status: passed
 owner: codex
 ---
-# Selected cream editorial style — design QA
+# Layout correction after owner feedback
 
-## Visual truth and evidence
+## Source and comparison evidence
 
-- Latest user-selected attachment: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-f1550233-1aed-4ba2-8e18-9b277518df4f.png` (1124×1250).
-- Evidence directory: `/Users/test/Documents/Codex/tea-approved-style-20261013/`.
-- Desktop implementation: `desktop-final.png` (1109×3407); viewport 1124×1250 CSS px, DPR 1, 15px scrollbar. Normalized comparison pads the content to the viewport width without stretching it.
-- Same starting state: home, at the top, no articles. `comparison.png` pairs the full source and first 1250px of the implementation. `desktop-preview.png` is the corresponding implementation crop.
-- Full implementation: `desktop-final.png`, `mobile-final.png` (375×4757, viewport 390×844 CSS px, DPR 1).
-- Supporting routes: `mobile-blog.png`, `mobile-story.png`, `mobile-about.png`; the source and these actual renders were opened and inspected.
-- Article fixture: `article-mobile-final.png` (375×2727). Synthetic articles exist only in an isolated output outside the production repository.
-- Live embedded form: `contact-mobile-form.png` (375×812). Scrolling into the lazy iframe showed the required controls. A full-page capture before lazy loading was blank and is not validation evidence.
-- Full-view comparisons cover the page structure. The paired image provides readable hero/story region comparisons; the mobile route sheet and article/form captures cover supporting surfaces.
+- Exact selected image: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-f1550233-1aed-4ba2-8e18-9b277518df4f.png` (1124×1250px).
+- Evidence: `/Users/test/Documents/Codex/tea-layout-correction-20261013/`.
+- Latest browser render: `desktop-final.png` (1109×2761px), viewport 1124×1250 CSS px, DPR 1, 15px scrollbar. `mobile-final.png`: 375×4171px, viewport 390×844 CSS px, DPR 1.
+- Same state: homepage at the top, no articles. `comparison-final.png` pairs the full source with the first 1290px of the implementation, padding the content to the viewport width without stretching it. Source-frame corners/black margin are presentation chrome.
+- `desktop-top.png` is the actual preview crop; it is not a generated concept. Both the exact source and latest comparison were opened and inspected.
+- Full implementation and focused three-band comparison cover typography, proportions and asset crops. Mobile render was also opened and inspected.
+
+## Findings and correction history
+
+- P1, previous 614ec66: first QA accepted palette and generic photo/copy bands while overlooking the source's compact composition. The owner correctly identified this mismatch. That assessment is superseded.
+- P1: the readings area interrupted the three connected image/copy bands. Moved it below the maker, following the owner's latest source/layout direction. Hero CTA still jumps directly to the readings area.
+- P1: maker portrait floated inside a tall panel. Removed the frame/padding, expanded the actual portrait to the full image column, and retained the real maker name in a caption.
+- P2: story/maker copy was too long for the source density. Kept a short introduction and link on the homepage; full story and activity explanations remain on their existing pages.
+- P2: hero prose wrapped awkwardly and headings had excessive line spacing. Added intentional desktop line breaks, tightened heading rhythm, and used Mincho for marketing copy.
+- First correction evidence: `desktop-v1.png`, `comparison-v1.png`. Maker band was 360px and hero prose still needed the source's three-line wrapping.
+- Final correction: deliberate hero line breaks, smaller maker heading and less vertical padding. Final evidence: `desktop-final.png`, `comparison-final.png`, `mobile-final.png`.
 
 ## Fidelity surfaces
 
-- Typography: system Mincho headings, restrained weight, green text, generous tracking. Desktop hero 48.332px and story 38.216px match the reference hierarchy. Body 18px/1.8; author introduction also 18px. Mobile hero 3 lines; longer labels wrap without truncation.
-- Spacing: joined rectangular photo/copy bands, photo left/copy right hero, reversed story band and photo left/copy right maker band. Cream and sage replace the previous dark teal areas. Header centers the brand between navigation groups; mobile uses a 2×2 menu with 48px touch targets. Main buttons are at least 52px high.
-- Colors: paper #f8f7f1, sage #eceee5, green text #243c34, green buttons #29473e, muted #59655a, subtle gold #80642a. No gradients or invented illustration assets.
-- Photography: approved real pouring photo, the user's cup photo, and the actual maker portrait. Images are sharp, optimized and cropped around the visible subject. The reference's generated drinking man is not presented as the maker.
-- Copy: `紅茶の読みもの` replaces the former menu label across navigation, page titles, SEO, breadcrumbs, article templates and footer. Approved story paragraphs remain identical. The title's self-chosen nature remains explicit.
+- Layout: desktop hero 490.156px high, story 340px, maker 340px. Column splits 53.6/46.4%, 45/55%, 49.2/50.8%. The source's approximate bands are 486/340/311px; the extra maker height accommodates the actual identity/title explanation.
+- Typography: system Mincho for display and marketing copy, 48.332px hero with 1.28 line-height, restrained 2-line section headings. Desktop marketing paragraphs 16px; mobile paragraphs remain 18px/1.8. Long-form article readability is unchanged.
+- Spacing: continuous rectangular images, reversed story columns, no large gap before maker. Short copy aligns within corresponding cream/sage panels.
+- Color: warm paper, sage and deep green remain consistent with the source. No gradients or invented illustration assets.
+- Assets: approved real pouring/cup/maker photographs are used. Their subjects, lighting and the actual maker's formal portrait differ from the generated concept; image identity/lighting is not an exact match. No generated man is represented as the actual maker.
+- Copy: current readings menu retained; approved full story unchanged. Homepage copy is shorter, without invented testimonials, health promises or event/product claims. Self-chosen title remains explained.
 
-## Intentional adaptations
+## Verification and limits
 
-- The request is to extend this taste to all pages, while retaining the earlier real-photo and functional specifications. The mockup's generated photos, cup ornament, gold leaf and presentation-frame corners are not copied.
-- The three topic entrances/recommendations remain conditional on actual articles. The readings area, contact area and footer remain required additions to the three-band source image.
-- Body type is larger than the concept's small text to preserve readability for the agreed persona. Header labels are longer because their meaning is clearer.
-- The Google-hosted form retains its existing white fields and green button; only the site wrapper was restyled. Sending logic and deployed GAS v3 were not changed.
-
-## Comparison history
-
-- P1: earlier dark teal concept was not the user's newly selected cream concept. Replaced dark panels, reversed hero columns and introduced connected editorial photo/copy bands.
-- P2: first implementation had a smaller display heading and excessive story-teaser density (`desktop-first.png`). Increased hero/story heading sizes and shortened only the teaser; kept the full approved story unchanged.
-- Post-fix evidence: `comparison.png`, `desktop-final.png`, `mobile-final.png`. No remaining actionable P0/P1/P2 findings within this visual scope.
-
-## Interaction and verification
-
-- Main menu opens the readings index; article author link opens the story.
-- Hero CTA scrolls to the readings area (mobile final guide top 24.234px, viewport height 844px).
-- Six main routes checked at 320/390/1124px: document width equals client width, body 18px. Evidence: `responsive-checks.json`. Isolated article checked at 390px, no overflow.
-- Browser console: no captured errors in the checked site/article tabs. Embedded GAS controls rendered after scrolling; no new mail was sent during this style revision.
-- Existing eight tests, Astro check, build, public-output validation, JSON-LD checks and the three-article isolated build passed. Reserved slugs, empty themes and article metadata behavior are preserved.
-- iPhone/Safari hardware, OS text enlargement and new Lighthouse scores remain unverified. Cloudflare setup and final owner approval still block release readiness; this QA is not publication approval.
-
-## Follow-up polish
-
-- P3: a real photo of the maker preparing tea would match the concept's everyday atmosphere more closely than the existing formal portrait.
+- `npm run verify`: eight tests, Astro check, build, public-content and JSON-LD checks passed. Three-article isolated build passed; no fixture is in production.
+- Homepage widths 320/390/760/1124px: no horizontal overflow. Evidence: `responsive.json` and desktop measurement. Mobile descriptions 18px.
+- Hero CTA reaches #guide at top 24.375px. Browser captured no errors. Previous menu/form behavior is unchanged.
+- iPhone/Safari hardware, OS text enlargement, new Lighthouse scores and Cloudflare configuration remain outstanding. No publication or automatic posting was enabled.
+- Residual P3: genuine tea-preparation maker photography and warmer authentic tea photographs would bring image content/lighting closer to the concept. Existing real-photo constraints are retained.
 
 ## Implementation checklist
 
-- [x] Cream/sage editorial style across all existing routes and article templates.
-- [x] Clear readings menu name and consistent metadata/links.
-- [x] Real photography, approved story and working navigation preserved.
-- [x] Browser evidence captured, inspected and compared with the exact attachment.
-- [x] Publication and automatic posting remain stopped; local preview remains available.
+- [x] Corrected source composition and photo/copy proportions.
+- [x] Removed the floating maker-photo frame and condensed homepage copy.
+- [x] Compared actual preview with the exact source, not another mockup.
+- [x] Checked responsive behavior and kept working navigation.
+- [x] Local preview retained; release remains stopped.
 
 final result: passed
