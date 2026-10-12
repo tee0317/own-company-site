@@ -1,10 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PostCard from '../../components/PostCard.astro';
+import PageIntro from '../../components/PageIntro.astro';
 import {themes} from '../../lib/site';
 import {publishedPosts} from '../../lib/posts';
 const posts=await publishedPosts();const active=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 ---
-<Layout title="カフェインレス紅茶の知恵袋｜PJソクラテス" breadcrumbs={[{name:'知恵袋'}]}><div class="wrap section"><p class="eyebrow">TEA JOURNAL</p><h1>紅茶の知恵袋</h1><p class="lead">カフェインレス紅茶の選び方、おいしく淹れる工夫、自分のためのお茶時間。好きな一杯との付き合い方を、ひとつずつ考える知恵袋です。</p>
+<Layout title="カフェインレス紅茶の読みもの｜PJソクラテス" breadcrumbs={[{name:'紅茶の読みもの'}]}><PageIntro eyebrow="選び方・淹れ方・お茶時間" title="紅茶の読みもの" lead="カフェインレス紅茶の選び方、おいしく淹れる工夫、自分のためのお茶時間。好きな一杯との付き合い方を、ひとつずつ考える読みものです。" photo="紅茶をグラスに注ぐ手元.jpg" alt="グラスに注がれる琥珀色の紅茶"/><div class="wrap section journal-list">
 {active.length>0&&<div class="theme-grid">{active.map(t=><a class="theme-card" href={`/blog/${t.id}/`}><span class="eyebrow">{t.number}</span><h2>{t.title}</h2><p>{t.description}</p></a>)}</div>}
 {posts.length>0?<div class="post-grid">{posts.map(post=><PostCard post={post}/>)}</div>:<div class="empty-state"><h2>確かめたことから、一つずつ。</h2><p>紅茶の表示や香り・味わい、淹れ方で気になることを、自分で試したことと資料から調べたことに分けてまとめていきます。記事は現在準備中です。紅茶について聞いてみたいことや、取り上げてほしい疑問は、お問い合わせからお寄せください。</p><a class="button" href="/contact/">紅茶について問い合わせる</a></div>}</div></Layout>

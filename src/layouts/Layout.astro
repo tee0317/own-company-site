@@ -14,7 +14,7 @@ const ogImage=new URL(og.src,SITE.url).href;
 const posts=await publishedPosts();
 const activeThemes=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 const graph:Record<string,unknown>[]=[
- {'@type':'WebSite','@id':`${SITE.url}/#website`,name:`${SITE.name}｜カフェインレス紅茶の知恵袋`,url:SITE.url,inLanguage:'ja'},
+ {'@type':'WebSite','@id':`${SITE.url}/#website`,name:`${SITE.name}｜カフェインレス紅茶の読みもの`,url:SITE.url,inLanguage:'ja'},
  {'@type':'Organization','@id':`${SITE.url}/#organization`,name:SITE.tradeName,alternateName:SITE.fullName,url:SITE.url,description:SITE.description},
  {'@type':'Person','@id':`${SITE.url}/about/#person`,name:SITE.maker,url:`${SITE.url}/about/`,image:new URL('/images/maker/profile.jpg',SITE.url).href,sameAs:SITE.socials.map(s=>s.url)}
 ];
@@ -27,16 +27,16 @@ const safeAnalytics=/^[a-f0-9]{32}$|^[a-f0-9-]{36}$/.test(analytics)?analytics:'
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
 {noindex&&<meta name="robots" content="noindex,follow"/>}<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<meta property="og:site_name" content={`${SITE.name}｜カフェインレス紅茶の知恵袋`}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={ogImage}/><meta property="og:locale" content="ja_JP"/>
+<meta property="og:site_name" content={`${SITE.name}｜カフェインレス紅茶の読みもの`}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={ogImage}/><meta property="og:locale" content="ja_JP"/>
 <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/>
 <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c')}/>
 {safeAnalytics&&<script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({token:safeAnalytics})}></script>}
 </head><body>
 <a class="skip-link" href="#main">本文へ進む</a>
-<header class="site-header"><p class="brand-message">カフェインレス紅茶と、自分のための時間。</p><div class="wrap header-inner"><a class="brand" href="/" aria-label="PJソクラテス トップ"><span>PJソクラテス<small>カフェインレス紅茶の知恵袋</small></span></a><nav aria-label="メインメニュー"><a href="/blog/" aria-current={Astro.url.pathname.startsWith('/blog/')?'page':undefined}>知恵袋</a><a href="/story/" aria-current={Astro.url.pathname==='/story/'?'page':undefined}>物語</a><a href="/about/" aria-current={Astro.url.pathname==='/about/'?'page':undefined}>作り手</a><a class="nav-contact" href="/contact/" aria-current={Astro.url.pathname==='/contact/'?'page':undefined}>問い合わせ</a></nav></div></header>
+<header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="PJソクラテス トップ"><span>PJソクラテス<small>カフェインレス紅茶と、自分のための時間</small></span></a><nav aria-label="メインメニュー"><a href="/blog/" aria-current={Astro.url.pathname.startsWith('/blog/')?'page':undefined}>紅茶の読みもの</a><a href="/story/" aria-current={Astro.url.pathname==='/story/'?'page':undefined}>物語</a><a href="/about/" aria-current={Astro.url.pathname==='/about/'?'page':undefined}>作り手</a><a class="nav-contact" href="/contact/" aria-current={Astro.url.pathname==='/contact/'?'page':undefined}>問い合わせ</a></nav></div></header>
 {breadcrumbs.length>0&&<nav class="breadcrumbs wrap" aria-label="パンくず"><ol><li><a href="/">トップ</a></li>{breadcrumbs.map(b=><li>{b.url?<a href={b.url}>{b.name}</a>:<span aria-current="page">{b.name}</span>}</li>)}</ol></nav>}
 <main id="main"><slot/></main>
-<footer class="site-footer"><div class="wrap"><div class="footer-top"><div><a class="footer-brand" href="/">PJソクラテス</a><p>好きな紅茶を、自分のための時間に。</p></div><nav aria-label="フッターメニュー"><a href="/blog/">紅茶の知恵袋</a>{activeThemes.map(t=><a href={`/blog/${t.id}/`}>{t.title}</a>)}<a href="/story/">母から始まる物語</a><a href="/about/">作り手について</a><a href="/contact/">問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></nav></div>
+<footer class="site-footer"><div class="wrap"><div class="footer-top"><div><a class="footer-brand" href="/">PJソクラテス</a><p>好きな紅茶を、自分のための時間に。</p></div><nav aria-label="フッターメニュー"><a href="/blog/">紅茶の読みもの</a>{activeThemes.map(t=><a href={`/blog/${t.id}/`}>{t.title}</a>)}<a href="/story/">母から始まる物語</a><a href="/about/">作り手について</a><a href="/contact/">問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></nav></div>
 {SITE.socials.length>0&&<nav class="socials" aria-label="SNS">{SITE.socials.map(s=><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>)}</nav>}
 <div class="footer-bottom"><span>佐倉・千葉</span><small>© {new Date().getFullYear()} {SITE.fullName}</small></div></div></footer>
 </body></html>
