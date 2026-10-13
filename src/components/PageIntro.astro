@@ -8,7 +8,7 @@ const {eyebrow,title,lead,photo,alt,portrait=false}=Astro.props;
  <div class="intro-copy"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1>{lead&&<p class="lead">{lead}</p>}</div>
 </header>
 <style>
-.page-intro{display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin-inline:auto;background:var(--surface)}
+.page-intro{display:grid;grid-template-columns:1fr 1fr;max-width:none;margin-inline:auto;background:var(--surface)}
 .intro-photo{position:relative;min-height:360px;min-width:0}.intro-photo :global(picture){display:block;position:absolute;inset:0}.intro-photo :global(img){height:100%;width:100%;object-fit:cover;object-position:center 65%}
 .intro-copy{padding:52px clamp(32px,5vw,80px);align-self:center;min-width:0}.intro-copy h1{font-size:clamp(2rem,3.1vw,3rem);letter-spacing:.035em;line-height:1.5}.lead{margin-top:24px;font-size:1.125rem}
 .portrait .intro-photo{display:flex;align-items:center;justify-content:center;padding:36px;background:var(--paper)}.portrait .intro-photo :global(picture){position:static;width:min(100%,280px)}.portrait .intro-photo :global(img){height:auto;aspect-ratio:1;object-fit:cover}

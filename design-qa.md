@@ -3,52 +3,55 @@ updated: 2026-10-13
 status: passed
 owner: codex
 ---
-# Layout correction after owner feedback
+# Complete tea homepage — implementation QA
 
-## Source and comparison evidence
+## Revised visual brief
 
-- Exact selected image: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-f1550233-1aed-4ba2-8e18-9b277518df4f.png` (1124×1250px).
-- Evidence: `/Users/test/Documents/Codex/tea-layout-correction-20261013/`.
-- Latest browser render: `desktop-current.png` (1109px content width), viewport 1124×1320 CSS px, DPR 1, 15px scrollbar. `mobile-final.png`: 375×4171px, viewport 390×844 CSS px, DPR 1.
-- Same state: homepage at the top, no articles. `comparison-final.png` pairs the full source with the first 1290px of the implementation, padding the content to the viewport width without stretching it. Source-frame corners/black margin are presentation chrome.
-- `desktop-top-current.png` is the actual preview crop; `comparison-current.png` is the latest paired comparison. Both the source and latest comparison were opened and inspected.
-- Full implementation and focused three-band comparison cover typography, proportions and asset crops. Mobile render was also opened and inspected.
+- Owner feedback: the narrowed three-band implementation had excessive side margins and did not have the depth of a complete tea website. The previous compact composition assessment is superseded.
+- Keep the selected cream/sage/green, Mincho and real-photography taste; use KUSMI TEA's complete-page editorial rhythm as a reference for depth, not its catalog, product claims, prices or customer reviews.
+- Source taste image: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-f1550233-1aed-4ba2-8e18-9b277518df4f.png` (1124×1250).
+- Owner rejection evidence: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-c02db6c0-b199-426d-a15a-208cede05779.png`. Its browser chrome contains private information; it is not copied into the repository or uploaded.
+- Reference URL: https://www.kusmitea.jp/ . Desktop source capture at 1440px: `kusmi-full.png` (8888px high), `kusmi-sections.png` in the evidence directory. Lazy offscreen imagery is not treated as source-asset evidence.
 
-## Findings and correction history
+## Rendered evidence
 
-- P1, previous 614ec66: first QA accepted palette and generic photo/copy bands while overlooking the source's compact composition. The owner correctly identified this mismatch. That assessment is superseded.
-- P1: the readings area interrupted the three connected image/copy bands. Moved it below the maker, following the owner's latest source/layout direction. Hero CTA still jumps directly to the readings area.
-- P1: maker portrait floated inside a tall panel. Removed the frame/padding, expanded the actual portrait to the full image column, and retained the real maker name in a caption.
-- P2: story/maker copy was too long for the source density. Kept a short introduction and link on the homepage; full story and activity explanations remain on their existing pages.
-- P2: hero prose wrapped awkwardly and headings had excessive line spacing. Added intentional desktop line breaks, tightened heading rhythm, and used Mincho for marketing copy.
-- First correction evidence: `desktop-v1.png`, `comparison-v1.png`. Maker band was 360px and hero prose still needed the source's three-line wrapping.
-- Final correction: deliberate hero line breaks, smaller maker heading and less vertical padding. Final evidence: `desktop-final.png`, `comparison-final.png`, `mobile-final.png`.
-- Wide-screen correction: cap home bands and page introductions at 1200px and hero heading at 52px. This prevents oversized photographs/portrait crops on 1680px screens. Source-width proportions remain unchanged.
+- Directory: `/Users/test/Documents/Codex/tea-full-home-20261013/`.
+- Actual final desktop: `desktop-final.png`, viewport/content width 1440 CSS px, DPR 1; final page height 6882px. No density scaling in the capture.
+- Native Chrome actual viewport: `chrome-first-screen.png`, 2520×1686, reported DPR 1.3333. Hero width 2520px, photograph width 1260px, no overflow. Browser zoom settings were not changed.
+- Mobile: `mobile-home.png`, 390px viewport. `responsive-home.json` records home widths 320/390/840/1440/2432; `responsive-pages.json` records the other five main routes at 320/1440.
+- Full page and focused region captures were opened and inspected. `homepage-overview.png` splits the actual page into sequential strips; `taste-comparison.png` compares the selected visual language with the expanded hero. This is an adapted complete website, not a pixel clone of either source.
+
+## Findings and changes
+
+- P1: fixed 1200px photo bands floated inside a much wider canvas. Replaced them with full-width 50/50 hero and editorial bands, with a common 1440px content grid for cards, header and footer.
+- P1: treating the source's first three bands as the complete homepage removed too much content. Built eight substantive sections: hero, project introduction, story, three values, work in progress, readings, maker and contact.
+- P1: oversized formal portrait dominated the tea imagery. Returned it to an authentic 160×200px biography portrait; the large image regions now show tea and preparation.
+- P2: a long value heading stranded its last characters. Expanded the heading measure and balanced heading wrapping. Final value heading is one line at 1440px.
+- P2: mobile explanatory prose pushed the primary CTA below the first screen. Reordered the mobile CTA directly after the display heading. Button bottoms: 728px at 320px width and 794px at 390px width, within the 844px test viewport.
+- No remaining actionable P0/P1/P2 findings in the revised implementation scope. Owner visual approval is still pending.
 
 ## Fidelity surfaces
 
-- Layout: desktop hero 490.156px high, story 340px, maker 340px. Column splits 53.6/46.4%, 45/55%, 49.2/50.8%. The source's approximate bands are 486/340/311px; the extra maker height accommodates the actual identity/title explanation.
-- Typography: system Mincho for display and marketing copy, 48.332px hero with 1.28 line-height, restrained 2-line section headings. Desktop marketing paragraphs 16px; mobile paragraphs remain 18px/1.8. Long-form article readability is unchanged.
-- Spacing: continuous rectangular images, reversed story columns, no large gap before maker. Short copy aligns within corresponding cream/sage panels.
-- Color: warm paper, sage and deep green remain consistent with the source. No gradients or invented illustration assets.
-- Assets: approved real pouring/cup/maker photographs are used. Their subjects, lighting and the actual maker's formal portrait differ from the generated concept; image identity/lighting is not an exact match. No generated man is represented as the actual maker.
-- Copy: current readings menu retained; approved full story unchanged. Homepage copy is shorter, without invented testimonials, health promises or event/product claims. Self-chosen title remains explained.
+- Typography: Mincho display headings and hero prose, comfortable sans-serif body text, restrained weight and tracking. Mobile primary prose 18px; main controls at least 52px high. Headings have deliberate/balanced wrapping.
+- Layout: intentional full-width half/half photographs, alternating editorial sections, centered introduction, three equal value cards, aligned reading/contact columns, proportionate maker biography and grouped footer navigation.
+- Color: warm paper #f8f7f1, sage #eceee5, dark green #243c34/#29473e, muted #59655a, gold #80642a. No gradients or invented decorative drawings.
+- Images: seven rendered image slots from four real photographs. All seven were loaded during actual scrolling. New preparation photo is an Unsplash-licensed image by ORIENTO and is labeled as illustrative in the work section; it is not presented as the maker or a proven decaf product. Credits: docs/photo-credits.md.
+- Copy: expanded explanation of WHO/WHAT, the mother story and intended checking process. No fabricated articles, results, products, prices, testimonials, health guarantees or events. Full approved story remains unchanged.
 
 ## Verification and limits
 
-- `npm run verify`: eight tests, Astro check, build, public-content and JSON-LD checks passed. Three-article isolated build passed; no fixture is in production.
-- Homepage widths 320/390/760/1124px: no horizontal overflow. Evidence: `responsive.json` and desktop measurement. Mobile descriptions 18px.
-- Hero CTA reaches #guide at top 24.375px. Browser captured no errors. Previous menu/form behavior is unchanged.
-- Actual Codex preview is about 454px wide and correctly uses the mobile stack. Chrome at 1680px shows two-column desktop bands. All three photos loaded; actual viewport evidence is `chrome-viewport-final.png`. Chrome full-page captures had image-compositing gaps and are excluded from visual evidence.
-- iPhone/Safari hardware, OS text enlargement, new Lighthouse scores and Cloudflare configuration remain outstanding. No publication or automatic posting was enabled.
-- Residual P3: genuine tea-preparation maker photography and warmer authentic tea photographs would bring image content/lighting closer to the concept. Existing real-photo constraints are retained.
+- Existing eight tests, Astro check, build, public-output validation and JSON-LD checks passed. Three approved synthetic articles passed the isolated build; none are in the production source.
+- No horizontal overflow at the recorded widths, including actual native Chrome at 2520px. Main menu/readings/story navigation and the hero anchor were checked. No captured browser errors in the inspected tabs.
+- Article-free topics remain absent from home navigation and sitemap, with noindex pages; featured recommendations remain conditional on approved real articles. The values are project beliefs, not fake topic/article entrances.
+- GAS sending logic, private recipient, anti-spam controls and publication gates are unchanged. No contact email was sent during this revision.
+- iPhone/Safari hardware, OS text enlargement, new Lighthouse measurements and Cloudflare setup remain outstanding. No main merge, remote push, public deployment or automatic posting was performed.
 
-## Implementation checklist
+## Checklist
 
-- [x] Corrected source composition and photo/copy proportions.
-- [x] Removed the floating maker-photo frame and condensed homepage copy.
-- [x] Compared actual preview with the exact source, not another mockup.
-- [x] Checked responsive behavior and kept working navigation.
-- [x] Local preview retained; release remains stopped.
+- [x] Complete homepage rather than a compact poster.
+- [x] Width/alignment correction in the owner's wide-display conditions.
+- [x] Actual imagery, working controls, honest empty-article state and readable mobile CTA.
+- [x] Full-page and region comparison, recorded tests and local preview.
+- [x] Preserve release approval requirement and stopped publication.
 
 final result: passed
