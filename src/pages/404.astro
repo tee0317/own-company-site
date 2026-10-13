@@ -1,4 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageLinks from '../components/PageLinks.astro';
 ---
-<Layout title="ページが見つかりません｜PJソクラテス" noindex breadcrumbs={[{name:'ページが見つかりません'}]}><div class="narrow section"><h1>ページが見つかりません</h1><p>URLをご確認ください。</p><a class="button" href="/">トップへ戻る</a></div></Layout>
+<Layout title="ページが見つかりません｜PJソクラテス" noindex breadcrumbs={[{name:'ページが見つかりません'}]}><div class="subpage"><header class="plain-intro"><p class="eyebrow">404 / PAGE NOT FOUND</p><h1>ページが見つかりません</h1><p>入力したURLをご確認ください。トップや紅茶の読みものから、もう一度お探しいただけます。</p></header><div class="narrow section"><a class="button" href="/">トップへ戻る</a></div><PageLinks heading="こちらから、ご覧いただけます。" links={[{eyebrow:'TEA JOURNAL',title:'紅茶の読みもの',description:'選び方、淹れ方、お茶時間。好きな一杯との付き合い方を考える場所です。',url:'/blog/',label:'紅茶の読みものへ'},{eyebrow:'OUR STORY',title:'はじまりの物語',description:'母への感謝から始まった、家族の夏に似合う一杯を探す取り組みです。',url:'/story/',label:'物語を読む'}]}/></div></Layout>

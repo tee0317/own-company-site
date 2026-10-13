@@ -55,3 +55,20 @@ owner: codex
 - [x] Preserve release approval requirement and stopped publication.
 
 final result: passed
+
+## Menu pages — 10/13 follow-up
+
+- Owner requested all menu interiors to be revised and made viewable. The preview server was stopped; it was restarted on 127.0.0.1:8046. No public deployment was performed.
+- Reference remains the selected cream/sage image above and the implemented homepage. No interior-page mock was supplied; deeper layouts extend that typography, palette, real photography and responsive reading rhythm, rather than claiming a pixel clone.
+- Fixed findings: [P1] preview unavailable; [P2] interiors simpler than the expanded homepage with insufficient onward navigation. Fixes: local server restored, expanded introductions, story chapters, maker/work sections, contact guidance and shared onward links.
+- Evidence: `/Users/test/Documents/Codex/tea-menus-20261013/`. Desktop full views: blog/story/about/contact. Mobile full views: blog/story/about/privacy. `menu-first-screens.png` and `mobile-other-pages.png` are labeled screenshot contact sheets.
+- CSS viewport widths 320/390/1440px with 1000px height; 30 route/width checks had zero horizontal overflow and 18px body type. Desktop full captures are 1425px wide (1440 minus 15px scrollbar), mobile 375px (390 minus 15px); DPR1. Temporary overrides reset.
+- Typography: existing Mincho headings, system body, balanced wrapping, 18px copy and 52px buttons. Tokens: paper, sage, green, gold. Layout: half-width desktop introductions, 760px reading column, mobile stacking, consistent cards and footer. Full-view and mobile contact sheets inspected.
+- Assets: existing actual cup, real pouring hand, licensed brewing hand and actual maker. Portrait 240×300px desktop / 160×200px mobile. All page images loaded. Stock hands are not presented as the maker or experimental results. No new placeholder images or decorative drawings.
+- Content: all six approved story paragraphs preserved verbatim. Zero articles remain zero; empty themes stay noindex and absent from active navigation. No fabricated articles, products, prices, events, reviews, results or health promises.
+- All four rendered main-menu links clicked successfully. Privacy page and GAS form loaded. Organization kind showed optional fields; switching to tea hid region (height 0). Mobile message, consent and submit controls visibly verified in `contact-mobile-fields.png`. No mail sent in this layout task; deployed GAS unchanged.
+- Full-page screenshots can omit offscreen painting of Google iframes. Native mobile form screenshot is the visual control evidence; blank full-page iframe pixels are not proof of rendering.
+- Existing unit checks, Astro check, build, public-output and JSON-LD validation passed; isolated article build passed for article/theme/author/related links/sitemap. No browser console errors observed.
+- Pending: new Lighthouse, hardware iPhone/Safari/OS text enlargement, Cloudflare setup and owner acceptance. Public publishing, external push and automatic posting remain stopped.
+
+final result: passed

@@ -1,11 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
+import PageLinks from '../components/PageLinks.astro';
 ---
-<Layout title="母から始まる物語｜PJソクラテス" breadcrumbs={[{name:'物語'}]}><PageIntro eyebrow="はじまりの物語" title="母と娘が笑い合う夏を、少しでも長く" photo="白いカップの紅茶.jpg" alt="白いカップに入れた紅茶と、そばに置いたティーポット"/><article class="narrow section prose">
-<p>シングルファザーになって、家事も育児も一人で全部やろうとしました。でも、暮らしは思うように回りませんでした。本当に助けてもらったのが母です。</p>
-<p>いつも誰かのために動いている母に、自分の好きなものを楽しむ時間があってほしい。</p>
-<p>我が家の夏の恒例は、娘との自宅プール。BBQとパラソル、そして母が楽しむビール。そんな家族の時間が、僕は好きです。</p>
-<p>ただ、最近の夏は暑さが厳しく、母の体も気になります。飲み物をとる時間も、母が好きな紅茶を楽しむ時間にできたら。</p>
-<p>そこで用意したいと思ったのが、カフェインレスのアイスティーです。カフェインにも配慮しながら、爽やかな香りと、すっきりした味わいを楽しめる。おいしくて、ついもう一口飲みたくなる。そんな一杯を目指しています。</p>
-<p>母と娘が笑い合う夏を、少しでも長く。その願いから、同じように紅茶を愛する人にも、この一杯を届けたいと思うようになりました。今日も、家族で過ごす夏に似合う紅茶を探しています。</p><a class="button" href="/blog/">紅茶の読みものへ</a></article></Layout>
+<Layout title="母から始まる物語｜PJソクラテス" description="子育てと暮らしを支えてくれた、紅茶好きの母へ。母と娘が笑い合う夏に似合う一杯を探す、PJソクラテスのはじまりの物語です。" breadcrumbs={[{name:'物語'}]}>
+<div class="subpage">
+ <PageIntro eyebrow="OUR STORY / はじまりの物語" title="母と娘が笑い合う夏を、少しでも長く" lead="紅茶好きの母に、自分の好きなものを楽しむ時間があってほしい。その思いから、家族の夏に似合う一杯を探し始めました。" photo="白いカップの紅茶.jpg" alt="白いカップに入れた紅茶と、そばに置いたティーポット"/>
+ <div class="wrap section reading-layout"><nav class="reading-nav" aria-label="物語の章"><p class="eyebrow">はじまりから、これからへ</p><a href="#mother">暮らしを支えてくれた母</a><a href="#summer">家族で過ごす夏の時間</a><a href="#cup">届けたい、一杯の紅茶</a></nav><article>
+ <section id="mother" class="story-chapter"><p class="chapter-number">01</p><h2>暮らしを支えてくれた母へ。</h2>
+ <p>シングルファザーになって、家事も育児も一人で全部やろうとしました。でも、暮らしは思うように回りませんでした。本当に助けてもらったのが母です。</p>
+ <p>いつも誰かのために動いている母に、自分の好きなものを楽しむ時間があってほしい。</p></section>
+ <section id="summer" class="story-chapter"><p class="chapter-number">02</p><h2>好きな、家族の夏の時間。</h2>
+ <p>我が家の夏の恒例は、娘との自宅プール。BBQとパラソル、そして母が楽しむビール。そんな家族の時間が、僕は好きです。</p>
+ <p>ただ、最近の夏は暑さが厳しく、母の体も気になります。飲み物をとる時間も、母が好きな紅茶を楽しむ時間にできたら。</p></section>
+ <section id="cup" class="story-chapter"><p class="chapter-number">03</p><h2>もう一口飲みたくなる、一杯を。</h2>
+ <p>そこで用意したいと思ったのが、カフェインレスのアイスティーです。カフェインにも配慮しながら、爽やかな香りと、すっきりした味わいを楽しめる。おいしくて、ついもう一口飲みたくなる。そんな一杯を目指しています。</p>
+ <p>母と娘が笑い合う夏を、少しでも長く。その願いから、同じように紅茶を愛する人にも、この一杯を届けたいと思うようになりました。今日も、家族で過ごす夏に似合う紅茶を探しています。</p></section>
+ <p class="reading-signature">土志田 拓郎</p></article></div>
+ <PageLinks heading="この思いを、日々の取り組みに。" links={[{eyebrow:'THE MAKER',title:'作り手と、いまの取り組み。',description:'母への思いから目指している一杯と、大切にしていることを紹介します。',url:'/about/',label:'作り手について読む'},{eyebrow:'TEA JOURNAL',title:'好きな紅茶を、もっと自分らしく。',description:'選び方、淹れ方、お茶時間の楽しみ方。確かめたことを少しずつ伝える場所です。',url:'/blog/',label:'紅茶の読みものへ'}]}/>
+</div></Layout>
