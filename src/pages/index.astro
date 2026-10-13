@@ -48,23 +48,23 @@ const featured=posts.filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder
 <section class="section contact-section"><div class="wrap"><p class="eyebrow">LET'S TALK / ひとつの質問から</p><h2>あなたの紅茶時間を、<br class="mobile-break"/>聞かせてください。</h2><p class="lead">いつもの一杯について気になること、試してみたい淹れ方、お茶時間の楽しみ方。<br class="desktop-break"/>紅茶の質問も、お店・団体からのご相談も、内容を確認して返信します。</p><div class="contact-actions"><a class="btn" href="/contact/?kind=tea">紅茶について質問する</a><a class="btn btn-outline" href="/contact/?kind=organization">お店・団体からのご相談</a></div></div></section>
 </Layout>
 <style>
-.hero,.story-inner,.maker-inner{display:grid;max-width:1600px;margin-inline:auto}
+.hero,.story-inner,.maker-inner{display:grid;max-width:1200px;margin-inline:auto}
 .hero{grid-template-columns:53.6% 46.4%;min-height:440px;background:var(--paper)}
-.hero-copy{grid-column:2;grid-row:1;padding:40px clamp(32px,5.8vw,88px);align-self:center;min-width:0;font-family:var(--serif)}
+.hero-copy{grid-column:2;grid-row:1;padding:40px clamp(32px,5.8vw,72px);align-self:center;min-width:0;font-family:var(--serif)}
 .hero .eyebrow{font-size:.875rem;line-height:1.5;margin-bottom:18px;letter-spacing:.1em}
-.hero h1{font-size:clamp(2rem,4.3vw,3.625rem);line-height:1.28;letter-spacing:.055em}
+.hero h1{font-size:clamp(2rem,4.3vw,3.25rem);line-height:1.28;letter-spacing:.055em}
 .hero-description{font-size:1rem;line-height:1.8;color:var(--muted);margin-top:20px;max-width:27em}
 .hero .btn{margin-top:26px;min-width:280px;font-family:var(--serif);letter-spacing:.04em}
 .hero-photo{grid-column:1;grid-row:1;margin:0;min-width:0;position:relative;min-height:440px}.hero-photo :global(picture){position:absolute;inset:0;display:block}.hero-photo :global(img){width:100%;height:100%;object-fit:cover;object-position:center 64%}.hero-photo figcaption{display:none}
 .story-teaser{border-block:2px solid var(--white);background:var(--surface)}.story-inner{grid-template-columns:45% 55%}
-.story-copy{grid-column:1;grid-row:1;padding:28px clamp(32px,5.8vw,88px);align-self:center;min-width:0;font-family:var(--serif)}
+.story-copy{grid-column:1;grid-row:1;padding:28px clamp(32px,5.8vw,72px);align-self:center;min-width:0;font-family:var(--serif)}
 .story-copy .eyebrow,.maker-copy .eyebrow{font-size:.8125rem;line-height:1.5;margin:0 0 12px;letter-spacing:.1em}
 .story-copy h2,.maker-copy h2{margin-bottom:16px;letter-spacing:.03em;font-size:clamp(1.75rem,3.3vw,2.5rem);line-height:1.3}
 .story-copy p:not(.eyebrow),.maker-copy>p:not(.eyebrow):not(.maker-title):not(.title-explanation){font-size:1rem;line-height:1.75;margin:0}
 .story-copy .text-link{margin-top:10px;font-size:1rem;min-height:36px}
 .story-photo{grid-column:2;grid-row:1;margin:0;position:relative;min-width:0;min-height:340px}.story-photo :global(picture){display:block;position:absolute;inset:0}.story-photo :global(img){width:100%;height:100%;object-fit:cover;object-position:center 62%}.story-photo figcaption{display:none}
 .maker-section{background:var(--paper);border-bottom:2px solid var(--white)}.maker-inner{grid-template-columns:49.2% 50.8%}
-.maker-copy{grid-column:2;grid-row:1;padding:24px clamp(32px,5.8vw,88px);align-self:center;min-width:0;font-family:var(--serif)}.maker-copy h2{font-size:clamp(1.75rem,3vw,2.25rem)}.maker-copy .text-link{margin-top:10px;font-size:1rem;min-height:36px}
+.maker-copy{grid-column:2;grid-row:1;padding:24px clamp(32px,5.8vw,72px);align-self:center;min-width:0;font-family:var(--serif)}.maker-copy h2{font-size:clamp(1.75rem,3vw,2.25rem)}.maker-copy .text-link{margin-top:10px;font-size:1rem;min-height:36px}
 .maker-profile{grid-column:1;grid-row:1;margin:0;min-width:0;position:relative;min-height:340px;overflow:hidden}.maker-profile :global(picture){position:absolute;inset:0;display:block}.maker-profile :global(img){width:100%;height:100%;object-fit:cover;object-position:center 40%}.maker-profile figcaption{position:absolute;left:24px;bottom:18px;background:var(--paper);padding:5px 12px;font-size:.8125rem;color:var(--ink);font-family:var(--serif)}
 .maker-title{font-size:.8125rem;line-height:1.6;margin:12px 0 0}.title-part{display:inline-block}.title-explanation{font-size:.75rem;line-height:1.6;color:var(--muted);margin:2px 0 0}
 .journal-section{background:var(--paper)}.section-head h2{margin-bottom:20px}.journal-section .section-head{text-align:center}.journal-section .lead{margin-inline:auto;max-width:46em}.empty-state{background:var(--surface);max-width:800px;margin-inline:auto;padding:32px 40px;border-top:1px solid var(--line)}.empty-state h3{font-family:var(--serif);color:var(--ink);font-weight:500;margin-bottom:16px}.empty-state p{font-size:1.125rem}.empty-state .btn{margin-top:24px}.theme-action{margin-top:auto;padding-top:24px;font-size:1rem;text-decoration:underline;text-underline-offset:6px}.recommended{background:var(--surface)}

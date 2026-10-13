@@ -9,9 +9,9 @@ owner: codex
 
 - Exact selected image: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-f1550233-1aed-4ba2-8e18-9b277518df4f.png` (1124×1250px).
 - Evidence: `/Users/test/Documents/Codex/tea-layout-correction-20261013/`.
-- Latest browser render: `desktop-final.png` (1109×2761px), viewport 1124×1250 CSS px, DPR 1, 15px scrollbar. `mobile-final.png`: 375×4171px, viewport 390×844 CSS px, DPR 1.
+- Latest browser render: `desktop-current.png` (1109px content width), viewport 1124×1320 CSS px, DPR 1, 15px scrollbar. `mobile-final.png`: 375×4171px, viewport 390×844 CSS px, DPR 1.
 - Same state: homepage at the top, no articles. `comparison-final.png` pairs the full source with the first 1290px of the implementation, padding the content to the viewport width without stretching it. Source-frame corners/black margin are presentation chrome.
-- `desktop-top.png` is the actual preview crop; it is not a generated concept. Both the exact source and latest comparison were opened and inspected.
+- `desktop-top-current.png` is the actual preview crop; `comparison-current.png` is the latest paired comparison. Both the source and latest comparison were opened and inspected.
 - Full implementation and focused three-band comparison cover typography, proportions and asset crops. Mobile render was also opened and inspected.
 
 ## Findings and correction history
@@ -23,6 +23,7 @@ owner: codex
 - P2: hero prose wrapped awkwardly and headings had excessive line spacing. Added intentional desktop line breaks, tightened heading rhythm, and used Mincho for marketing copy.
 - First correction evidence: `desktop-v1.png`, `comparison-v1.png`. Maker band was 360px and hero prose still needed the source's three-line wrapping.
 - Final correction: deliberate hero line breaks, smaller maker heading and less vertical padding. Final evidence: `desktop-final.png`, `comparison-final.png`, `mobile-final.png`.
+- Wide-screen correction: cap home bands and page introductions at 1200px and hero heading at 52px. This prevents oversized photographs/portrait crops on 1680px screens. Source-width proportions remain unchanged.
 
 ## Fidelity surfaces
 
@@ -38,6 +39,7 @@ owner: codex
 - `npm run verify`: eight tests, Astro check, build, public-content and JSON-LD checks passed. Three-article isolated build passed; no fixture is in production.
 - Homepage widths 320/390/760/1124px: no horizontal overflow. Evidence: `responsive.json` and desktop measurement. Mobile descriptions 18px.
 - Hero CTA reaches #guide at top 24.375px. Browser captured no errors. Previous menu/form behavior is unchanged.
+- Actual Codex preview is about 454px wide and correctly uses the mobile stack. Chrome at 1680px shows two-column desktop bands. All three photos loaded; actual viewport evidence is `chrome-viewport-final.png`. Chrome full-page captures had image-compositing gaps and are excluded from visual evidence.
 - iPhone/Safari hardware, OS text enlargement, new Lighthouse scores and Cloudflare configuration remain outstanding. No publication or automatic posting was enabled.
 - Residual P3: genuine tea-preparation maker photography and warmer authentic tea photographs would bring image content/lighting closer to the concept. Existing real-photo constraints are retained.
 
