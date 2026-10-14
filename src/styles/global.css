@@ -46,3 +46,8 @@
 @media(max-width:760px){.article-reading>h1{font-size:1.875rem}}
 
 .journal-posts>.theme-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+
+/* The homepage navigation sits over the opening photograph, as part of the scene. */
+.photo-opening .site-header{position:absolute;inset:0 0 auto;z-index:5;background:transparent;color:#fff;border-bottom:1px solid rgba(255,255,255,.22)}
+.photo-opening .brand,.photo-opening .brand small,.photo-opening .site-header nav a{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.photo-opening .site-header a:hover{color:#e3eacb}.photo-opening .site-header a:focus-visible{outline-color:#fff}

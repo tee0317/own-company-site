@@ -5,8 +5,8 @@ import {getImage} from 'astro:assets';
 import type {ImageMetadata} from 'astro';
 import {SITE,themes} from '../lib/site';
 import {publishedPosts} from '../lib/posts';
-interface Props{title:string;description?:string;breadcrumbs?:{name:string;url?:string}[];noindex?:boolean;image?:string;article?:Record<string,unknown>;}
-const {title,description=SITE.description,breadcrumbs=[],noindex=false,image,article}=Astro.props;
+interface Props{title:string;description?:string;breadcrumbs?:{name:string;url?:string}[];noindex?:boolean;image?:string;article?:Record<string,unknown>;overlayHeader?:boolean;}
+const {title,description=SITE.description,breadcrumbs=[],noindex=false,image,article,overlayHeader=false}=Astro.props;
 const canonical=new URL(Astro.url.pathname,SITE.url).href;
 const assets=import.meta.glob<{default:ImageMetadata}>('../assets/tea/*.{jpg,jpeg,png,webp}',{eager:true});
 const source=assets[`../assets/tea/${image||'ガラスの茶器へ紅茶を注ぐ手元.jpg'}`]?.default||assets['../assets/tea/光を受ける茶の若葉.jpg'].default;
@@ -32,12 +32,12 @@ const safeAnalytics=/^[a-f0-9]{32}$|^[a-f0-9-]{36}$/.test(analytics)?analytics:'
 <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={ogImage}/>
 <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c')}/>
 {safeAnalytics&&<script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({token:safeAnalytics})}></script>}
-</head><body>
+</head><body class:list={{'photo-opening':overlayHeader}}>
 <a class="skip-link" href="#main">本文へ進む</a>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="プロジェクトソクラテス トップ"><span>プロジェクトソクラテス<small>カフェインレス紅茶と、自分のための時間</small></span></a><nav aria-label="メインメニュー"><a href="/blog/" aria-current={Astro.url.pathname.startsWith('/blog/')?'page':undefined}>紅茶の読みもの</a><a href="/story/" aria-current={Astro.url.pathname==='/story/'?'page':undefined}>物語</a><a href="/about/" aria-current={Astro.url.pathname==='/about/'?'page':undefined}>作り手</a><a class="nav-contact" href="/contact/" aria-current={Astro.url.pathname==='/contact/'?'page':undefined}>問い合わせ</a></nav></div></header>
 {breadcrumbs.length>0&&<nav class="breadcrumbs wrap" aria-label="パンくず"><ol><li><a href="/">トップ</a></li>{breadcrumbs.map(b=><li>{b.url?<a href={b.url}>{b.name}</a>:<span aria-current="page">{b.name}</span>}</li>)}</ol></nav>}
 <main id="main"><slot/></main>
 <footer class="site-footer"><div class="wrap"><div class="footer-top"><div><a class="footer-brand" href="/">プロジェクトソクラテス</a><p>カフェインを気遣う日も、好きな紅茶を。<br/>母への思いから、一杯を探しています。</p><p class="footer-location">佐倉・千葉を拠点に</p></div><nav aria-label="フッターメニュー"><div><p class="footer-heading">プロジェクトについて</p><a href="/story/">はじまりの物語</a><a href="/about/">作り手と取り組み</a></div><div><p class="footer-heading">紅茶を楽しむ</p><a href="/blog/">紅茶の読みもの</a>{activeThemes.map(t=><a href={`/blog/${t.id}/`}>{t.title}</a>)}</div><div><p class="footer-heading">ご相談・ご案内</p><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div></nav></div>
 {SITE.socials.length>0&&<nav class="socials" aria-label="SNS">{SITE.socials.map(s=><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>)}</nav>}
-<div class="photo-credits"><p class="photo-title">写真について</p><p>掲載写真はすべてイメージです。作り手本人・試作品・実際のカフェインレス商品や茶葉の産地を示すものではありません。</p><p>写真：Tang Don、Elena Leya、Sanket Jawali、Elaine Howlin、Vin Jack / <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash</a></p></div><div class="footer-bottom"><span>佐倉・千葉</span><small>© {new Date().getFullYear()} {SITE.fullName}</small></div></div></footer>
+<div class="photo-credits"><p class="photo-title">写真について</p><p>掲載写真はすべてイメージです。作り手本人・試作品・実際のカフェインレス商品や茶葉の産地を示すものではありません。</p><p>写真：Tang Don、Elena Leya、Sanket Jawali、Elaine Howlin、Vin Jack、Oskar Kadaksoo、Harrison Broadbent、MARIOLA GROBELSKA、John Coppock、一只猫的橘 / <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash</a></p></div><div class="footer-bottom"><span>佐倉・千葉</span><small>© {new Date().getFullYear()} {SITE.fullName}</small></div></div></footer>
 </body></html>

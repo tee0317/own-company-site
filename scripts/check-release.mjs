@@ -5,4 +5,7 @@ for(const file of files.filter(f=>/\.(html|xml|txt|js)$/.test(f))){const text=re
 for(const path of ['products/index.html','company/index.html','events/index.html','blog/step-drill-basics/index.html'])if(existsSync('dist/'+path))throw Error('Deleted route remains: '+path);
 const sitemap=readFileSync('dist/sitemap.xml','utf8');if(sitemap.includes('/privacy/')||sitemap.includes('/404'))throw Error('Noindex page is in sitemap');
 if(process.argv.includes('--ready')){const contact=readFileSync('dist/contact/index.html','utf8');if(!contact.includes('script.google.com/macros/s/'))throw Error('GAS deployment is not configured');const home=readFileSync('dist/index.html','utf8');if(!home.includes('static.cloudflareinsights.com')){if(process.argv.includes('--require-analytics'))throw Error('Analytics is not configured');console.warn('Analytics pending: owner authorized online review before measurement setup on 2026-10-14');}if(!readdirSync('public').some(f=>/^google[a-z0-9]+\.html$/.test(f)))throw Error('Search Console verification file is missing');}
+// A photo has one visual role on the homepage; preserve the owner's art direction.
+const homePhotos=[...readFileSync('dist/index.html','utf8').matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)].map(m=>decodeURIComponent(m[1]).split('/').pop().split('.')[0]);
+if(new Set(homePhotos).size!==homePhotos.length)throw Error('Homepage repeats the same source photograph');
 console.log('Public output verified');

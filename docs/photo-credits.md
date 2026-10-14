@@ -1,11 +1,11 @@
 ---
-updated: 2026-10-14
+updated: 2026-10-15
 status: active
 owner: codex
 ---
 # 掲載写真と利用条件
 
-全写真を無料素材に統一。2026-10-14に元ページの「Free to use under the Unsplash License」を確認。Plus素材・他社商品写真・人物の顔は使用しない。
+全写真を無料素材に統一。2026-10-14〜15に元ページの「Free to use under the Unsplash License」を確認。Plus素材・他社商品写真・人物の顔は使用しない。
 
 | ファイル | 作者 | 元ページ |
 |---|---|---|
@@ -15,8 +15,16 @@ owner: codex
 | 本と紅茶のある静かな時間.jpg | Elaine Howlin | https://unsplash.com/photos/a-cup-of-tea-and-books-on-a-wooden-tray-jJiagr8ZoiI |
 | 木のテーブルに置いたアイスティー.jpg | Vin Jack | https://unsplash.com/photos/glass-of-iced-tea-on-table-8fS1ByfREpw |
 
+| 森に差し込む朝の光.jpg | Harrison Broadbent | https://unsplash.com/photos/sunlight-through-tree-4VdMEqsdVVg |
+| 光の中で揺れる野の花.jpg | MARIOLA GROBELSKA | https://unsplash.com/photos/wildflowers-in-vibrant-sunlit-meadow-kFY5No1zaKc |
+| 緑を映してゆらぐ水面.jpg | 一只猫的橘 | https://unsplash.com/photos/green-water-ripples-with-light-reflections-TtOPnNaxmbc |
+| 夕暮れの静かな湖.jpg | John Coppock | https://unsplash.com/photos/sunset-over-a-calm-lake-with-tree-silhouette-vJpdB9SX2tc |
+| 木漏れ日が広がる緑の森.jpg | Oskar Kadaksoo | https://unsplash.com/photos/sunlight-streams-through-a-dense-green-forest-7A1VYUGNRfI |
+
 - 利用条件：https://unsplash.com/license 。商用利用可。素材自体の再販売や素材集サービスへの転用は行わない。
 - 取得元：images.unsplash.com。表示用のAVIF/WebPはAstroで生成。altは実際の被写体に合わせた。
 - 元の本人写真・Googleフォトの写真・旧素材は現在の公開対象から削除。Gitの過去履歴は改変していない。
 - 作り手の顔を別人の写真に置き換えず、名前と紹介文に茶の若葉のイメージを添える。Person構造化データに素材写真を本人の肖像として設定しない。
 - 写真は試作品、カフェインレス商品の実物、茶葉の産地、自宅での実体験を示すものではない。フッターに共通の説明と作者名、利用条件リンクを設けた。
+
+- 10/15の追加：トップの全面写真は森。物語は別の森の小道、3シーンは夕暮れ・水面・野の花、取り組みは冷たい紅茶。トップ内9枠に同じ元画像を再使用しない。自然風景は生産地・自宅・本人が撮影した場所と結び付けない。

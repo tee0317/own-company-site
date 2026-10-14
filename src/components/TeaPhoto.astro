@@ -1,9 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-interface Props{name:string;alt:string;eager?:boolean;class?:string;}
-const {name,alt,eager=false,class:className=''}=Astro.props;
+interface Props{name:string;alt:string;eager?:boolean;class?:string;sizes?:string;}
+const {name,alt,eager=false,class:className='',sizes='(max-width: 720px) 100vw, 55vw'}=Astro.props;
 const assets=import.meta.glob<{default:ImageMetadata}>('../assets/tea/*.{jpg,jpeg,png,webp}',{eager:true});
 const source=assets[`../assets/tea/${name}`]?.default;
 ---
-{source&&<Picture src={source} formats={['avif','webp']} widths={[320,640,960,1440]} sizes="(max-width: 720px) 100vw, 55vw" alt={alt} class={className} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'}/>}
+{source&&<Picture src={source} formats={['avif','webp']} widths={sizes==='100vw'?[320,640,960,1440,1920,2400]:[320,640,960,1440]} sizes={sizes} alt={alt} class={className} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'}/>}

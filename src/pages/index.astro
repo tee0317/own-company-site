@@ -9,10 +9,10 @@ import '../styles/home.css';
 const posts=await publishedPosts();
 const featured=posts.filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder-b.data.featuredOrder).slice(0,3);
 ---
-<Layout title="プロジェクトソクラテス｜美味しいカフェインレス紅茶と、自分のための時間">
+<Layout title="プロジェクトソクラテス｜美味しいカフェインレス紅茶と、自分のための時間" overlayHeader image="木漏れ日が広がる緑の森.jpg">
 <div class="home-page">
  <section class="hero" aria-labelledby="home-title">
-  <div class="hero-photo"><TeaPhoto name="ガラスの茶器へ紅茶を注ぐ手元.jpg" alt="ガラスの茶器へ琥珀色の紅茶を注ぐ手元のイメージ" eager/></div>
+  <div class="hero-photo"><TeaPhoto name="木漏れ日が広がる緑の森.jpg" alt="木々の間から金色の光が差し込む緑の森" sizes="100vw" eager/></div>
   <div class="hero-copy">
    <p class="eyebrow">A MOMENT, JUST FOR YOU</p>
    <h1 id="home-title"><span class="hero-subtitle">カフェインレス紅茶と、自分のための時間</span>カフェインを<br/>気遣う日も、<br/>好きな紅茶を。</h1>
@@ -23,7 +23,7 @@ const featured=posts.filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder
  <div class="brand-introduction wrap"><p>プロジェクトソクラテスは、カフェインレス紅茶の選び方や淹れ方と、お茶時間の楽しみを伝える場所です。母への感謝から、一杯を探しています。</p></div>
 
  <section class="story-section home-section" aria-labelledby="story-heading"><div class="wrap story-layout">
-  <div class="story-photo"><TeaPhoto name="本と紅茶のある静かな時間.jpg" alt="窓辺の本と紅茶がつくる静かな時間のイメージ"/></div>
+  <div class="story-photo"><TeaPhoto name="森に差し込む朝の光.jpg" alt="木々に包まれた小道に差し込む穏やかな光"/></div>
   <div class="story-copy"><p class="eyebrow">OUR STORY / はじまりの物語</p><h2 id="story-heading">母の好きな時間を、<br/>少しでも長く。</h2>
    <p>家事も育児も、一人で全部やろうとしていた頃。<br class="desktop-break"/>暮らしを支えてくれたのは、紅茶好きの母でした。</p>
    <p>いつも誰かのために動く母にも、<br class="desktop-break"/>自分の好きなものを楽しむ時間があってほしい。</p>
@@ -45,7 +45,7 @@ const featured=posts.filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder
 
  <section class="work-section home-section" aria-labelledby="work-heading"><div class="wrap work-layout">
   <div class="work-copy"><p class="eyebrow">IN THE MAKING / いまの取り組み</p><h2 id="work-heading">家族の夏に似合う、<br/>一杯を探しています。</h2><p>目指しているのは、香りと味わいを大切にしたカフェインレスのアイスティー。冷やしても、もう一口飲みたくなる一杯です。</p><p>茶葉の香り、冷やしたときの味わい、淹れ方による違い。気になることを一つずつ確かめながら、家族と楽しむお茶時間を考えています。</p><a class="btn btn-outline" href="/about/">作り手と、いまの取り組みを読む</a></div>
-  <figure class="work-photo"><TeaPhoto name="木のテーブルに置いたアイスティー.jpg" alt="木のテーブルで光を受けるアイスティーのイメージ"/><figcaption>冷たい一杯のイメージ</figcaption></figure>
+  <figure class="work-photo"><TeaPhoto name="レモンとミントを添えたアイスティー.jpg" alt="レモンとミントを添えた冷たい紅茶のイメージ"/><figcaption>冷たい一杯のイメージ</figcaption></figure>
  </div></section>
 
  <section class="maker-section home-section"><div class="wrap maker-layout"><div><p class="eyebrow">THE MAKER / 作り手</p><h2>母への思いを、<br/>日々の取り組みに。</h2></div><div class="maker-copy"><p class="maker-name">{SITE.maker}</p><p class="maker-title">{SITE.title}</p><p class="title-explanation">自分の活動を表すために名乗っている肩書です。</p><p>佐倉・千葉を拠点に、好きな一杯を探しています。自分で試したことと、資料から調べたことを分けて。紅茶を愛する方に、確認した範囲が伝わる言葉で届けていきます。</p><a class="text-link" href="/about/">作り手について読む</a></div></div></section>
