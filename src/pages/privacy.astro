@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const analyticsEnabled=/^[a-f0-9]{32}$|^[a-f0-9-]{36}$/.test(import.meta.env.PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN||'');
 ---
 <Layout title="プライバシーポリシー｜PJソクラテス" noindex breadcrumbs={[{name:'プライバシーポリシー'}]}>
 <div class="subpage"><header class="plain-intro"><p class="eyebrow">PRIVACY / 情報の取り扱い</p><h1>プライバシーポリシー</h1><p>お問い合わせでお預かりする情報と、サイトの閲覧計測についてご案内します。</p></header>
 <div class="wrap section reading-layout"><nav class="reading-nav" aria-label="情報の取り扱いの項目"><p class="eyebrow">このページの内容</p><a href="#inquiry">問い合わせ情報</a><a href="#security">迷惑送信の防止と集計</a><a href="#analytics">閲覧の計測</a><a href="#operator">運営者と問い合わせ</a></nav><article>
 <section id="inquiry" class="policy-section"><h2>問い合わせ情報</h2><p>問い合わせでは、お名前、返信先メールアドレス、内容を受け取ります。団体からのご相談では、任意で地域・時期・人数も受け取ります。返信と相談内容の確認に利用します。</p><p>Google Apps Scriptを使って管理者へメールで届けます。問い合わせ内容をサイトや公開リポジトリ、処理の本文ログには保存しません。自動返信は送りません。</p><p>受信したメールは対応に必要な期間管理し、不要になった情報は削除します。法令に基づく場合を除き、本人の同意なく第三者へ提供しません。</p></section>
 <section id="security" class="policy-section"><h2>迷惑送信の防止と件数の集計</h2><p>不正な送信や二重送信を防ぐため、個人情報を含まない受付IDと処理状態を保持します。受付から24時間を過ぎた記録は、次回の受付処理で削除します。集計するのは日別・種別別の正常送信件数です。</p></section>
-<section id="analytics" class="policy-section"><h2>閲覧の計測</h2><p>サイト改善のためCloudflare Web Analyticsを利用します。この計測はCookieを利用しません。閲覧の集計と問い合わせの正常送信件数は別に扱います。</p></section>
+<section id="analytics" class="policy-section"><h2>閲覧の計測</h2>{analyticsEnabled?<p>サイト改善のためCloudflare Web Analyticsを利用します。この計測はCookieを利用しません。閲覧の集計と問い合わせの正常送信件数は別に扱います。</p>:<p>現在、サイト閲覧数の計測は行っていません。問い合わせの正常送信件数は、上記の方法で別に集計します。</p>}</section>
 <section id="operator" class="policy-section"><h2>運営者と問い合わせ</h2><p>TSDシステム（プロジェクトソクラテス）<br/>土志田拓郎</p><p>情報の取り扱いについては、問い合わせフォームからご連絡ください。</p><a class="button" href="/contact/?kind=other">問い合わせフォームへ</a></section>
 </article></div></div></Layout>
