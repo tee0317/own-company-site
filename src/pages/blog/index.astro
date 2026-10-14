@@ -3,17 +3,18 @@ import Layout from '../../layouts/Layout.astro';
 import PostCard from '../../components/PostCard.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import PageLinks from '../../components/PageLinks.astro';
-import {themes} from '../../lib/site';
+import {themes,scenes} from '../../lib/site';
 import {publishedPosts} from '../../lib/posts';
 const posts=await publishedPosts();
 const active=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 ---
-<Layout title="カフェインレス紅茶の読みもの｜PJソクラテス" description="カフェインレス紅茶の選び方、淹れ方、お茶時間。試したことと調べたことを分けて、確認した範囲が分かる形で伝えます。" breadcrumbs={[{name:'紅茶の読みもの'}]}>
+<Layout title="カフェインレス紅茶の読みもの｜プロジェクトソクラテス" description="カフェインレス紅茶の選び方、淹れ方、お茶時間。試したことと調べたことを分けて、確認した範囲が分かる形で伝えます。" breadcrumbs={[{name:'紅茶の読みもの'}]}>
 <div class="subpage">
  <PageIntro eyebrow="TEA JOURNAL / 選び方・淹れ方・お茶時間" title="紅茶の読みもの" lead="好きな一杯を選ぶこと。おいしく淹れること。自分のために、ひと息つくこと。紅茶のある暮らしで気になることを、ひとつずつ確かめていきます。" photo="ガラスの茶器へ紅茶を注ぐ手元.jpg" alt="ガラスの茶器へ注がれる琥珀色の紅茶"/>
+ <section class="wrap section scene-guide" aria-labelledby="scene-guide-heading"><div class="editorial-heading"><p class="eyebrow">TEA FOR YOUR MOMENT</p><h2 id="scene-guide-heading">いまの時間から、一杯を考える。</h2><p>夜のひと息、仕事の合間、家族との午後。<br/>気になる場面から、紅茶の話を読んでみませんか。</p></div><nav class="scene-tabs" aria-label="お茶時間を選ぶ">{scenes.map(scene=><a class="btn btn-outline" href={`#${scene.id}`}>{scene.label==='EVENING'?'夜のひと息':scene.label==='AFTERNOON'?'仕事の合間':'休日のテーブル'}</a>)}</nav><div class="scene-guide-grid">{scenes.map(scene=><section class="scene-guide-card" id={scene.id}><p class="eyebrow">{scene.label}</p><h3>{scene.title}</h3><p>{scene.guide}</p><ul>{scene.articles.map(id=>{const post=posts.find(p=>p.id===id);return post&&<li><a href={`/blog/${post.id}/`}>{post.data.title}</a></li>})}</ul></section>)}</div></section>
  <section class="wrap section journal-posts" aria-label="紅茶の記事">
  {active.length>0&&<><h2>気になることから、探してみる。</h2><div class="theme-grid">{active.map(t=><a class="theme-card" href={'/blog/'+t.id+'/'}><span class="eyebrow">{t.number}</span><h3>{t.title}</h3><p>{t.description}</p></a>)}</div></>}
- {posts.length>0?<><h2>紅茶の記事</h2><div class="post-grid">{posts.map(post=><PostCard post={post}/>)}</div></>:<div class="journal-empty"><div><p class="eyebrow">これからの読みもの</p><h2>確かめたことから、<br/>一つずつ。</h2><p>紅茶の表示、香りや味わい、淹れ方の工夫。気になったことを、そのままにせず、確認した範囲が分かる形で伝えていきます。</p><p>記事は現在準備しています。</p></div><div class="journal-status"><h3>あなたが知りたい、紅茶のこと。</h3><p>「カフェインレスでも好きな味を見つけたい」「冷たい紅茶をおいしく淹れたい」。気になっていることや、取り上げてほしい疑問をお聞かせください。</p><a class="button" href="/contact/?kind=tea">紅茶について質問する</a></div></div>}
+ {posts.length>0?<><h2>すべての読みもの</h2><div class="post-grid">{posts.map(post=><PostCard post={post}/>)}</div></>:<div class="journal-empty"><div><p class="eyebrow">これからの読みもの</p><h2>確かめたことから、<br/>一つずつ。</h2><p>紅茶の表示、香りや味わい、淹れ方の工夫。気になったことを、そのままにせず、確認した範囲が分かる形で伝えていきます。</p><p>記事は現在準備しています。</p></div><div class="journal-status"><h3>あなたが知りたい、紅茶のこと。</h3><p>「カフェインレスでも好きな味を見つけたい」「冷たい紅茶をおいしく淹れたい」。気になっていることや、取り上げてほしい疑問をお聞かせください。</p><a class="button" href="/contact/?kind=tea">紅茶について質問する</a></div></div>}
  </section>
  <section class="statement-section section"><div class="wrap"><div class="editorial-heading"><p class="eyebrow">HOW WE WRITE</p><h2>伝えるときに、大切にすること。</h2><p>ひとつの経験を、すべての人の答えにしない。<br/>読んだ方が、自分に合う楽しみ方を考えられるように。</p></div><div class="statement-grid"><div class="statement"><p class="eyebrow">01 / 自分で確かめたこと</p><h3>条件と結果を、一緒に。</h3><p>実際に試した記事では、使った茶葉、淹れ方、確認した条件と結果を示します。「私はこう試しました」という経験として伝えます。</p></div><div class="statement"><p class="eyebrow">02 / 資料から調べたこと</p><h3>分かった範囲と、出典を。</h3><p>調べた情報は実体験と分け、参考にした資料を添えます。分かっていないことや、確認していないことを、確かめたこととして書きません。</p></div></div></div></section>
  <PageLinks heading="読みものの向こうにある、母への思い。" links={[{eyebrow:'OUR STORY',title:'母から始まった、この取り組み。',description:'家族の暮らしを支えてくれた母へ。好きな紅茶を楽しむ時間があってほしい。その願いが出発点です。',url:'/story/',label:'はじまりの物語を読む'},{eyebrow:'THE MAKER',title:'この一杯を、探している人。',description:'作り手の土志田拓郎と、いま考えている一杯、情報の伝え方を紹介します。',url:'/about/',label:'作り手と取り組みについて'}]}/>

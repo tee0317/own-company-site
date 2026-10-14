@@ -1,6 +1,6 @@
 export const SITE={
- name:'PJソクラテス',fullName:'プロジェクトソクラテス',url:'https://tsdsystem.tokyo',
- description:'カフェインを気遣う日も、好きな紅茶を。母への感謝から始まった、カフェインレス紅茶と自分のためのお茶時間を探す記録です。',
+ name:'プロジェクトソクラテス',fullName:'プロジェクトソクラテス',url:'https://tsdsystem.tokyo',
+ description:'プロジェクトソクラテスは、香りと味わいを大切にしたカフェインレス紅茶の選び方や淹れ方、お茶時間の楽しみを伝える場所です。母への感謝から始まった、一杯を探す取り組みと読みものをお届けします。',
  maker:'土志田 拓郎',tradeName:'TSDシステム',title:'ホームウェルネス・ティーマイスター',
  socials:[] as {name:string;url:string}[]
 };
@@ -16,3 +16,9 @@ export function formUrl(kind?:string){
  if(kind&&['tea','organization','other'].includes(kind))url.searchParams.set('kind',kind);
  return url.toString();
 }
+
+export const scenes=[
+ {id:'night',label:'EVENING',title:'夜、自分に戻るひと息に。',description:'一日の用事を終えて、本をひらく。好きな香りと、静かに過ごすための小さな時間。',photo:'本と紅茶のある静かな時間.jpg',alt:'本と紅茶のあるテーブルのイメージ',focus:'28% 50%',guide:'夜の一杯は、まず表示を確かめるところから。カフェインレスでもカフェインが残る商品があります。好きな香りと、含有量や淹れ方の情報を、一緒に見てみましょう。',articles:['decaf-tea-labels','decaf-tea-brewing']},
+ {id:'work',label:'AFTERNOON',title:'仕事の合間、気分を変えたいときに。',description:'手を止めて、お湯を注ぐ。画面から少し離れて、一杯に向き合うひと区切り。',photo:'ガラスの茶器へ紅茶を注ぐ手元.jpg',alt:'ガラスの茶器に紅茶を注ぐ手元のイメージ',focus:'50% 60%',guide:'忙しい日にも、いつものカップで一杯を。まずはパッケージの淹れ方を目安にすると、次に調整したい味の手がかりが見つかります。',articles:['decaf-tea-brewing']},
+ {id:'weekend',label:'WEEKEND',title:'家族と囲む、休日のテーブルに。',description:'会話とおやつのそばに、冷たい一杯を。大切な人と過ごす、いつもよりゆっくりした午後。',photo:'レモンとミントを添えたアイスティー.jpg',alt:'レモンとミントを添えたアイスティーのイメージ',focus:'50% 60%',guide:'休日には、グラスの色も楽しむアイスティーを。茶葉の選び方と冷やし方を知って、自分や一緒に飲む人の好みに合う一杯を考えてみませんか。',articles:['iced-tea-cloudiness','decaf-tea-labels']}
+] as const;

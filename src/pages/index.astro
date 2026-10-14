@@ -2,87 +2,54 @@
 import Layout from '../layouts/Layout.astro';
 import TeaPhoto from '../components/TeaPhoto.astro';
 import PostCard from '../components/PostCard.astro';
-import {themes,SITE} from '../lib/site';
+import SceneCards from '../components/SceneCards.astro';
+import {SITE} from '../lib/site';
 import {publishedPosts} from '../lib/posts';
 import '../styles/home.css';
 const posts=await publishedPosts();
-const activeThemes=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 const featured=posts.filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder-b.data.featuredOrder).slice(0,3);
-const values=[
- {number:'01',title:'香りと味わいを、大切に。',photo:'光を受ける茶の若葉.jpg',alt:'光を受ける茶の若葉のイメージ',text:'カフェインに配慮するときも、好きな紅茶を選ぶ楽しさがあってほしい。香り、口に含んだときの味わい、後味まで、一杯のおいしさを大切に考えます。'},
- {number:'02',title:'その日の自分に、合わせて。',photo:'木のテーブルに置いたアイスティー.jpg',alt:'木のテーブルに置いたアイスティーのイメージ',text:'いつもの紅茶を楽しむ日も、カフェインが気になる日も。その日の気持ちや暮らしに合わせて、無理なく楽しめる一杯を探しています。'},
- {number:'03',title:'自分のための、ひと息を。',photo:'本と紅茶のある静かな時間.jpg',alt:'本と紅茶のある静かな時間のイメージ',text:'誰かのために忙しく過ごす毎日のなかに、自分の好きなものを楽しむ時間を。お湯を注ぎ、香りを待つひとときも、お茶時間の楽しみのひとつです。'}
-];
 ---
-<Layout title="カフェインを気遣う日も、好きな紅茶を。｜PJソクラテス">
+<Layout title="プロジェクトソクラテス｜美味しいカフェインレス紅茶と、自分のための時間">
 <div class="home-page">
  <section class="hero" aria-labelledby="home-title">
-  <div class="hero-photo"><TeaPhoto name="ガラスの茶器へ紅茶を注ぐ手元.jpg" alt="ガラスの茶器へ紅茶を注ぐ手元のイメージ" eager/></div>
-  <div class="hero-copy"><div class="hero-measure">
-   <p class="eyebrow">カフェインレス紅茶と、自分のための時間</p>
-   <h1 id="home-title">カフェインを<br/>気遣う日も、<br/>好きな紅茶を。</h1>
-   <p class="hero-description">お気に入りの香りと味わいを楽しみながら、<br class="desktop-break"/>自分のための、やさしい時間を。<br/>母への感謝から始まった、紅茶とお茶時間を探す取り組みです。</p>
-   <a class="btn" href="#guide">紅茶の困りごとから探す</a>
-   <a class="quiet-link" href="/story/">この一杯を探す理由</a>
-  </div></div>
+  <div class="hero-photo"><TeaPhoto name="ガラスの茶器へ紅茶を注ぐ手元.jpg" alt="ガラスの茶器へ琥珀色の紅茶を注ぐ手元のイメージ" eager/></div>
+  <div class="hero-copy">
+   <p class="eyebrow">A MOMENT, JUST FOR YOU</p>
+   <h1 id="home-title"><span class="hero-subtitle">カフェインレス紅茶と、自分のための時間</span>カフェインを<br/>気遣う日も、<br/>好きな紅茶を。</h1>
+   <p class="hero-description">香りを待つ時間も、ひと口の余韻も。<br/>いつも誰かを思うあなたに、<br/>自分の「好き」を楽しむひとときを。</p>
+   <div class="hero-actions"><a class="btn" href="#tea-time">いまの気分で、お茶時間を選ぶ</a><a class="btn btn-outline" href="/story/">この一杯を探す理由</a></div>
+  </div>
  </section>
+ <div class="brand-introduction wrap"><p>プロジェクトソクラテスは、カフェインレス紅茶の選び方や淹れ方と、お茶時間の楽しみを伝える場所です。母への感謝から、一杯を探しています。</p></div>
 
-
- <section class="story-band editorial-band" aria-labelledby="story-heading">
-  <div class="editorial-copy"><div class="editorial-measure">
-   <p class="eyebrow">OUR STORY / はじまりの物語</p>
-   <h2 id="story-heading">母の好きな時間を、<br/>少しでも長く。</h2>
-   <p>シングルファザーになって、家事も育児も一人で全部やろうとしたとき。暮らしを支えてくれたのが、紅茶好きの母でした。</p>
-   <p>我が家の夏の恒例は、娘との自宅プール。BBQとパラソル、家族で過ごす時間。そのそばに、母が好きな紅茶を楽しめる一杯があったら。</p>
-   <p>カフェインにも配慮しながら、香りと味わいを大切にしたアイスティーを。母と娘が笑い合う夏を、少しでも長く。その願いが、この取り組みの出発点です。</p>
-   <a class="text-link" href="/story/">母から始まった、この取り組みを読む</a>
-  </div></div>
-  <div class="editorial-photo"><TeaPhoto name="本と紅茶のある静かな時間.jpg" alt="本と紅茶のある静かな時間のイメージ"/></div>
- </section>
-
- <section class="home-section introduction"><div class="wrap center-copy">
-  <p class="eyebrow">A LITTLE TIME FOR YOURSELF</p>
-  <h2>好きな紅茶を、<br/>自分を大切にする時間に。</h2>
-  <p>家族のこと、暮らしのこと。いつも誰かのために動く人にも、<br class="desktop-break"/>好きなものを楽しむ時間があってほしい。</p>
-  <p>PJソクラテスは、母への思いから始まった紅茶の取り組みです。<br class="desktop-break"/>カフェインレスのアイスティーを目指しながら、<br class="desktop-break"/>その日の自分に合う一杯と、お茶時間の楽しみを探しています。</p>
+ <section class="story-section home-section" aria-labelledby="story-heading"><div class="wrap story-layout">
+  <div class="story-photo"><TeaPhoto name="本と紅茶のある静かな時間.jpg" alt="窓辺の本と紅茶がつくる静かな時間のイメージ"/></div>
+  <div class="story-copy"><p class="eyebrow">OUR STORY / はじまりの物語</p><h2 id="story-heading">母の好きな時間を、<br/>少しでも長く。</h2>
+   <p>家事も育児も、一人で全部やろうとしていた頃。<br class="desktop-break"/>暮らしを支えてくれたのは、紅茶好きの母でした。</p>
+   <p>いつも誰かのために動く母にも、<br class="desktop-break"/>自分の好きなものを楽しむ時間があってほしい。</p>
+   <p>娘との自宅プール、BBQとパラソル。<br class="desktop-break"/>家族で過ごす夏のそばに、母がもう一口飲みたくなる紅茶を。<br class="desktop-break"/>そんな思いから、カフェインレスの一杯を探し始めました。</p>
+   <a class="btn btn-outline" href="/story/">母から始まった、この取り組みを読む</a>
+  </div>
  </div></section>
 
- <section class="home-section values-section"><div class="wrap">
-  <div class="section-heading"><p class="eyebrow">WHAT WE VALUE</p><h2>一杯を探すときに、<br class="mobile-break"/>大切にすること。</h2><p class="section-lead">おいしいと感じること。無理なく楽しめること。<br class="desktop-break"/>紅茶を飲む時間そのものが、好きな時間であること。</p></div>
-  <div class="value-grid">{values.map(v=><article class="value-card"><div class="value-photo"><TeaPhoto name={v.photo} alt={v.alt}/></div><div class="value-copy"><p class="value-number">{v.number}</p><h3>{v.title}</h3><p>{v.text}</p></div></article>)}</div>
+ <section class="journal-section home-section" aria-labelledby="journal-heading"><div class="wrap">
+  <div class="section-heading heading-with-link"><div><p class="eyebrow">TEA JOURNAL / 紅茶の読みもの</p><h2 id="journal-heading">知るほどに、<br/>一杯が楽しみになる。</h2></div><p class="section-lead">香りや味わい、淹れ方の小さな工夫。<br/>今日のお茶時間に持ち帰れる、紅茶の話を。</p></div>
+  {featured.length>0?<div class="post-grid featured-grid" aria-label="おすすめの記事">{featured.map(post=><PostCard post={post}/>)}</div>:<p>読みものは、確認したことから順にお届けします。</p>}
+  <div class="section-action"><a class="btn btn-outline" href="/blog/">紅茶の読みものをすべて見る</a></div>
  </div></section>
 
- <section class="work-band editorial-band" aria-labelledby="work-heading">
-  <div class="editorial-photo"><TeaPhoto name="レモンとミントを添えたアイスティー.jpg" alt="レモンとミントを添えたアイスティーのイメージ"/><p class="photo-caption">冷たい一杯のイメージ。試作品の写真ではありません。</p></div>
-  <div class="editorial-copy"><div class="editorial-measure">
-   <p class="eyebrow">IN THE MAKING / いまの取り組み</p>
-   <h2 id="work-heading">家族の夏に似合う、<br/>一杯を探しています。</h2>
-   <p>目指しているのは、香りと味わいを大切にしたカフェインレスのアイスティー。冷やしても、もう一口飲みたくなる一杯を探しています。</p>
-   <ol class="work-list">
-    <li><h3>茶葉の香り</h3><p>どんな香りを心地よく感じるか。茶葉を選ぶときから、一杯を楽しむところまで見ていきます。</p></li>
-    <li><h3>冷やしたときの味わい</h3><p>温かいときと冷たいときで、香りや後味はどう変わるか。アイスティーとして楽しむことを考えます。</p></li>
-    <li><h3>淹れ方による違い</h3><p>茶葉の量、お湯の温度、待つ時間。条件をそろえながら、違いを少しずつ確かめていきます。</p></li>
-   </ol>
-   <a class="text-link" href="/about/">作り手と取り組みについて</a>
-  </div></div>
- </section>
-
- <section class="home-section journal-section" id="guide"><div class="wrap">
-  <div class="section-heading"><p class="eyebrow">TEA JOURNAL</p><h2>紅茶の読みもの</h2><p class="section-lead">選び方、淹れ方、お茶時間の楽しみ方。<br class="desktop-break"/>好きな一杯との付き合い方を、ひとつずつ。</p></div>
-  {activeThemes.length>0?<div class="theme-grid">{activeThemes.map(t=><a class="theme-card" href={`/blog/${t.id}/`}><span class="number">{t.number}</span><h3>{t.title}</h3><p>{t.description}</p><span class="theme-action">このテーマの記事を読む</span></a>)}</div>:<div class="journal-intro"><div><h3>確かめたことから、<br/>一つずつ伝えていきます。</h3><p>自分で試したことと、資料から調べたことを分けて。紅茶の表示、香りや味わい、淹れ方の工夫を、確認した範囲が分かる形でまとめていきます。</p><p class="journal-status">記事は現在準備しています。</p></div><div class="journal-question"><h3>あなたが知りたい紅茶のことは？</h3><p>「カフェインレスでも好きな味を見つけたい」「アイスティーをおいしく淹れたい」。気になっていることを、ぜひお聞かせください。</p><a class="btn btn-outline" href="/contact/?kind=tea">紅茶について質問する</a></div></div>}
-  <div class="section-action"><a class="text-link" href="/blog/">紅茶の読みものへ</a></div>
+ <section class="scene-section home-section" id="tea-time" aria-labelledby="scene-heading"><div class="wrap">
+  <div class="section-heading"><p class="eyebrow">TEA FOR YOUR MOMENT</p><h2 id="scene-heading">今日は、どんな<br class="mobile-break"/>お茶時間にしますか。</h2><p class="section-lead">決まりごとより、その日の気分を大切に。<br/>一日のなかにある、あなたのための一杯を。</p></div>
+  <SceneCards/>
  </div></section>
 
- {featured.length>0&&<section class="home-section recommended"><div class="wrap"><div class="section-heading"><p class="eyebrow">SELECTED JOURNAL</p><h2>おすすめの記事</h2><p class="section-lead">最初の読みものに、こちらの記事から。</p></div><div class="post-grid">{featured.map(post=><PostCard post={post}/>)}</div></div></section>}
-
- <section class="home-section maker-section"><div class="wrap maker-layout">
-  <div class="maker-heading"><p class="eyebrow">THE MAKER</p><h2>この一杯を、<br/>探している人。</h2><p>紅茶好きの母への思いを、<br/>日々の取り組みに。</p></div>
-  <div class="maker-biography"><figure class="maker-image"><TeaPhoto name="光を受ける茶の若葉.jpg" alt="光を受ける茶の若葉のイメージ"/><figcaption>紅茶のイメージ</figcaption></figure><div class="maker-bio-copy"><p class="maker-name">{SITE.maker}</p><p class="maker-title">{SITE.title}</p><p class="title-explanation">自分の活動を表すために名乗っている肩書です。</p><p>佐倉・千葉を拠点に、母への感謝からカフェインレス紅茶を探しています。自分で試したこと、資料を読んで考えたことを、同じように紅茶を愛する方へ伝えていきます。</p><a class="text-link" href="/about/">作り手について読む</a></div></div>
+ <section class="work-section home-section" aria-labelledby="work-heading"><div class="wrap work-layout">
+  <div class="work-copy"><p class="eyebrow">IN THE MAKING / いまの取り組み</p><h2 id="work-heading">家族の夏に似合う、<br/>一杯を探しています。</h2><p>目指しているのは、香りと味わいを大切にしたカフェインレスのアイスティー。冷やしても、もう一口飲みたくなる一杯です。</p><p>茶葉の香り、冷やしたときの味わい、淹れ方による違い。気になることを一つずつ確かめながら、家族と楽しむお茶時間を考えています。</p><a class="btn btn-outline" href="/about/">作り手と、いまの取り組みを読む</a></div>
+  <figure class="work-photo"><TeaPhoto name="木のテーブルに置いたアイスティー.jpg" alt="木のテーブルで光を受けるアイスティーのイメージ"/><figcaption>冷たい一杯のイメージ</figcaption></figure>
  </div></section>
 
- <section class="home-section contact-section"><div class="wrap">
-  <p class="eyebrow">LET'S TALK</p><h2>あなたの紅茶時間を、<br class="mobile-break"/>聞かせてください。</h2><p class="section-lead">いつもの一杯について気になること、お茶時間の楽しみ方。<br class="desktop-break"/>ひとつの質問から、紅茶の話をしてみませんか。</p>
-  <div class="contact-options"><div><h3>紅茶についての質問</h3><p>選び方や淹れ方など、気になっていることをお寄せください。</p><a class="btn" href="/contact/?kind=tea">紅茶について質問する</a></div><div><h3>お店・団体からのご相談</h3><p>紅茶についてのご相談は、内容を確認して返信します。</p><a class="btn btn-outline" href="/contact/?kind=organization">お店・団体から相談する</a></div></div>
- </div></section>
+ <section class="maker-section home-section"><div class="wrap maker-layout"><div><p class="eyebrow">THE MAKER / 作り手</p><h2>母への思いを、<br/>日々の取り組みに。</h2></div><div class="maker-copy"><p class="maker-name">{SITE.maker}</p><p class="maker-title">{SITE.title}</p><p class="title-explanation">自分の活動を表すために名乗っている肩書です。</p><p>佐倉・千葉を拠点に、好きな一杯を探しています。自分で試したことと、資料から調べたことを分けて。紅茶を愛する方に、確認した範囲が伝わる言葉で届けていきます。</p><a class="text-link" href="/about/">作り手について読む</a></div></div></section>
+
+ <section class="closing-section home-section" aria-labelledby="closing-heading"><div class="wrap closing-layout"><div><p class="eyebrow">YOUR NEXT CUP</p><h2 id="closing-heading">あなたに合う一杯を、<br/>見つけませんか。</h2><p>まずは一つの読みものから。<br/>紅茶のこと、取り組みのこと。気になることもお聞かせください。</p></div><div class="closing-actions"><a class="btn" href="/blog/">紅茶の読みものを読む</a><a class="btn btn-outline" href="/contact/">お問い合わせ・ご相談</a></div></div></section>
 </div>
 </Layout>

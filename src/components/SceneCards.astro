@@ -1,0 +1,5 @@
+---
+import TeaPhoto from './TeaPhoto.astro';
+import {scenes} from '../lib/site';
+---
+<div class="scene-grid">{scenes.map(scene=><a class="scene-card" href={`/blog/#${scene.id}`} style={{'--scene-focus':scene.focus}}><div class="scene-photo"><TeaPhoto name={scene.photo} alt={scene.alt}/></div><div class="scene-copy"><p class="eyebrow">{scene.label}</p><h3>{scene.title}</h3><p>{scene.description}</p><span class="card-action">この時間の楽しみ方を読む</span></div></a>)}</div>

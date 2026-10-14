@@ -2,8 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import PageLinks from '../components/PageLinks.astro';
+import PostCard from '../components/PostCard.astro';
+import {publishedPosts} from '../lib/posts';
+const featured=(await publishedPosts()).filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder-b.data.featuredOrder).slice(0,3);
 ---
-<Layout title="母から始まる物語｜PJソクラテス" description="子育てと暮らしを支えてくれた、紅茶好きの母へ。母と娘が笑い合う夏に似合う一杯を探す、PJソクラテスのはじまりの物語です。" breadcrumbs={[{name:'物語'}]}>
+<Layout title="母から始まる物語｜プロジェクトソクラテス" description="子育てと暮らしを支えてくれた、紅茶好きの母へ。母と娘が笑い合う夏に似合う一杯を探す、プロジェクトソクラテスのはじまりの物語です。" breadcrumbs={[{name:'物語'}]}>
 <div class="subpage">
  <PageIntro eyebrow="OUR STORY / はじまりの物語" title="母と娘が笑い合う夏を、少しでも長く" lead="紅茶好きの母に、自分の好きなものを楽しむ時間があってほしい。その思いから、家族の夏に似合う一杯を探し始めました。" photo="本と紅茶のある静かな時間.jpg" focus="28% 50%" alt="本と紅茶のある静かな時間のイメージ"/>
  <div class="wrap section reading-layout"><nav class="reading-nav" aria-label="物語の章"><p class="eyebrow">はじまりから、これからへ</p><a href="#mother">暮らしを支えてくれた母</a><a href="#summer">家族で過ごす夏の時間</a><a href="#cup">届けたい、一杯の紅茶</a></nav><article>
@@ -17,5 +20,6 @@ import PageLinks from '../components/PageLinks.astro';
  <p>そこで用意したいと思ったのが、カフェインレスのアイスティーです。カフェインにも配慮しながら、爽やかな香りと、すっきりした味わいを楽しめる。おいしくて、ついもう一口飲みたくなる。そんな一杯を目指しています。</p>
  <p>母と娘が笑い合う夏を、少しでも長く。その願いから、同じように紅茶を愛する人にも、この一杯を届けたいと思うようになりました。今日も、家族で過ごす夏に似合う紅茶を探しています。</p></section>
  <p class="reading-signature">土志田 拓郎</p></article></div>
+ {featured.length>0&&<section class="section story-journal"><div class="wrap"><p class="eyebrow">TEA JOURNAL</p><h2>次のお茶時間に、ひとつの読みものを。</h2><div class="post-grid">{featured.map(post=><PostCard post={post}/>)}</div></div></section>}
  <PageLinks heading="この思いを、日々の取り組みに。" links={[{eyebrow:'THE MAKER',title:'作り手と、いまの取り組み。',description:'母への思いから目指している一杯と、大切にしていることを紹介します。',url:'/about/',label:'作り手について読む'},{eyebrow:'TEA JOURNAL',title:'好きな紅茶を、もっと自分らしく。',description:'選び方、淹れ方、お茶時間の楽しみ方。確かめたことを少しずつ伝える場所です。',url:'/blog/',label:'紅茶の読みものへ'}]}/>
 </div></Layout>

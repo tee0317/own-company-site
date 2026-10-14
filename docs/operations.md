@@ -1,14 +1,18 @@
 ---
-updated: 2026-10-13
+updated: 2026-10-15
 status: implementation
 owner: Codex
 ---
 # 紅茶HPの運用
 
 ## 確認中の版
-ローカル branch `codex/tea-site`。GitHub Pagesは本人の完成画面確認まで停止。
+ローカル branch `codex/tea-site`。GitHub Pagesは2026-10-14の本人指示で公開済み。継続改修も同じmainへ反映して配置する。
 `npm run verify` は送信制御・公開条件の検査、型検査、公開記事検査、ビルドを実行。
 JSON-LDの構文・型・記事の著者参照・日時・パンくずも検査する。`npm run test:queue`は隔離したGitでの予約公開を検査し、本番へ送信しない。
+
+## 2026-10-15の改修
+
+正式名称は「プロジェクトソクラテス」。EN TEA / Uf-fuを参照し、夜・仕事・休日の導線と、物語直後の3コラムを実装。記事は資料を整理したreferenceとして手動追加。今後の予約公開には従来の全文承認・日時検査を適用し、自動投稿は停止のまま。
 
 ## GAS
 `gas/Code.gs`、`gas/Form.html`、`gas/appsscript.json`を本人アカウントの専用プロジェクトに保存。
