@@ -1,15 +1,15 @@
 ---
 import TeaPhoto from './TeaPhoto.astro';
-interface Props { eyebrow:string; title:string; lead?:string; photo:string; alt:string; portrait?:boolean; }
-const {eyebrow,title,lead,photo,alt,portrait=false}=Astro.props;
+interface Props { eyebrow:string; title:string; lead?:string; photo:string; alt:string; portrait?:boolean; focus?:string; }
+const {eyebrow,title,lead,photo,alt,portrait=false,focus="50% 55%"}=Astro.props;
 ---
-<header class:list={['page-intro',{portrait}]}>
+<header style={{'--photo-focus':focus}} class:list={['page-intro',{portrait}]}>
  <div class="intro-photo"><TeaPhoto name={photo} alt={alt} eager/></div>
  <div class="intro-copy"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1>{lead&&<p class="lead">{lead}</p>}</div>
 </header>
 <style>
 .page-intro{display:grid;grid-template-columns:1fr 1fr;max-width:none;margin-inline:auto;background:var(--surface)}
-.intro-photo{position:relative;min-height:clamp(400px,34vw,600px);min-width:0}.intro-photo :global(picture){display:block;position:absolute;inset:0}.intro-photo :global(img){height:100%;width:100%;object-fit:cover;object-position:center 65%}
+.intro-photo{position:relative;min-height:clamp(400px,34vw,600px);min-width:0}.intro-photo :global(picture){display:block;position:absolute;inset:0}.intro-photo :global(img){height:100%;width:100%;object-fit:cover;object-position:var(--photo-focus)}
 .intro-copy{padding:64px clamp(32px,5vw,96px);align-self:center;min-width:0}.intro-copy h1{font-size:clamp(2rem,3.6vw,3.5rem);letter-spacing:.035em;line-height:1.6;text-wrap:balance}.lead{margin-top:28px;font-size:1.125rem;line-height:1.9}
 .portrait .intro-photo{display:flex;align-items:center;justify-content:center;padding:36px;background:var(--paper)}.portrait .intro-photo :global(picture){position:static;width:min(100%,280px)}.portrait .intro-photo :global(img){height:auto;aspect-ratio:1;object-fit:cover}
 @media(max-width:720px){.page-intro{grid-template-columns:1fr}.intro-photo{min-height:0;aspect-ratio:16/9}.intro-copy{padding:32px 24px 36px}.intro-copy h1{font-size:2rem}.portrait .intro-photo{aspect-ratio:auto;padding:32px 24px}.portrait .intro-photo :global(picture){width:200px}}

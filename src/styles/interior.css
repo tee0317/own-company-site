@@ -1,4 +1,7 @@
 /* The same warm editorial palette and generous rhythm as the selected homepage. */
+.subpage .page-intro{background:var(--paper)}
+.subpage .page-intro .intro-copy{max-width:650px}
+.subpage .maker-image{margin:0}.subpage .maker-image figcaption{font-size:.875rem;margin-top:14px;color:var(--muted)}
 .subpage h2,.subpage h3,.page-links h2,.page-links h3{font-family:var(--serif);font-weight:500;text-wrap:balance}
 .subpage h2{font-size:clamp(1.75rem,3vw,2.75rem);line-height:1.65}.subpage h3{font-size:1.5rem;line-height:1.7}
 .editorial-heading{max-width:900px;margin:0 auto 48px;text-align:center}.editorial-heading p:not(.eyebrow){margin-top:24px;color:var(--muted)}

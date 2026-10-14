@@ -9,7 +9,7 @@ interface Props{title:string;description?:string;breadcrumbs?:{name:string;url?:
 const {title,description=SITE.description,breadcrumbs=[],noindex=false,image,article}=Astro.props;
 const canonical=new URL(Astro.url.pathname,SITE.url).href;
 const assets=import.meta.glob<{default:ImageMetadata}>('../assets/tea/*.{jpg,jpeg,png,webp}',{eager:true});
-const source=assets[`../assets/tea/${image||'紅茶をグラスに注ぐ手元.jpg'}`]?.default||assets['../assets/tea/作り手の土志田拓郎.jpg'].default;
+const source=assets[`../assets/tea/${image||'ガラスの茶器へ紅茶を注ぐ手元.jpg'}`]?.default||assets['../assets/tea/光を受ける茶の若葉.jpg'].default;
 const og=await getImage({src:source,width:1200,height:630,fit:'cover',format:'jpeg'});
 const ogImage=new URL(og.src,SITE.url).href;
 const posts=await publishedPosts();
@@ -17,7 +17,7 @@ const activeThemes=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 const graph:Record<string,unknown>[]=[
  {'@type':'WebSite','@id':`${SITE.url}/#website`,name:`${SITE.name}｜カフェインレス紅茶の読みもの`,url:SITE.url,inLanguage:'ja'},
  {'@type':'Organization','@id':`${SITE.url}/#organization`,name:SITE.tradeName,alternateName:SITE.fullName,url:SITE.url,description:SITE.description},
- {'@type':'Person','@id':`${SITE.url}/about/#person`,name:SITE.maker,url:`${SITE.url}/about/`,image:new URL('/images/maker/profile.jpg',SITE.url).href,sameAs:SITE.socials.map(s=>s.url)}
+ {'@type':'Person','@id':`${SITE.url}/about/#person`,name:SITE.maker,url:`${SITE.url}/about/`,sameAs:SITE.socials.map(s=>s.url)}
 ];
 if(breadcrumbs.length)graph.push({'@type':'BreadcrumbList',itemListElement:[{name:'トップ',url:'/'},...breadcrumbs].map((b,i)=>({'@type':'ListItem',position:i+1,name:b.name,item:new URL(b.url||Astro.url.pathname,SITE.url).href}))});
 if(article)graph.push({'@type':'BlogPosting','@id':`${canonical}#article`,mainEntityOfPage:canonical,headline:title.split('｜')[0],description,image:ogImage,author:{'@id':`${SITE.url}/about/#person`},publisher:{'@id':`${SITE.url}/#organization`},inLanguage:'ja',...article});
@@ -39,5 +39,5 @@ const safeAnalytics=/^[a-f0-9]{32}$|^[a-f0-9-]{36}$/.test(analytics)?analytics:'
 <main id="main"><slot/></main>
 <footer class="site-footer"><div class="wrap"><div class="footer-top"><div><a class="footer-brand" href="/">PJソクラテス</a><p>カフェインを気遣う日も、好きな紅茶を。<br/>母への思いから、一杯を探しています。</p><p class="footer-location">佐倉・千葉を拠点に</p></div><nav aria-label="フッターメニュー"><div><p class="footer-heading">プロジェクトについて</p><a href="/story/">はじまりの物語</a><a href="/about/">作り手と取り組み</a></div><div><p class="footer-heading">紅茶を楽しむ</p><a href="/blog/">紅茶の読みもの</a>{activeThemes.map(t=><a href={`/blog/${t.id}/`}>{t.title}</a>)}</div><div><p class="footer-heading">ご相談・ご案内</p><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div></nav></div>
 {SITE.socials.length>0&&<nav class="socials" aria-label="SNS">{SITE.socials.map(s=><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>)}</nav>}
-<div class="footer-bottom"><span>佐倉・千葉</span><small>© {new Date().getFullYear()} {SITE.fullName}</small></div></div></footer>
+<div class="photo-credits"><p class="photo-title">写真について</p><p>掲載写真はすべてイメージです。作り手本人・試作品・実際のカフェインレス商品や茶葉の産地を示すものではありません。</p><p>写真：Tang Don、Elena Leya、Sanket Jawali、Elaine Howlin、Vin Jack / <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash</a></p></div><div class="footer-bottom"><span>佐倉・千葉</span><small>© {new Date().getFullYear()} {SITE.fullName}</small></div></div></footer>
 </body></html>

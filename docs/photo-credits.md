@@ -1,13 +1,22 @@
 ---
-updated: 2026-10-13
+updated: 2026-10-14
 status: active
 owner: codex
 ---
-# 紅茶HPの写真
+# 掲載写真と利用条件
 
-- 紅茶をグラスに注ぐ手元：Deepal Tamang / Unsplash。https://unsplash.com/photos/pouring-tea-into-a-glass-cup-etEgw9fExWk
-- ティーポットに湯を注ぐ手元：五玄土 ORIENTO / Unsplash。https://unsplash.com/photos/person-pouring-water-on-ceramic-teapot-fLZeuI-OFBc
-- 新規写真は元ページのFree to use under the Unsplash Licenseを2026-10-13に確認。一般のUnsplashライセンス：https://unsplash.com/license
-- 取得元画像：images.unsplash.com/photo-1531876066433-09d3a1f79fac（幅1600pxの配信画像）。Astroで表示用の軽量形式を生成。
-- 素材写真は作り手本人・試作結果・実際のカフェインレス商品を示す写真として扱わない。取り組み欄ではイメージ写真と明記。
-- 白いカップの紅茶と作り手写真は、以前に本人確認した実写を継続使用。
+全写真を無料素材に統一。2026-10-14に元ページの「Free to use under the Unsplash License」を確認。Plus素材・他社商品写真・人物の顔は使用しない。
+
+| ファイル | 作者 | 元ページ |
+|---|---|---|
+| ガラスの茶器へ紅茶を注ぐ手元.jpg | Tang Don | https://unsplash.com/photos/a-person-pouring-tea-into-a-glass-teapot-PCn9Ofei36Y |
+| レモンとミントを添えたアイスティー.jpg | Elena Leya | https://unsplash.com/photos/glass-of-iced-tea-with-lemon-and-mint-fDWtPLCPgKU |
+| 光を受ける茶の若葉.jpg | Sanket Jawali | https://unsplash.com/photos/sunlight-shines-through-lush-green-tea-leaves-Q5RKXVAmDqk |
+| 本と紅茶のある静かな時間.jpg | Elaine Howlin | https://unsplash.com/photos/a-cup-of-tea-and-books-on-a-wooden-tray-jJiagr8ZoiI |
+| 木のテーブルに置いたアイスティー.jpg | Vin Jack | https://unsplash.com/photos/glass-of-iced-tea-on-table-8fS1ByfREpw |
+
+- 利用条件：https://unsplash.com/license 。商用利用可。素材自体の再販売や素材集サービスへの転用は行わない。
+- 取得元：images.unsplash.com。表示用のAVIF/WebPはAstroで生成。altは実際の被写体に合わせた。
+- 元の本人写真・Googleフォトの写真・旧素材は現在の公開対象から削除。Gitの過去履歴は改変していない。
+- 作り手の顔を別人の写真に置き換えず、名前と紹介文に茶の若葉のイメージを添える。Person構造化データに素材写真を本人の肖像として設定しない。
+- 写真は試作品、カフェインレス商品の実物、茶葉の産地、自宅での実体験を示すものではない。フッターに共通の説明と作者名、利用条件リンクを設けた。

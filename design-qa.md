@@ -1,74 +1,44 @@
 ---
-updated: 2026-10-13
+updated: 2026-10-14
 status: passed
 owner: codex
 ---
-# Complete tea homepage — implementation QA
+# GitHub公開・全ページ改修のQA
 
-## Revised visual brief
+## 最新の依頼と参照
 
-- Owner feedback: the narrowed three-band implementation had excessive side margins and did not have the depth of a complete tea website. The previous compact composition assessment is superseded.
-- Keep the selected cream/sage/green, Mincho and real-photography taste; use KUSMI TEA's complete-page editorial rhythm as a reference for depth, not its catalog, product claims, prices or customer reviews.
-- Source taste image: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-f1550233-1aed-4ba2-8e18-9b277518df4f.png` (1124×1250).
-- Owner rejection evidence: `/var/folders/vx/b12zbl8s31s6mc1t8_mmm1q00000gn/T/codex-clipboard-c02db6c0-b199-426d-a15a-208cede05779.png`. Its browser chrome contains private information; it is not copied into the repository or uploaded.
-- Reference URL: https://www.kusmitea.jp/ . Desktop source capture at 1440px: `kusmi-full.png` (8888px high), `kusmi-sections.png` in the evidence directory. Lazy offscreen imagery is not treated as source-asset evidence.
+- 本人が「GitHubで全ページを先に公開→配置・トンマナ→全写真を無料素材へ」と指示。以前の公開停止・完成画面承認待ちより優先する。
+- 参照：https://www.kusmitea.jp/ 。今回実画面を撮影・保存して確認。大きな写真、中央のブランド、下段ナビ、写真と説明の交互配置を取り入れる。販売品や価格、会員登録等は追加しない。
+- 色と明朝見出しは以前本人が選んだ生成り・緑の画像を継承。KUSMIのロゴ・商品写真・文章や全画面構成の複製ではない。
+- 保存先：`/Users/test/Documents/Codex/tea-online-20261014/`。
 
-## Rendered evidence
+## 比較の証拠
 
-- Directory: `/Users/test/Documents/Codex/tea-full-home-20261013/`.
-- Actual final desktop: `desktop-final.png`, viewport/content width 1440 CSS px, DPR 1; final page height 6882px. No density scaling in the capture.
-- Native Chrome actual viewport: `chrome-first-screen.png`, 2520×1686, reported DPR 1.3333. Hero width 2520px, photograph width 1260px, no overflow. Browser zoom settings were not changed.
-- Mobile: `mobile-home.png`, 390px viewport. `responsive-home.json` records home widths 320/390/840/1440/2432; `responsive-pages.json` records the other five main routes at 320/1440.
-- Full page and focused region captures were opened and inspected. `homepage-overview.png` splits the actual page into sequential strips; `taste-comparison.png` compares the selected visual language with the expanded hero. This is an adapted complete website, not a pixel clone of either source.
+- source: `reference-first.png` と `reference-content.png`。CSS1280×720、画像1265×712。元サイトのニュースレターポップアップが右下にあり、その部分は配置比較の対象外。
+- implementation: `new-home-first.png`、`home-final-desktop.png`（1425×6634px）、`home-final-mobile.png`。desktop CSS1440×1000、mobile CSS390×1000、DPR1。スクロールバー15pxを除く画像幅で記録。
+- `reference-comparison.png` に同じCSS1280×720の初回画面を並べて比較。これは大きさ・見出し・写真の比重の比較で、商品販売HPとのピクセル一致を求めていない。
+- `final-home-overview.png`、`final-interiors-overview.png` を開いて全体の順序・密度・共通部を確認。前者は左→中央→右に続く実画面の分割縮小。
+- 最初の全画面撮影には遅延読込前の白い写真領域があったため不採用。中段と下段にスクロールし、7枠すべてのnaturalWidth>0を確認して取り直した。
 
-## Findings and changes
+## 修正と評価
 
-- P1: fixed 1200px photo bands floated inside a much wider canvas. Replaced them with full-width 50/50 hero and editorial bands, with a common 1440px content grid for cards, header and footer.
-- P1: treating the source's first three bands as the complete homepage removed too much content. Built eight substantive sections: hero, project introduction, story, three values, work in progress, readings, maker and contact.
-- P1: oversized formal portrait dominated the tea imagery. Returned it to an authentic 160×200px biography portrait; the large image regions now show tea and preparation.
-- P2: a long value heading stranded its last characters. Expanded the heading measure and balanced heading wrapping. Final value heading is one line at 1440px.
-- P2: mobile explanatory prose pushed the primary CTA below the first screen. Reordered the mobile CTA directly after the display heading. Button bottoms: 728px at 320px width and 794px at 390px width, within the 844px test viewport.
-- No remaining actionable P0/P1/P2 findings in the revised implementation scope. Owner visual approval is still pending.
+- [P1 修正] Mac専用URLしか案内できていなかった。GitHub Pagesを再開し、HTTPSの独自ドメインで全ページを200応答にした。
+- [P2 修正] ブランドとメニューが横一段で詰まっていた。ブランドを上、4メニューを下に分け、スマホは2列で全項目を表示。
+- [P2 修正] 大きすぎる見出しと写真比率を整理。トップは写真56%／説明44%、本文の最大幅を制限。母の物語をヒーロー直後に移動。8セクションの内容は保持。
+- [P2 修正] カードの枠・密度を整理し、写真・見出し・本文の位置を共通化。深緑のフッターと十分な明るさの文字を全ページに適用。
+- typography: 明朝の表示見出し、システム本文18px、行間1.8〜1.9。見出しの折返しと短い段落を確認。390px幅では主ボタン下端789.3pxで844px画面内。
+- layout: 写真の焦点は茶器・カップ・グラスに合わせた。物語・作り手・読みものの全体画面を確認。スマホは写真と説明を縦に並べる。
+- color: 生成り・セージ・深緑を継承。フッターの見出しにも明るい色を指定し、ホバー・フォーカスを明るくした。
+- assets: 全5写真を商用利用可のUnsplash無料素材に交換。本人写真と旧素材を現行の公開対象から削除。別人の肖像・生成画像・飾りの自作画像は追加していない。
+- copy: 写真の被写体にaltを更新。素材を本人の肖像として構造化データに設定しない。共通の写真説明と作者名をフッターに記載。物語6段落は維持、記事0本・空テーマ制御も維持。
 
-## Fidelity surfaces
+## 確認
 
-- Typography: Mincho display headings and hero prose, comfortable sans-serif body text, restrained weight and tracking. Mobile primary prose 18px; main controls at least 52px high. Headings have deliberate/balanced wrapping.
-- Layout: intentional full-width half/half photographs, alternating editorial sections, centered introduction, three equal value cards, aligned reading/contact columns, proportionate maker biography and grouped footer navigation.
-- Color: warm paper #f8f7f1, sage #eceee5, dark green #243c34/#29473e, muted #59655a, gold #80642a. No gradients or invented decorative drawings.
-- Images: seven rendered image slots from four real photographs. All seven were loaded during actual scrolling. New preparation photo is an Unsplash-licensed image by ORIENTO and is labeled as illustrative in the work section; it is not presented as the maker or a proven decaf product. Credits: docs/photo-credits.md.
-- Copy: expanded explanation of WHO/WHAT, the mother story and intended checking process. No fabricated articles, results, products, prices, testimonials, health guarantees or events. Full approved story remains unchanged.
-
-## Verification and limits
-
-- Existing eight tests, Astro check, build, public-output validation and JSON-LD checks passed. Three approved synthetic articles passed the isolated build; none are in the production source.
-- No horizontal overflow at the recorded widths, including actual native Chrome at 2520px. Main menu/readings/story navigation and the hero anchor were checked. No captured browser errors in the inspected tabs.
-- Article-free topics remain absent from home navigation and sitemap, with noindex pages; featured recommendations remain conditional on approved real articles. The values are project beliefs, not fake topic/article entrances.
-- GAS sending logic, private recipient, anti-spam controls and publication gates are unchanged. No contact email was sent during this revision.
-- iPhone/Safari hardware, OS text enlargement, new Lighthouse measurements and Cloudflare setup remain outstanding. No main merge, remote push, public deployment or automatic posting was performed.
-
-## Checklist
-
-- [x] Complete homepage rather than a compact poster.
-- [x] Width/alignment correction in the owner's wide-display conditions.
-- [x] Actual imagery, working controls, honest empty-article state and readable mobile CTA.
-- [x] Full-page and region comparison, recorded tests and local preview.
-- [x] Preserve release approval requirement and stopped publication.
-
-final result: passed
-
-## Menu pages — 10/13 follow-up
-
-- Owner requested all menu interiors to be revised and made viewable. The preview server was stopped; it was restarted on 127.0.0.1:8046. No public deployment was performed.
-- Reference remains the selected cream/sage image above and the implemented homepage. No interior-page mock was supplied; deeper layouts extend that typography, palette, real photography and responsive reading rhythm, rather than claiming a pixel clone.
-- Fixed findings: [P1] preview unavailable; [P2] interiors simpler than the expanded homepage with insufficient onward navigation. Fixes: local server restored, expanded introductions, story chapters, maker/work sections, contact guidance and shared onward links.
-- Evidence: `/Users/test/Documents/Codex/tea-menus-20261013/`. Desktop full views: blog/story/about/contact. Mobile full views: blog/story/about/privacy. `menu-first-screens.png` and `mobile-other-pages.png` are labeled screenshot contact sheets.
-- CSS viewport widths 320/390/1440px with 1000px height; 30 route/width checks had zero horizontal overflow and 18px body type. Desktop full captures are 1425px wide (1440 minus 15px scrollbar), mobile 375px (390 minus 15px); DPR1. Temporary overrides reset.
-- Typography: existing Mincho headings, system body, balanced wrapping, 18px copy and 52px buttons. Tokens: paper, sage, green, gold. Layout: half-width desktop introductions, 760px reading column, mobile stacking, consistent cards and footer. Full-view and mobile contact sheets inspected.
-- Assets: existing actual cup, real pouring hand, licensed brewing hand and actual maker. Portrait 240×300px desktop / 160×200px mobile. All page images loaded. Stock hands are not presented as the maker or experimental results. No new placeholder images or decorative drawings.
-- Content: all six approved story paragraphs preserved verbatim. Zero articles remain zero; empty themes stay noindex and absent from active navigation. No fabricated articles, products, prices, events, reviews, results or health promises.
-- All four rendered main-menu links clicked successfully. Privacy page and GAS form loaded. Organization kind showed optional fields; switching to tea hid region (height 0). Mobile message, consent and submit controls visibly verified in `contact-mobile-fields.png`. No mail sent in this layout task; deployed GAS unchanged.
-- Full-page screenshots can omit offscreen painting of Google iframes. Native mobile form screenshot is the visual control evidence; blank full-page iframe pixels are not proof of rendering.
-- Existing unit checks, Astro check, build, public-output and JSON-LD validation passed; isolated article build passed for article/theme/author/related links/sitemap. No browser console errors observed.
-- Pending: new Lighthouse, hardware iPhone/Safari/OS text enlargement, Cloudflare setup and owner acceptance. Public publishing, external push and automatic posting remain stopped.
+- 10ページ×320/390/1440pxの30表示で横はみ出しなし、本文18px。ブラウザコンソールのエラーなし。
+- verify（既存8検査・型検査・ビルド・公開内容・JSON-LD）、release:check、記事入り隔離ビルドが通過。
+- 初回公開 e45b4c6 のGitHub実行38520198808は成功。主要9ページとサイトマップはHTTPS200、削除4URLは404。
+- 最新写真版の公開後も別途URLとメニュー移動、フォームの読込を確認して記録する。GASコードは今回変更していない。
+- 計測は未設定。本人のオンライン確認優先指示に合わせ、計測だけは警告として扱う。フォーム未設定・禁止内容・確認ファイル欠落は引き続き公開を止める。プライバシーは未計測の事実を表示。
+- 実機iPhone/Safari・OS文字拡大、新版Lighthouseは今回未検証。これを合格とは報告しない。自動投稿は停止中。
 
 final result: passed

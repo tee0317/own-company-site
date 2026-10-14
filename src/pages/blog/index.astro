@@ -10,7 +10,7 @@ const active=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 ---
 <Layout title="カフェインレス紅茶の読みもの｜PJソクラテス" description="カフェインレス紅茶の選び方、淹れ方、お茶時間。試したことと調べたことを分けて、確認した範囲が分かる形で伝えます。" breadcrumbs={[{name:'紅茶の読みもの'}]}>
 <div class="subpage">
- <PageIntro eyebrow="TEA JOURNAL / 選び方・淹れ方・お茶時間" title="紅茶の読みもの" lead="好きな一杯を選ぶこと。おいしく淹れること。自分のために、ひと息つくこと。紅茶のある暮らしで気になることを、ひとつずつ確かめていきます。" photo="紅茶をグラスに注ぐ手元.jpg" alt="グラスに注がれる琥珀色の紅茶"/>
+ <PageIntro eyebrow="TEA JOURNAL / 選び方・淹れ方・お茶時間" title="紅茶の読みもの" lead="好きな一杯を選ぶこと。おいしく淹れること。自分のために、ひと息つくこと。紅茶のある暮らしで気になることを、ひとつずつ確かめていきます。" photo="ガラスの茶器へ紅茶を注ぐ手元.jpg" alt="ガラスの茶器へ注がれる琥珀色の紅茶"/>
  <section class="wrap section journal-posts" aria-label="紅茶の記事">
  {active.length>0&&<><h2>気になることから、探してみる。</h2><div class="theme-grid">{active.map(t=><a class="theme-card" href={'/blog/'+t.id+'/'}><span class="eyebrow">{t.number}</span><h3>{t.title}</h3><p>{t.description}</p></a>)}</div></>}
  {posts.length>0?<><h2>紅茶の記事</h2><div class="post-grid">{posts.map(post=><PostCard post={post}/>)}</div></>:<div class="journal-empty"><div><p class="eyebrow">これからの読みもの</p><h2>確かめたことから、<br/>一つずつ。</h2><p>紅茶の表示、香りや味わい、淹れ方の工夫。気になったことを、そのままにせず、確認した範囲が分かる形で伝えていきます。</p><p>記事は現在準備しています。</p></div><div class="journal-status"><h3>あなたが知りたい、紅茶のこと。</h3><p>「カフェインレスでも好きな味を見つけたい」「冷たい紅茶をおいしく淹れたい」。気になっていることや、取り上げてほしい疑問をお聞かせください。</p><a class="button" href="/contact/?kind=tea">紅茶について質問する</a></div></div>}

@@ -54,8 +54,5 @@ remoteは `https://github.com/tee0317/own-company-site.git`。
 7. 自動投稿を有効化。重大な不具合時はPagesワークフローと自動投稿を停止。
 
 ## 写真
-トップ：Deepal Tamang / Unsplash（実写）。写真はカフェインレスの実物商品を示すものではない。
-https://unsplash.com/photos/pouring-tea-into-a-glass-cup-etEgw9fExWk
-利用条件：https://unsplash.com/license
-物語：本人のGoogleフォトから提供された紅茶の写真。位置情報を含む撮影メタデータは除去。
-人物：既存サイトの本人写真。架空の体験談・お客様の声は掲載しない。
+全写真は2026-10-14に利用条件を確認したUnsplashの無料素材へ差し替え。元の本人写真・Googleフォト素材・旧ストック写真は公開対象から削除した。
+作者・元ページ・利用条件は [photo-credits.md](photo-credits.md)。人物の顔を他人の素材写真に置き換えず、作り手は文章と茶葉のイメージで紹介する。

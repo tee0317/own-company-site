@@ -14,5 +14,18 @@
 @media(max-width:800px){.wrap{width:calc(100% - 40px)}.header-inner{display:flex;flex-direction:column;gap:8px;padding-block:16px 8px}.brand{font-size:1.25rem}.brand small{font-size:.6875rem}.header-inner nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;width:100%;margin-top:0}.header-inner nav a{font-size:.9375rem}.header-inner nav a:nth-child(3){grid-column:auto}.section{padding-block:48px}.footer-top nav a{font-size:1rem}.prose .post-grid{grid-template-columns:1fr}.author-card{grid-template-columns:64px minmax(0,1fr)}.prose>h1{font-size:2rem}.empty-state{padding:26px 24px}}
 .prose>.first-heading{margin-top:0;border-top:0;padding-top:0}.journal-list>.empty-state:first-child{margin-top:0}
 /* Footer navigation follows the same content alignment as the homepage. */
+/* Shared hierarchy informed by the reference tea shop: identity above navigation. */
+.site-header .header-inner{display:flex;flex-direction:column;justify-content:center;min-height:144px;padding-block:20px 8px;gap:12px}
+.site-header .brand{font-size:1.875rem;line-height:1.35;letter-spacing:.12em}
+.site-header .header-inner nav{display:flex;justify-content:center;gap:64px;width:100%;margin:0}
+.site-header .header-inner nav a{font-family:var(--sans);font-size:1rem;letter-spacing:.03em;min-height:48px;text-underline-offset:8px}
+.site-header .brand small{font-size:.75rem;margin-top:7px}
+.site-footer{background:#20483f;color:#f8f7f1}
+.site-footer .footer-top p,.site-footer .footer-top .footer-heading,.site-footer .footer-bottom{color:#e1e8df}
+.site-footer a:focus-visible,.photo-credits .photo-title:focus-visible{outline:3px solid #ead6b4;outline-offset:5px}
+.site-footer .footer-bottom{border-color:#5a776c}.site-footer a:hover{color:#ead6b4}
+.photo-credits{margin-top:40px;border-top:1px solid #5a776c;padding-top:20px;color:#e1e8df;font-size:.875rem;max-width:840px}
+.photo-credits .photo-title{font-family:var(--serif);font-size:1rem;margin-bottom:14px}.photo-credits p+p{margin-top:12px}
+@media(max-width:800px){.site-header .header-inner{min-height:0;padding-block:18px 8px;gap:12px}.site-header .brand{font-size:1.375rem}.site-header .header-inner nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.site-header .header-inner nav a{font-size:.9375rem}.site-header .brand small{font-size:.6875rem}}
 .site-footer{padding-block:72px 30px}.footer-top{grid-template-columns:.85fr 1.6fr;gap:80px}.footer-brand{font-size:2rem}.footer-top nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.footer-top nav a{display:block;min-height:48px;padding-block:9px}.footer-top .footer-heading{font-family:var(--serif);font-size:1.125rem;margin:0 0 16px;color:var(--ink)}.footer-location{font-size:.875rem!important}.footer-bottom{margin-top:48px;padding-top:24px}
 @media(max-width:900px){.footer-top{grid-template-columns:1fr;gap:40px}.footer-top nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.footer-brand{font-size:1.625rem}.site-footer{padding-block:52px 26px}}
