@@ -51,3 +51,23 @@
 .photo-opening .site-header{position:absolute;inset:0 0 auto;z-index:5;background:transparent;color:#fff;border-bottom:1px solid rgba(255,255,255,.22)}
 .photo-opening .brand,.photo-opening .brand small,.photo-opening .site-header nav a{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .photo-opening .site-header a:hover{color:#e3eacb}.photo-opening .site-header a:focus-visible{outline-color:#fff}
+
+/* 2026-10-25 世界観「窓ひとつの灯り」：墨と生成りに、紅茶の琥珀だけ。 */
+:root{--paper:#f4f1ea;--surface:#ebe7de;--ink:#1d1b19;--muted:#6e675e;--line:#d8d2c6;--tea:#a8693a;--brand-deep:#1d1b19;--gold-light:#c98b57}
+.site-header{background:var(--paper)}
+.site-header .brand{font-weight:400;letter-spacing:.14em}
+.site-header .header-inner nav a{font-family:var(--serif);font-size:.9375rem;letter-spacing:.12em}
+.btn:hover,.button:hover{background:#3a3633;border-color:#3a3633}
+.site-footer{background:#1d1b19;color:#f1ece3}
+.site-footer .footer-top p,.site-footer .footer-top .footer-heading,.site-footer .footer-bottom,.photo-credits{color:#cfc8bc}
+.site-footer .footer-bottom,.photo-credits{border-color:#3d3935}
+.site-footer a:hover{color:#e8c9a8}
+.photo-opening .site-header{border-bottom-color:rgba(244,241,234,.16)}
+.photo-opening .site-header a:hover{color:#e8c9a8}
+.mobile-break{display:none}
+.site-header .brand,.breadcrumbs a{display:inline-flex;align-items:center;min-height:44px}
+.site-header .brand{display:block;padding-block:4px}
+@media(max-width:800px){.mobile-break{display:inline}
+.site-header .header-inner{padding-block:12px 4px;gap:4px}
+.site-header .header-inner nav{display:flex;justify-content:space-between;gap:4px}
+.site-header .header-inner nav a{font-size:.8125rem;letter-spacing:.06em;min-height:44px;padding-inline:2px}}

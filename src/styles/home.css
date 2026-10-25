@@ -1,24 +1,97 @@
-/* Photo-led tea editorial: large imagery, short measures, a clear next step. */
-.home-page{--home-space:clamp(76px,8vw,132px)}
-.home-section{padding-block:var(--home-space)}
-.home-page h2{font-size:clamp(1.875rem,3vw,2.875rem);line-height:1.65;letter-spacing:.045em;text-wrap:balance}
-.home-page p{line-height:1.95}.home-page .eyebrow{letter-spacing:.14em;font-size:.8125rem;line-height:1.7;margin-bottom:24px}
-.hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:clamp(820px,96svh,1100px);background:#172d22;color:#fff;overflow:hidden}
-.hero-photo{position:absolute;inset:0;z-index:-2}.hero-photo picture{position:absolute;inset:0;display:block}.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:55% 50%}
-.hero:after{content:'';position:absolute;inset:0;background:rgba(4,22,12,.34);z-index:-1;pointer-events:none}
-.hero-copy{width:min(1440px,calc(100% - 160px));margin-inline:auto;padding:215px 0 100px;min-width:0;align-self:center}
-.hero-copy>.eyebrow{color:#f6f4e9;font-size:.75rem;margin-bottom:24px}
-.hero h1{font-size:clamp(2.5rem,4.6vw,4.5rem);line-height:1.55;letter-spacing:.065em;font-weight:500;max-width:14em;text-shadow:0 2px 20px rgba(0,0,0,.2)}
-.hero-subtitle{display:block;font-family:var(--sans);font-size:1rem;line-height:1.8;letter-spacing:.035em;margin-bottom:28px;color:#fff}
-.hero-description{font-size:1.125rem;color:#fff;margin-top:28px;max-width:32em}.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:36px;max-width:700px}
-.hero-actions .btn{font-size:1rem;min-height:54px;background:#f8f7f1;color:#243c34;border-color:#f8f7f1;padding-inline:28px}.hero-actions .btn:hover{background:#e4e9dc;border-color:#e4e9dc;color:#173d2c}.hero-actions .btn-outline{background:rgba(9,27,17,.45);color:#fff;border-color:#e9eee5}.hero-actions .btn-outline:hover{background:#f8f7f1;color:#243c34}.hero a:focus-visible{outline-color:#fff;outline-offset:6px}
-.brand-introduction{padding-block:32px;border-bottom:1px solid var(--line)}.brand-introduction p{max-width:60em;margin-inline:auto;font-size:1rem;color:var(--muted);text-align:center}
-.story-layout{display:grid;grid-template-columns:46fr 54fr;align-items:center;gap:clamp(40px,6vw,96px)}.story-photo{min-width:0}.story-photo picture{display:block}.story-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:28% 50%}.story-copy{padding-block:20px;min-width:0}.story-copy h2{margin-bottom:30px}.story-copy>p:not(.eyebrow){font-size:1.125rem;color:var(--muted)}.story-copy p+p{margin-top:24px}.story-copy .btn{margin-top:32px}
-.journal-section{background:#eef0e9}.section-heading{max-width:860px;margin:0 auto 52px;text-align:center}.section-lead{margin-top:24px;color:var(--muted)}.heading-with-link{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;text-align:left}.heading-with-link .section-lead{max-width:26em;padding-bottom:6px;margin-top:0}.section-action{text-align:center;margin-top:48px}.featured-grid{margin-top:0}
-.scene-section{scroll-margin-top:24px}.scene-section .section-heading{margin-bottom:56px}
-.work-section{background:#eceee5}.work-layout{display:grid;grid-template-columns:44fr 56fr;gap:clamp(48px,7vw,112px);align-items:center}.work-copy{min-width:0}.work-copy h2{margin-bottom:32px}.work-copy>p:not(.eyebrow){color:var(--muted);font-size:1.125rem}.work-copy .btn{margin-top:32px}.work-photo{margin:0;min-width:0}.work-photo picture{display:block}.work-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 55%}.work-photo figcaption{font-size:.8125rem;color:var(--muted);margin-top:12px}
-.maker-section{background:var(--paper)}.maker-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px}.maker-copy{max-width:35em}.maker-name{font:1.625rem/1.7 var(--serif)}.maker-title{font-size:1rem;margin-top:12px}.title-explanation{font-size:.875rem;color:var(--muted);margin-top:6px}.maker-copy>p:nth-last-of-type(1){margin-top:28px;color:var(--muted)}.maker-copy .text-link{margin-top:20px}
-.closing-section{background:#e5e9de}.closing-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}.closing-layout p:not(.eyebrow){color:var(--muted);margin-top:24px}.closing-actions{display:flex;flex-direction:column;gap:16px;max-width:360px;justify-self:end;width:100%}.closing-actions .btn{min-height:56px}.mobile-break{display:none}
+/* 窓ひとつの灯り：墨と生成りに、紅茶の琥珀だけ。余白で語り、写真は大きく。 */
+.home{--h-ink:#1d1b19;--h-char:#2b2926;--h-paper:#f4f1ea;--h-mute:#6e675e;--h-line:#d8d2c6;--h-amber:#8f5629;--h-space:clamp(88px,11vw,168px);background:var(--h-paper);color:var(--h-ink)}
+.home h1,.home h2,.home h3{font-family:var(--serif);font-weight:400;letter-spacing:.08em}
+.home h2{font-size:clamp(1.5rem,2.4vw,2.125rem);line-height:1.9}
+.home h3{font-size:1.1875rem;line-height:1.8;letter-spacing:.06em}
+.home p{line-height:2.05;letter-spacing:.04em}
+.h-wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+.h-section{padding-block:var(--h-space)}
+.h-label{font-family:var(--serif);font-size:.75rem;letter-spacing:.24em;color:var(--h-mute);margin-bottom:22px}
+.h-no{font-family:var(--serif);font-size:.8125rem;letter-spacing:.18em;color:var(--h-amber);margin-bottom:10px}
+.h-head{margin-bottom:clamp(48px,6vw,80px)}
+.h-note{font-size:.8125rem;color:var(--h-mute);margin-top:28px}
+.home picture{display:block}.home img{width:100%;object-fit:cover}
+.sp{display:none}
 
-@media(max-width:1000px){.hero-copy{width:calc(100% - 96px)}.hero h1{font-size:3rem}.story-layout,.work-layout{gap:40px}.heading-with-link{align-items:flex-start}.heading-with-link .section-lead{max-width:20em}.maker-layout{gap:48px}}
-@media(max-width:760px){.home-page{--home-space:64px}.hero{min-height:max(820px,100svh);display:flex;align-items:flex-end}.hero-photo{aspect-ratio:auto}.hero-photo img{object-position:57% 50%}.hero:after{background:rgba(4,22,12,.5)}.hero-copy{width:100%;padding:220px 24px 48px;align-self:auto}.hero-copy>.eyebrow{display:none}.hero h1{font-size:clamp(2rem,8.5vw,2.75rem);line-height:1.65;letter-spacing:.055em}.hero-subtitle{font-size:.875rem;margin-bottom:22px;letter-spacing:.015em}.hero-description{font-size:1.125rem;margin-top:24px}.hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:28px}.hero-actions .btn{width:100%;font-size:1rem;min-height:52px;padding-inline:16px}.brand-introduction{padding-block:26px}.brand-introduction p{text-align:left}.story-layout,.work-layout,.maker-layout,.closing-layout{grid-template-columns:1fr;gap:32px}.story-photo img{aspect-ratio:4/3}.story-copy{padding:0}.story-copy .btn{width:100%;font-size:1rem;padding-inline:16px}.home-page h2{font-size:1.9375rem;line-height:1.65}.desktop-break{display:none}.mobile-break{display:block}.heading-with-link{display:block}.heading-with-link .section-lead{max-width:32em;margin-top:24px}.section-heading{text-align:left;margin-bottom:32px}.scene-section .section-heading{margin-bottom:32px}.work-photo{grid-row:1}.work-photo img{aspect-ratio:4/3}.work-copy .btn{width:100%}.closing-actions{max-width:none;justify-self:stretch}.closing-layout{gap:28px}.section-action .btn{width:100%}.maker-copy{max-width:none}}
+/* 1. はじめの一枚 */
+.h-hero{position:relative;isolation:isolate;min-height:max(640px,100svh);display:flex;align-items:flex-end;background:#121110;color:#f4f1ea;overflow:hidden}
+.h-hero-photo{position:absolute;inset:0;z-index:-2}.h-hero-photo picture{position:absolute;inset:0}.h-hero-photo img{height:100%;object-position:30% 50%}
+.h-hero:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,9,8,0) 30%,rgba(10,9,8,.55) 70%)}
+.h-hero-copy{width:min(1180px,calc(100% - 48px));margin-inline:auto;padding:0 0 clamp(64px,9vw,120px) 56%}
+.h-hero .h-label{color:#c9c2b6}
+.h-hero h1{font-size:clamp(1.75rem,3vw,2.75rem);line-height:1.85}
+.h-hero-sub{display:block;font-size:.875rem;letter-spacing:.3em;margin-bottom:22px;color:#d9d2c5}
+.h-hero-text{margin-top:28px;font-size:1rem;color:#e4ded3}
+.h-scroll{display:inline-flex;align-items:center;gap:14px;min-height:48px;margin-top:36px;font-size:.875rem;letter-spacing:.12em;color:#f4f1ea;text-decoration:none;border-bottom:1px solid rgba(244,241,234,.5)}
+.h-scroll:after{content:'↓';font-size:.8125rem}
+.h-scroll:hover{color:#e8c9a8}
+
+/* 2. 一杯の話 */
+.h-talk-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,128px);align-items:start}
+.h-talk-photo{margin:48px 0 0}.h-talk-photo img{aspect-ratio:3/2}
+.h-talk-list{list-style:none;margin:0;padding:0;counter-reset:none}
+.h-talk-list li{padding-block:36px;border-top:1px solid var(--h-line)}.h-talk-list li:last-child{border-bottom:1px solid var(--h-line)}
+.h-talk-list p:not(.h-no){margin-top:12px;font-size:1rem;color:var(--h-mute)}
+
+/* 3. 場所 */
+.h-places{background:#ebe7de}
+.h-place-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,2.4vw,36px)}
+.h-place img{aspect-ratio:3/4}
+.h-place .h-label{margin:22px 0 6px}
+.h-place p:not(.h-label){font-size:1rem;color:var(--h-mute);margin-top:8px}
+
+/* 4. 形 */
+.h-format-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
+.h-format img{aspect-ratio:1/1}
+.h-format>div{padding-top:26px}
+.h-format p:not(.h-no){font-size:1rem;color:var(--h-mute);margin-top:10px}
+
+/* 5. 場所だけ */
+.h-carry{background:var(--h-char);color:#f1ece3}
+.h-carry .h-label{color:#a9a196}
+.h-carry-layout{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(48px,8vw,120px);align-items:center}
+.h-carry-photo{margin:0}.h-carry-photo img{aspect-ratio:4/3}
+.h-checks{list-style:none;margin:40px 0 0;padding:0}
+.h-checks li{padding:18px 0 18px 28px;border-top:1px solid rgba(241,236,227,.18);font-size:1rem;letter-spacing:.04em;line-height:1.9;position:relative}
+.h-checks li:before{content:'';position:absolute;left:4px;top:31px;width:8px;height:1px;background:#c98b57}
+
+/* 6. 淹れる人 */
+.h-maker-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,128px);align-items:center}
+.h-maker-photo img{aspect-ratio:4/3}
+.h-maker-name{font-family:var(--serif);font-size:1.25rem;letter-spacing:.16em;margin:18px 0 22px}
+.h-maker-copy>p:not(.h-label):not(.h-maker-name){font-size:1rem;color:var(--h-mute)}
+.h-links{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:32px}
+.h-links a{display:inline-flex;align-items:center;min-height:48px;font-size:.875rem;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid var(--h-line)}
+.h-links a:hover{color:var(--h-amber);border-color:var(--h-amber)}
+
+/* 7. 相談 */
+.h-closing{position:relative;isolation:isolate;background:#121110;color:#f4f1ea;padding-block:clamp(120px,16vw,220px)}
+.h-closing-photo{position:absolute;inset:0;z-index:-2}.h-closing-photo picture{position:absolute;inset:0}.h-closing-photo img{height:100%;object-position:50% 100%}
+.h-closing:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,9,8,.7) 0%,rgba(10,9,8,.55) 55%,rgba(10,9,8,.2) 100%)}
+.h-closing-copy{text-align:center}
+.h-closing .h-label{color:#c9c2b6}
+.h-closing-copy>p:not(.h-label){margin-top:28px;font-size:1rem;color:#e4ded3}
+.h-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;min-width:240px;margin-top:44px;padding:12px 40px;border:1px solid rgba(244,241,234,.7);color:#f4f1ea;text-decoration:none;font-size:.9375rem;letter-spacing:.2em;transition:background-color .2s,color .2s}
+.h-btn:hover{background:#f4f1ea;color:var(--h-ink)}
+.home a:focus-visible{outline:2px solid #c98b57;outline-offset:6px}
+
+@media(max-width:1000px){.h-place-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .home{--h-space:80px}
+ .sp{display:inline}
+ .h-wrap{width:calc(100% - 40px)}
+ .h-hero{min-height:max(600px,100svh)}
+ .h-hero-photo img{object-position:18% 50%}
+ .h-hero:after{background:linear-gradient(180deg,rgba(10,9,8,.35) 0%,rgba(10,9,8,.45) 35%,rgba(10,9,8,.85) 75%)}
+ .h-hero-copy{width:calc(100% - 40px);padding:0 0 56px}
+ .h-hero h1{font-size:1.75rem}
+ .h-talk-layout,.h-carry-layout,.h-maker-layout{grid-template-columns:1fr}
+ .h-talk-photo{margin-top:32px}
+ .h-place-grid{grid-template-columns:1fr 1fr;gap:28px 16px}
+ .h-place h3{font-size:1.0625rem}
+ .h-format-list{grid-template-columns:1fr;gap:56px}
+ .h-format img{aspect-ratio:4/3}
+ .h-maker-photo{order:2}
+ .h-btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.h-btn{transition:none}}

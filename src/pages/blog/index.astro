@@ -10,7 +10,7 @@ const active=themes.filter(t=>posts.some(p=>p.data.theme===t.id));
 ---
 <Layout title="カフェインレス紅茶の読みもの｜プロジェクトソクラテス" description="カフェインレス紅茶の選び方、淹れ方、お茶時間。試したことと調べたことを分けて、確認した範囲が分かる形で伝えます。" breadcrumbs={[{name:'紅茶の読みもの'}]}>
 <div class="subpage">
- <PageIntro eyebrow="TEA JOURNAL / 選び方・淹れ方・お茶時間" title="紅茶の読みもの" lead="好きな一杯を選ぶこと。おいしく淹れること。自分のために、ひと息つくこと。紅茶のある暮らしで気になることを、ひとつずつ確かめていきます。" photo="ガラスの茶器へ紅茶を注ぐ手元.jpg" alt="ガラスの茶器へ注がれる琥珀色の紅茶"/>
+ <PageIntro eyebrow="TEA JOURNAL / 選び方・淹れ方・お茶時間" title="紅茶の読みもの" lead="好きな一杯を選ぶこと。おいしく淹れること。自分のために、ひと息つくこと。紅茶のある暮らしで気になることを、ひとつずつ確かめていきます。" photo="ガラスのポットから紅茶を注ぐ手元.jpg" alt="ガラスのポットから磁器のカップへ注がれる紅茶"/>
  <section class="wrap section scene-guide" aria-labelledby="scene-guide-heading"><div class="editorial-heading"><p class="eyebrow">TEA FOR YOUR MOMENT</p><h2 id="scene-guide-heading">いまの時間から、一杯を考える。</h2><p>夜のひと息、仕事の合間、家族との午後。<br/>気になる場面から、紅茶の話を読んでみませんか。</p></div><nav class="scene-tabs" aria-label="お茶時間を選ぶ">{scenes.map(scene=><a class="btn btn-outline" href={`#${scene.id}`}>{scene.label==='EVENING'?'夜のひと息':scene.label==='AFTERNOON'?'仕事の合間':'休日のテーブル'}</a>)}</nav><div class="scene-guide-grid">{scenes.map(scene=><section class="scene-guide-card" id={scene.id}><p class="eyebrow">{scene.label}</p><h3>{scene.title}</h3><p>{scene.guide}</p><ul>{scene.articles.map(id=>{const post=posts.find(p=>p.id===id);return post&&<li><a href={`/blog/${post.id}/`}>{post.data.title}</a></li>})}</ul></section>)}</div></section>
  <section class="wrap section journal-posts" aria-label="紅茶の記事">
  {active.length>0&&<><h2>気になることから、探してみる。</h2><div class="theme-grid">{active.map(t=><a class="theme-card" href={'/blog/'+t.id+'/'}><span class="eyebrow">{t.number}</span><h3>{t.title}</h3><p>{t.description}</p></a>)}</div></>}
