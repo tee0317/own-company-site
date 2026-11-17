@@ -97,7 +97,6 @@
 .h-place img { aspect-ratio: 4 / 3; }
 .h-place h3 { margin-bottom: 12px; }
 .h-place p { margin-top: 8px; color: var(--h-mute); }
-.h-place .h-proof { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--h-line); font-size: .875rem; }
 .home .h-note { margin-top: 24px; color: var(--h-mute); font-size: .8125rem; }
 .h-carry { background: var(--h-char); color: var(--h-paper); }
 .h-closing { text-align: center; }
