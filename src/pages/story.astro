@@ -19,7 +19,16 @@ const featured=(await publishedPosts()).filter(p=>p.data.featured).sort((a,b)=>a
  <section id="cup" class="story-chapter"><p class="chapter-number">03</p><h2>もう一口飲みたくなる、一杯を。</h2>
  <p>そこで用意したいと思ったのが、カフェインレスのアイスティーです。カフェインにも配慮しながら、爽やかな香りと、すっきりした味わいを楽しめる。おいしくて、ついもう一口飲みたくなる。そんな一杯を目指しています。</p>
  <p>母と娘が笑い合う夏を、少しでも長く。その願いから、同じように紅茶を愛する人にも、この一杯を届けたいと思うようになりました。今日も、家族で過ごす夏に似合う紅茶を探しています。</p></section>
- <p class="reading-signature">土志田 拓郎</p></article></div>
+ <p class="reading-signature">土志田 拓郎</p>
+ <section class="story-invitation" aria-labelledby="story-invitation-heading">
+  <h2 id="story-invitation-heading">この一杯を、あなたの場所にも。</h2>
+  <a class="button" href="/contact/">出張のお茶会を相談する</a>
+ </section></article></div>
  {featured.length>0&&<section class="section story-journal"><div class="wrap"><p class="eyebrow">TEA JOURNAL</p><h2>次のお茶時間に、ひとつの読みものを。</h2><div class="post-grid">{featured.map(post=><PostCard post={post}/>)}</div></div></section>}
  <PageLinks heading="この思いを、日々の取り組みに。" links={[{eyebrow:'THE MAKER',title:'作り手と、いまの取り組み。',description:'母への思いから目指している一杯と、大切にしていることを紹介します。',url:'/about/',label:'作り手について読む'},{eyebrow:'TEA JOURNAL',title:'好きな紅茶を、もっと自分らしく。',description:'選び方、淹れ方、お茶時間の楽しみ方。確かめたことを少しずつ伝える場所です。',url:'/blog/',label:'紅茶の読みものへ'}]}/>
 </div></Layout>
+<style>
+.story-invitation { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
+.story-invitation h2 { font-size: clamp(1.4rem, 3vw, 1.85rem); }
+.story-invitation .button { margin-top: 18px; }
+</style>

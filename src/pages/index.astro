@@ -1,85 +1,110 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TeaPhoto from '../components/TeaPhoto.astro';
-import {SITE} from '../lib/site';
+import { SITE } from '../lib/site';
 import '../styles/home.css';
-const talks=[
- {no:'No.01',title:'茶葉の話',text:'同じ紅茶でも、産地や摘まれた季節で香りが変わります。その日の茶葉が、どこから来たのかをお話しします。'},
- {no:'No.02',title:'淹れ方の話',text:'お湯の温度と、待つ時間。少し変えるだけで、同じ茶葉が別の顔を見せます。目の前で淹れながら、その違いを。'},
- {no:'No.03',title:'カフェインの話',text:'控えたい日も、香りをあきらめなくていい。カフェインレスの紅茶の選び方と、楽しみ方をお伝えします。'}
-];
-const places=[
- {photo:'お店の一角の紅茶の席.jpg',alt:'小さなお店の一角に設けた紅茶の席',label:'SHOP',title:'お店の一角で',text:'来てくださるお客様に、いつもと違う一杯を。'},
- {photo:'集まりのテーブルに並ぶ紅茶.jpg',alt:'長いテーブルに紅茶のカップが並ぶ集まり',label:'GATHERING',title:'集まりの席で',text:'地域の会、社内の集い、施設のお茶の時間に。'},
- {photo:'淹れ方を試す教室の手元.jpg',alt:'参加者が自分のポットで紅茶を淹れる手元',label:'CLASS',title:'教室・サロンで',text:'淹れ方を一緒に試す、小さな講座として。'},
- {photo:'家族で囲む紅茶の時間.jpg',alt:'家族の手がテーブルの紅茶を囲む様子',label:'FAMILY',title:'家族の集まりに',text:'記念日や、久しぶりに顔をそろえる日に。'}
-];
-const formats=[
- {photo:'ガラスのポットから紅茶を注ぐ手元.jpg',alt:'ガラスのポットから磁器のカップへ紅茶を注ぐ手元',title:'小さなお茶会',text:'少人数で囲むテーブルに。一杯ずつ淹れて、お手渡しします。'},
- {photo:'三杯の飲み比べ.jpg',alt:'色の濃さが違う三杯の紅茶と茶葉',title:'紅茶の一角',text:'集まりの中に、紅茶の席をひとつ。飲み比べも楽しめます。'},
- {photo:'台に並べた紅茶の道具.jpg',alt:'台に並べたポットとカップと茶葉の小瓶',title:'淹れ方の体験会',text:'参加する方が、自分の手で淹れてみる時間に。'}
+
+const heroPhoto = '窓辺で紅茶を淹れる茶房の全景.jpg';
+const places = [
+  {
+    photo: '家族で囲む紅茶の時間.jpg',
+    alt: '家族の手がテーブルの紅茶を囲む様子',
+    title: '家族の集まりに',
+    text: '特別な記念日や、久しぶりに顔をそろえる日に。紅茶はこちらでお淹れします。皆さんは、同じテーブルで話の続きを。',
+  },
+  {
+    photo: '淹れ方を試す教室の手元.jpg',
+    alt: 'ポットを手に取り紅茶を淹れる様子',
+    title: '施設の体験会で',
+    text: '施設や地域の集まりに。簡単な体操やクイズ、紅茶の淹れ方体験を組み合わせたレクリエーションもご相談いただけます。',
+  },
+  {
+    photo: '集まりのテーブルに並ぶ紅茶.jpg',
+    alt: '長いテーブルに紅茶のカップが並ぶ様子',
+    title: '教室・サロンで',
+    text: 'ピアノ教室のレセプションパーティなど。20〜40名様の会も、会場や提供方法に合わせてご相談いただけます。',
+  },
+  {
+    photo: 'お店の一角の紅茶の席.jpg',
+    alt: 'お店の一角に設けた紅茶の席',
+    title: 'お店の一角で',
+    text: '店頭に、足を止めて一杯を味わえる試飲の席を。',
+    proof: '玄米コーヒーでの実績：都内の百貨店で店頭試飲を実施。平日2時間の売上は、別の平日の同じ時間帯と比べて約1.5倍でした。',
+  },
 ];
 ---
-<Layout title="出張ティーソムリエ｜その場所に、一杯の紅茶の時間を｜プロジェクトソクラテス" description="茶葉と道具を持って伺い、目の前で紅茶を淹れる出張ティーソムリエ。お店の一角、集まりの席、教室、家族の集まりに。カフェインを控えている方も同じ一杯を囲めます。千葉・佐倉から。" overlayHeader image="窓辺で紅茶を淹れる茶房の全景.jpg">
-<div class="home">
- <section class="h-hero" aria-labelledby="home-title">
-  <div class="h-hero-photo"><TeaPhoto name="窓辺で紅茶を淹れる茶房の全景.jpg" alt="窓の光を背に、カウンターで紅茶を注ぐ人の後ろ姿" sizes="100vw" eager/></div>
-  <div class="h-hero-copy">
-   <p class="h-label">TEA, BROUGHT TO YOUR PLACE</p>
-   <h1 id="home-title"><span class="h-hero-sub">出張ティーソムリエ</span>その場所に、<br/>一杯の紅茶の<br/>時間を。</h1>
-   <p class="h-hero-text">茶葉と道具を持って伺い、<br/>目の前で紅茶を淹れます。<br/>カフェインを控えている方も、<br class="sp"/>同じ一杯を囲めます。</p>
-   <a class="h-scroll" href="#places">どんな場所でできるか</a>
+<Layout
+  title="出張ティーソムリエ｜千葉から、カフェインレス紅茶のお茶会へ｜プロジェクトソクラテス"
+  description="千葉を拠点に、茶葉と道具を持って伺う出張ティーソムリエ。家族の集まりや施設の体験会、教室・サロン、お店で、カフェインレスの紅茶を目の前でお淹れします。"
+  overlayHeader
+  image={heroPhoto}
+>
+  <div class="home">
+    <section class="h-hero" aria-labelledby="home-title">
+      <div class="h-hero-photo">
+        <TeaPhoto name={heroPhoto} alt="窓辺で紅茶を注ぐ手元とテーブルに並ぶカップ" sizes="100vw" eager />
+      </div>
+      <div class="h-hero-copy">
+        <p class="h-hero-sub">出張ティーソムリエ</p>
+        <h1 id="home-title">いつも気を配る<span>あなたにも、</span><br />ゆっくり一杯を。</h1>
+        <p class="h-hero-text">千葉を拠点に、茶葉と道具を持って伺う出張ティーソムリエです。カフェインレスの紅茶を、目の前でお淹れします。</p>
+        <a class="h-btn h-btn-primary" href="/contact/">出張のお茶会を相談する</a>
+      </div>
+    </section>
+
+    <section class="h-section" aria-labelledby="home-story-heading">
+      <div class="h-wrap h-split">
+        <div class="h-story-copy">
+          <h2 id="home-story-heading">母にも、もてなされる時間を。</h2>
+          <p>娘との暮らしを支えてくれた母に、好きな紅茶を孫と一緒に楽しむ時間を贈りたい。それが、カフェインレスの紅茶を探し始めたきっかけです。</p>
+          <p>家族を気にかけるのが好きな人にも、誰かに淹れてもらって、話の続きを楽しむ時間があっていい。そんな一杯を、あなたの場所にも届けます。</p>
+          <p class="h-signature">{SITE.maker}</p>
+          <div class="h-links">
+            <a href="/story/">母から始まった物語を読む</a>
+            <a href="/about/">作り手について</a>
+          </div>
+        </div>
+        <div class="h-feature-photo">
+          <TeaPhoto name="カップを手に話す二人の手元.jpg" alt="紅茶のカップを手に向かい合う二人の手元のイメージ" />
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section h-places" id="places" aria-labelledby="places-heading">
+      <div class="h-wrap">
+        <h2 id="places-heading">たとえば、こんな場所で。</h2>
+        <ul class="h-place-grid">
+          {places.map(({ photo, alt, title, text, proof }) => (
+            <li class="h-place">
+              <TeaPhoto name={photo} alt={alt} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" />
+              <h3>{title}</h3>
+              <p>{text}</p>
+              {proof && <p class="h-proof">{proof}</p>}
+            </li>
+          ))}
+        </ul>
+        <p class="h-note">写真はイメージです。</p>
+      </div>
+    </section>
+
+    <section class="h-section h-carry" aria-labelledby="carry-heading">
+      <div class="h-wrap h-split">
+        <div class="h-carry-copy">
+          <h2 id="carry-heading">茶葉と道具を持って、伺います。</h2>
+          <p>準備と片付けはこちらで。お湯や電源が使えるかは、事前にお聞きします。</p>
+        </div>
+        <div class="h-feature-photo">
+          <TeaPhoto name="道具を収めた木の茶箱.jpg" alt="ポットやカップ、茶葉の小瓶を収めた木の茶箱" />
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section h-closing" aria-labelledby="closing-heading">
+      <div class="h-wrap">
+        <h2 id="closing-heading">あなたの場所でも、<br />できるかもしれません。</h2>
+        <p>日にちや人数は未定でも大丈夫です。場所と、どなたと過ごす時間かを、決まっている範囲でお聞かせください。</p>
+        <a class="h-btn" href="/contact/">出張のお茶会を相談する</a>
+      </div>
+    </section>
   </div>
- </section>
-
- <section class="h-section h-talk" aria-labelledby="talk-heading"><div class="h-wrap h-talk-layout">
-  <div class="h-talk-head">
-   <p class="h-label">TODAY'S TEA</p>
-   <h2 id="talk-heading">一杯ごとに、<br/>小さな話を添えて。</h2>
-   <figure class="h-talk-photo"><TeaPhoto name="番号を付けた茶葉の小瓶.jpg" alt="番号の札を付けた茶葉の小瓶が棚に並ぶ"/></figure>
-  </div>
-  <ol class="h-talk-list">{talks.map(t=><li><p class="h-no">{t.no}</p><h3>{t.title}</h3><p>{t.text}</p></li>)}</ol>
- </div></section>
-
- <section class="h-section h-places" id="places" aria-labelledby="places-heading"><div class="h-wrap">
-  <div class="h-head"><p class="h-label">WHERE</p><h2 id="places-heading">たとえば、<br class="sp"/>こんな場所で。</h2></div>
-  <ul class="h-place-grid">{places.map(p=><li class="h-place"><TeaPhoto name={p.photo} alt={p.alt} sizes="(max-width: 760px) 100vw, 25vw"/><p class="h-label">{p.label}</p><h3>{p.title}</h3><p>{p.text}</p></li>)}</ul>
-  <p class="h-note">写真はイメージです。</p>
- </div></section>
-
- <section class="h-section h-formats" aria-labelledby="formats-heading"><div class="h-wrap">
-  <div class="h-head"><p class="h-label">HOW</p><h2 id="formats-heading">形は、<br class="sp"/>場所に合わせて。</h2></div>
-  <ol class="h-format-list">{formats.map((f,i)=><li class="h-format"><TeaPhoto name={f.photo} alt={f.alt} sizes="(max-width: 760px) 100vw, 33vw"/><div><p class="h-no">{`0${i+1}`}</p><h3>{f.title}</h3><p>{f.text}</p></div></li>)}</ol>
- </div></section>
-
- <section class="h-section h-carry" aria-labelledby="carry-heading"><div class="h-wrap h-carry-layout">
-  <figure class="h-carry-photo"><TeaPhoto name="道具を収めた木の茶箱.jpg" alt="ポットやカップ、茶葉の小瓶を収めた木の茶箱"/></figure>
-  <div class="h-carry-copy">
-   <p class="h-label">ALL WE NEED</p>
-   <h2 id="carry-heading">ご用意いただくのは、<br/>場所だけ。</h2>
-   <ul class="h-checks"><li>茶葉、器、道具はすべて持参します</li><li>当日の準備と片付けも、こちらで</li><li>お湯や電源が使えるかは、事前に伺います</li></ul>
-  </div>
- </div></section>
-
- <section class="h-section h-maker" aria-labelledby="maker-heading"><div class="h-wrap h-maker-layout">
-  <div class="h-maker-photo"><TeaPhoto name="仕切り箱に並べた紅茶の葉.jpg" alt="仕切りのある木箱に並べた八種類の紅茶の葉"/></div>
-  <div class="h-maker-copy">
-   <p class="h-label">THE MAKER</p>
-   <h2 id="maker-heading">淹れる人</h2>
-   <p class="h-maker-name">{SITE.maker}</p>
-   <p>紅茶好きの母に、好きなものを楽しむ時間があってほしい。そんな思いから、カフェインを控えたい日にも楽しめる一杯を探し始めました。千葉・佐倉を拠点に、茶葉と道具を持って伺います。</p>
-   <div class="h-links"><a href="/story/">はじまりの物語</a><a href="/about/">作り手について</a></div>
-  </div>
- </div></section>
-
- <section class="h-closing" aria-labelledby="closing-heading">
-  <div class="h-closing-photo"><TeaPhoto name="暗い台の上の一杯.jpg" alt="暗い台の上に置かれた一杯の紅茶" sizes="100vw"/></div>
-  <div class="h-wrap h-closing-copy">
-   <p class="h-label">YOUR PLACE</p>
-   <h2 id="closing-heading">あなたの場所でも、<br/>できるかもしれません。</h2>
-   <p>日にちや人数が決まっていなくても大丈夫です。<br/>どんな場所で、どなたに飲んでほしいか。<br/>まずはお聞かせください。</p>
-   <a class="h-btn" href="/contact/">相談してみる</a>
-  </div>
- </section>
-</div>
 </Layout>
