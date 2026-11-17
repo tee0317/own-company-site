@@ -1,8 +1,33 @@
 ---
-interface Props { heading?:string; links:{eyebrow:string;title:string;description:string;url:string;label:string}[]; }
-const {heading='この先も、一杯を探しながら。',links}=Astro.props;
+import TeaPhoto from './TeaPhoto.astro';
+interface Props {
+  heading?: string;
+  links: { eyebrow: string; title: string; description: string; url: string; label: string }[];
+}
+const { heading = 'この先も、一杯を探しながら。', links } = Astro.props;
+const photos: Record<string, { name: string; alt: string }> = {
+  '/story/': { name: '家族のお茶会のテーブル.jpg', alt: '窓辺のお茶のテーブルに並んだカップとお菓子' },
+  '/about/': { name: 'ガラスのポットから紅茶を注ぐ手元.jpg', alt: 'ガラスのポットから紅茶を注ぐ手元' },
+  '/blog/': { name: '番号を付けた茶葉の小瓶.jpg', alt: '棚に並んだ茶葉の小瓶' },
+  '/contact/': { name: 'カップを手に話す二人の手元.jpg', alt: '紅茶を囲んで向かい合う二人の手元' },
+};
 ---
 <section class="page-links section" aria-label="次のページへ">
- <div class="wrap"><p class="eyebrow">EXPLORE PROJECT SOCRATES</p><h2>{heading}</h2>
- <div class="page-links-grid">{links.map(link=><a class="page-link-card" href={link.url}><p class="eyebrow">{link.eyebrow}</p><h3>{link.title}</h3><p>{link.description}</p><span class="page-link-label">{link.label}</span></a>)}</div></div>
+  <div class="wrap">
+    <p class="eyebrow">EXPLORE PROJECT SOCRATES</p>
+    <h2>{heading.split(/(?<=、)/).map(part => <span class="heading-phrase">{part}</span>)}</h2>
+    <div class="page-links-grid">
+      {links.map(link => (
+        <a class="page-link-card" href={link.url}>
+          {photos[link.url] && <div class="page-link-photo"><TeaPhoto name={photos[link.url].name} alt={photos[link.url].alt} sizes="(max-width: 720px) 100vw, 50vw" /></div>}
+          <div class="page-link-copy">
+            <p class="eyebrow">{link.eyebrow}</p>
+            <h3>{link.title.split(/(?<=、)/).map(part => <span class="heading-phrase">{part}</span>)}</h3>
+            <p>{link.description}</p>
+            <span class="page-link-label">{link.label}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
 </section>

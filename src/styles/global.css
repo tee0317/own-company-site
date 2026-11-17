@@ -71,3 +71,11 @@
 .site-header .header-inner{padding-block:12px 4px;gap:4px}
 .site-header .header-inner nav{display:flex;justify-content:space-between;gap:4px}
 .site-header .header-inner nav a{font-size:.8125rem;letter-spacing:.06em;min-height:44px;padding-inline:2px}}
+
+/* Keep navigation labels and Japanese phrases aligned as the viewport narrows. */
+.breadcrumbs ol { align-items: center; gap: 4px 12px; }
+.breadcrumbs li { display: inline-flex; align-items: center; min-height: 44px; }
+.breadcrumbs li + li::before { margin-right: 12px; }
+.breadcrumbs a, .breadcrumbs [aria-current] { display: inline-flex; align-items: center; min-height: 44px; }
+h1, h2, h3 { overflow-wrap: normal; line-break: strict; text-wrap: pretty; }
+.heading-phrase { display: inline-block; max-width: 100%; }
