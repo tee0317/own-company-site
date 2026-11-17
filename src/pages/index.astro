@@ -1,20 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TeaPhoto from '../components/TeaPhoto.astro';
-import { SITE } from '../lib/site';
 import '../styles/home.css';
 
 const heroPhoto = '窓辺で紅茶を淹れる茶房の全景.jpg';
 const places = [
   {
-    photo: '家族で囲む紅茶の時間.jpg',
-    alt: '家族の手がテーブルの紅茶を囲む様子',
-    title: '家族の集まりに',
-    text: '特別な記念日や、久しぶりに顔をそろえる日に。紅茶はこちらでお淹れします。皆さんは、同じテーブルで話の続きを。',
-  },
-  {
-    photo: '淹れ方を試す教室の手元.jpg',
-    alt: 'ポットを手に取り紅茶を淹れる様子',
+    photo: '施設の体験会の会場.jpg',
+    alt: '大きな窓から光が入る、テーブルと椅子が並んだ会場',
     title: '施設の体験会で',
     text: '施設や地域の集まりに。簡単な体操やクイズ、紅茶の淹れ方体験を組み合わせたレクリエーションもご相談いただけます。',
   },
@@ -31,6 +24,12 @@ const places = [
     text: '店頭に、足を止めて一杯を味わえる試飲の席を。',
     proof: '玄米コーヒーでの実績：都内の百貨店で店頭試飲を実施。平日2時間の売上は、別の平日の同じ時間帯と比べて約1.5倍でした。',
   },
+  {
+    photo: '家族で囲む紅茶の時間.jpg',
+    alt: '家族の手がテーブルの紅茶を囲む様子',
+    title: '家族の集まりに',
+    text: '特別な記念日や、久しぶりに顔をそろえる日に。紅茶はこちらでお淹れします。皆さんは、同じテーブルで話の続きを。',
+  },
 ];
 ---
 <Layout
@@ -45,9 +44,11 @@ const places = [
         <TeaPhoto name={heroPhoto} alt="窓辺で紅茶を注ぐ手元とテーブルに並ぶカップ" sizes="100vw" eager />
       </div>
       <div class="h-hero-copy">
-        <p class="h-hero-sub">出張ティーソムリエ</p>
         <h1 id="home-title">いつも気を配る<span>あなたにも、</span><br />ゆっくり一杯を。</h1>
-        <p class="h-hero-text">千葉を拠点に、茶葉と道具を持って伺う出張ティーソムリエです。カフェインレスの紅茶を、目の前でお淹れします。</p>
+        <div class="h-hero-text">
+          <p>千葉を拠点に、お子さんでも楽しめる上品な空間を提供します。</p>
+          <p>なぜなら私は、シングルファザーとして子を育てる父であり、五感を満たす最高品質のアイテムを扱うブランドの運営もしているからです。</p>
+        </div>
         <a class="h-btn h-btn-primary" href="/contact/">出張のお茶会を相談する</a>
       </div>
     </section>
@@ -58,10 +59,8 @@ const places = [
           <h2 id="home-story-heading">母にも、もてなされる時間を。</h2>
           <p>娘との暮らしを支えてくれた母に、好きな紅茶を孫と一緒に楽しむ時間を贈りたい。それが、カフェインレスの紅茶を探し始めたきっかけです。</p>
           <p>家族を気にかけるのが好きな人にも、誰かに淹れてもらって、話の続きを楽しむ時間があっていい。そんな一杯を、あなたの場所にも届けます。</p>
-          <p class="h-signature">{SITE.maker}</p>
           <div class="h-links">
             <a href="/story/">母から始まった物語を読む</a>
-            <a href="/about/">作り手について</a>
           </div>
         </div>
         <div class="h-feature-photo">
@@ -76,14 +75,14 @@ const places = [
         <ul class="h-place-grid">
           {places.map(({ photo, alt, title, text, proof }) => (
             <li class="h-place">
-              <TeaPhoto name={photo} alt={alt} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" />
               <h3>{title}</h3>
+              <TeaPhoto name={photo} alt={alt} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" />
               <p>{text}</p>
               {proof && <p class="h-proof">{proof}</p>}
             </li>
           ))}
         </ul>
-        <p class="h-note">写真はイメージです。</p>
+        <p class="h-note">写真は利用シーンの参考です。一部にAIで生成したイメージ画像を使用しています。</p>
       </div>
     </section>
 

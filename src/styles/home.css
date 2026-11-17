@@ -50,10 +50,10 @@
   padding: 170px 0 clamp(64px, 8vh, 112px) min(44vw, 520px);
 }
 
-.h-hero .h-hero-sub { margin-bottom: 14px; font-size: .875rem; letter-spacing: .18em; }
 .h-hero h1 { font-size: clamp(1.75rem, 3vw, 2.65rem); line-height: 1.55; }
 .h-hero h1 span { display: inline-block; }
-.h-hero-text { max-width: 29em; margin-top: 18px; text-wrap: pretty; }
+.h-hero-text { max-width: 34em; margin-top: 18px; text-wrap: pretty; }
+.h-hero-text p + p { margin-top: 12px; }
 .h-btn {
   display: inline-flex;
   justify-content: center;
@@ -81,7 +81,6 @@
 
 .h-feature-photo img { aspect-ratio: 4 / 3; }
 .h-story-copy > p, .h-carry-copy > p { margin-top: 18px; }
-.h-story-copy .h-signature { font-family: var(--serif); margin-top: 24px; }
 .h-links { display: flex; flex-wrap: wrap; gap: 2px 25px; margin-top: 8px; }
 .h-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .9375rem; text-underline-offset: 6px; }
 
@@ -96,7 +95,7 @@
 }
 
 .h-place img { aspect-ratio: 4 / 3; }
-.h-place h3 { margin-top: 16px; }
+.h-place h3 { margin-bottom: 12px; }
 .h-place p { margin-top: 8px; color: var(--h-mute); }
 .h-place .h-proof { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--h-line); font-size: .875rem; }
 .home .h-note { margin-top: 24px; color: var(--h-mute); font-size: .8125rem; }
@@ -114,9 +113,10 @@
   .h-hero { min-height: max(540px, min(94svh, 760px)); }
   .h-hero-photo img { object-position: 26% 50%; }
   .h-hero::after { background: linear-gradient(180deg, rgb(10 9 8 / .57), rgb(10 9 8 / .23) 32%, rgb(10 9 8 / .93) 78%); }
-  .h-hero-copy { padding: 175px 0 34px; }
+  .h-hero-copy { padding: 148px 0 28px; }
   .h-hero h1 { font-size: clamp(1.45rem, 6.3vw, 1.95rem); }
   .h-hero-text { margin-top: 14px; }
+  .h-hero-text p { line-height: 1.8; }
   .h-split { grid-template-columns: 1fr; }
 }
 
