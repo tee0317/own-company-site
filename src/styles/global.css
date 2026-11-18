@@ -79,3 +79,9 @@
 .breadcrumbs a, .breadcrumbs [aria-current] { display: inline-flex; align-items: center; min-height: 44px; }
 h1, h2, h3 { overflow-wrap: normal; line-break: strict; text-wrap: pretty; }
 .heading-phrase { display: inline-block; max-width: 100%; }
+
+.site-footer .footer-navigation { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.footer-navigation .footer-heading { font-family: var(--serif); font-size: 1.125rem; color: #cfc8bc; margin-bottom: 16px; }
+.footer-navigation a { display: block; min-height: 48px; padding-block: 9px; text-decoration: none; font-size: 1rem; }
+.site-footer .footer-bottom { justify-content: flex-end; }
+@media (max-width: 720px) { .site-footer .footer-navigation { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; } }

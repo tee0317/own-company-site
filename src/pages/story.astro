@@ -7,20 +7,20 @@ import PostCard from '../components/PostCard.astro';
 import {publishedPosts} from '../lib/posts';
 const featured=(await publishedPosts()).filter(p=>p.data.featured).sort((a,b)=>a.data.featuredOrder-b.data.featuredOrder).slice(0,3);
 ---
-<Layout title="母から始まる物語｜プロジェクトソクラテス" description="子育てと暮らしを支えてくれた、紅茶好きの母へ。母と娘が笑い合う夏に似合う一杯を探す、プロジェクトソクラテスのはじまりの物語です。" breadcrumbs={[{name:'物語'}]}>
+<Layout title="母から始まる物語｜プロジェクトソクラテス" description="子育てと暮らしを支えてくれた、紅茶好きの母へ。母と娘が笑い合う日々に似合う一杯を探す、プロジェクトソクラテスのはじまりの物語です。" breadcrumbs={[{name:'物語'}]}>
 <div class="subpage">
- <PageIntro eyebrow="OUR STORY / はじまりの物語" title="母と娘が笑い合う夏を、少しでも長く" titleLines={['母と娘が笑い合う', '夏を、少しでも長く']} lead="紅茶好きの母に、自分の好きなものを楽しむ時間があってほしい。その思いから、家族の夏に似合う一杯を探し始めました。" photo="家族で囲む紅茶の時間.jpg" focus="50% 50%" alt="家族の手がテーブルの紅茶を囲む様子のイメージ"/>
+ <PageIntro eyebrow="OUR STORY / はじまりの物語" title="母と娘が笑い合う日々を、少しでも長く" titleLines={['母と娘が笑い合う日々を、', '少しでも長く']} compactTitle naturalPhoto lead="紅茶好きの母に、自分の好きなものを楽しむ時間があってほしい。その思いから、家族で楽しめる一杯を探しはじめました。" photo="母と娘の桜の日.jpg" focus="50% 50%" alt="桜の木のそばで笑顔を見せる母と娘"/>
  <div class="wrap section reading-layout"><nav class="reading-nav" aria-label="物語の章"><p class="eyebrow">はじまりから、これからへ</p><a href="#mother">暮らしを支えてくれた母</a><a href="#summer">家族で過ごす夏の時間</a><a href="#cup">届けたい、一杯の紅茶</a></nav><article>
  <section id="mother" class="story-chapter"><p class="chapter-number">01</p><h2><span class="heading-phrase">暮らしを支えてくれた</span><span class="heading-phrase">母へ。</span></h2>
- <figure class="story-photo"><TeaPhoto name="カップを手に話す二人の手元.jpg" alt="紅茶を囲んで向かい合う手元"/></figure>
+ <figure class="story-photo"><TeaPhoto name="家族三人のひととき.jpg" alt="夜の屋外で寄り添う家族三人"/></figure>
  <p>シングルファザーになって、家事も育児も一人で全部やろうとしました。でも、暮らしは思うように回りませんでした。本当に助けてもらったのが母です。</p>
  <p>いつも誰かのために動いている母に、自分の好きなものを楽しむ時間があってほしい。</p></section>
  <section id="summer" class="story-chapter"><p class="chapter-number">02</p><h2><span class="heading-phrase">好きな、</span><span class="heading-phrase">家族の夏の時間。</span></h2>
- <figure class="story-photo"><TeaPhoto name="家族のお茶会のテーブル.jpg" alt="明るい窓辺に用意した家族のお茶のテーブル"/></figure>
+ <figure class="story-photo"><TeaPhoto name="家族の夏のプール.jpg" alt="日よけの下の家庭用プールで遊ぶ子どもたち"/></figure>
  <p>我が家の夏の恒例は、娘との自宅プール。BBQとパラソル、そして母が楽しむビール。そんな家族の時間が、僕は好きです。</p>
  <p>ただ、最近の夏は暑さが厳しく、母の体も気になります。飲み物をとる時間も、母が好きな紅茶を楽しむ時間にできたら。</p></section>
  <section id="cup" class="story-chapter"><p class="chapter-number">03</p><h2><span class="heading-phrase">もう一口飲みたくなる、</span><span class="heading-phrase">一杯を。</span></h2>
- <figure class="story-photo"><TeaPhoto name="ガラスのポットから紅茶を注ぐ手元.jpg" alt="ポットからカップへ、琥珀色の紅茶を注ぐ手元"/></figure>
+ <figure class="story-photo"><TeaPhoto name="夏のアイスティー.jpg" alt="氷の入ったアイスティーを注いだ三つのグラス"/></figure>
  <p>そこで用意したいと思ったのが、カフェインレスのアイスティーです。カフェインにも配慮しながら、爽やかな香りと、すっきりした味わいを楽しめる。おいしくて、ついもう一口飲みたくなる。そんな一杯を目指しています。</p>
  <p>母と娘が笑い合う夏を、少しでも長く。その願いから、同じように紅茶を愛する人にも、この一杯を届けたいと思うようになりました。今日も、家族で過ごす夏に似合う紅茶を探しています。</p></section>
  <p class="reading-signature">土志田 拓郎</p>

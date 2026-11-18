@@ -24,7 +24,7 @@
 .subpage h2, .subpage h3, .page-links h2, .page-links h3 { text-wrap: pretty; }
 .story-photo { margin: 0 0 28px; }
 .story-photo picture { display: block; }
-.story-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.story-photo img { width: 100%; height: auto; }
 .page-link-card { padding: 0; overflow: hidden; }
 .page-link-photo picture { display: block; }
 .page-link-photo img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }

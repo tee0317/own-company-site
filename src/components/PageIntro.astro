@@ -1,9 +1,9 @@
 ---
 import TeaPhoto from './TeaPhoto.astro';
-interface Props { eyebrow:string; title:string; titleLines?:string[]; lead?:string; photo:string; alt:string; portrait?:boolean; focus?:string; }
-const {eyebrow,title,titleLines,lead,photo,alt,portrait=false,focus="50% 55%"}=Astro.props;
+interface Props { eyebrow:string; title:string; titleLines?:string[]; compactTitle?:boolean; naturalPhoto?:boolean; lead?:string; photo:string; alt:string; portrait?:boolean; focus?:string; }
+const {eyebrow,title,titleLines,compactTitle=false,naturalPhoto=false,lead,photo,alt,portrait=false,focus="50% 55%"}=Astro.props;
 ---
-<header style={{'--photo-focus':focus}} class:list={['page-intro',{portrait}]}>
+<header style={{'--photo-focus':focus}} class:list={['page-intro',{portrait,'compact-title':compactTitle,'natural-photo':naturalPhoto}]}>
  <div class="intro-photo"><TeaPhoto name={photo} alt={alt} eager/></div>
  <div class="intro-copy"><p class="eyebrow">{eyebrow}</p><h1 class:list={{"has-title-lines":titleLines}}>{titleLines ? titleLines.map(line=><span>{line}</span>) : title.split(/(?<=、)/).map(part=><span class="heading-phrase">{part}</span>)}</h1>{lead&&<p class="lead">{lead}</p>}</div>
 </header>
@@ -14,4 +14,8 @@ const {eyebrow,title,titleLines,lead,photo,alt,portrait=false,focus="50% 55%"}=A
 .has-title-lines span{display:block}.intro-copy h1.has-title-lines{font-size:clamp(1.6rem,3.2vw,2.9rem)}
 .portrait .intro-photo{display:flex;align-items:center;justify-content:center;padding:36px;background:var(--paper)}.portrait .intro-photo :global(picture){position:static;width:min(100%,280px)}.portrait .intro-photo :global(img){height:auto;aspect-ratio:1;object-fit:cover}
 @media(max-width:720px){.page-intro{grid-template-columns:1fr}.intro-photo{min-height:0;aspect-ratio:16/9}.intro-copy{padding:32px 24px 36px}.intro-copy h1{font-size:2rem}.portrait .intro-photo{aspect-ratio:auto;padding:32px 24px}.portrait .intro-photo :global(picture){width:200px}}
+.compact-title .intro-copy h1.has-title-lines { font-size: clamp(1.3rem, 2.6vw, 2.3rem); }
+.natural-photo .intro-photo { min-height: 0; aspect-ratio: auto; align-self: center; }
+.natural-photo .intro-photo :global(picture) { position: static; }
+.natural-photo .intro-photo :global(img) { height: auto; }
 </style>
